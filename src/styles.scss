@@ -7,6 +7,7 @@
 @import 'styles/mixins';
 @import 'styles/reset';
 @import 'styles/typography';
+@import 'styles/buttons';
 @import 'styles/utilities';
 
 // ================================
@@ -111,7 +112,8 @@ body {
   }
 }
 
-// Demo button styles
+// Demo button styles - DEPRECATED, use .btn-* classes instead
+// These styles are kept for backward compatibility only
 .demo-button {
   @include button-reset();
   padding: $spacing-sm $spacing-md;

@@ -261,3 +261,22 @@ hr {
 .letter-spacing-tight { letter-spacing: -0.025em; }
 .letter-spacing-normal { letter-spacing: 0; }
 .letter-spacing-wide { letter-spacing: 0.025em; }
+
+// Единственный полезный класс - для кликабельного текста (не ссылки)
+.clickable-text {
+  color: $color-primary;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible,
+  &:focus {
+    color: #5138d4;
+  }
+
+  &:focus-visible,
+  &:focus {
+    @include focus-ring();
+    outline: none;
+  }
+}
