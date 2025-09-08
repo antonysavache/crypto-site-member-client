@@ -1,51 +1,183 @@
 // ================================
-// LAYOUT SYSTEM - SIMPLIFIED FOR STICKY DEBUG
+// LAYOUT SYSTEM - ГЛОБАЛЬНАЯ СИСТЕМА
 // ================================
 
-// App Shell - основная оболочка приложения
+// App Shell
 .app-shell {
   display: flex;
   flex-direction: column;
-  // УБИРАЕМ min-height: 100vh и transform - они могут мешать sticky
+  min-height: 100vh;
 }
 
-// Header - базовые стили (основные стили в header.component.scss)
-.app-header {
-  // Базовые стили уже в HeaderComponent
-  flex-shrink: 0;
-}
-
-// Main content area
 .app-main {
   flex: 1;
-  // УБИРАЕМ все position, z-index, overflow свойства
+}
+// ================================
+// LAYOUT UTILITIES - ГЛОБАЛЬНЫЕ КЛАССЫ
+// ================================
+
+// Container system
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
 }
 
-.app-content {
-  padding: 2rem;
-  // Добавляем достаточно контента для скролла
-  min-height: 200vh;
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+}
+
+.container-wide {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+}
+
+// Grid layouts
+.layout-sidebar {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+}
+
+.layout-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.layout-three-column {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+// Sidebar component
+.sidebar {
+  position: sticky;
+  top: 100px; // Отступ от header
+  height: fit-content;
+
+  @media (max-width: 1024px) {
+    position: static;
+    top: auto;
+    height: auto;
+  }
+}
+
+.sidebar-hidden-mobile {
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+// Content spacing
+.content-spacing {
+  > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+.content-spacing-large {
+  > * + * {
+    margin-top: 3rem;
+  }
+}
+
+// Page layouts
+.page-layout {
+  padding: 2rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
+}
+
+.page-header {
+  margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #383545;
+  margin: 0 0 1rem 0;
+
+  @media (max-width: 767px) {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+}
+
+.page-description {
+  color: #64748b;
+  font-size: 18px;
+  margin-bottom: 0;
 }
 
 // Footer
 .app-footer {
-  background-color: $color-bg-muted;
-  border-top: 1px solid $color-bg-light;
-  padding: $spacing-lg 0;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  padding: 2rem 0;
   margin-top: auto;
-  // Обеспечиваем что footer всегда внизу
-  flex-shrink: 0;
 
   .footer-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: $spacing-lg;
+    gap: 2rem;
+    padding: 0 2rem;
 
-    @include breakpoint-down(desktop) {
+    @media (max-width: 768px) {
       flex-direction: column;
       text-align: center;
-      gap: $spacing-md;
+      gap: 1rem;
     }
   }
 
@@ -56,107 +188,20 @@
   .footer-links {
     display: flex;
     align-items: center;
-    gap: $spacing-lg;
+    gap: 2rem;
 
-    @include breakpoint-down(desktop) {
-      gap: $spacing-md;
+    @media (max-width: 768px) {
+      gap: 1rem;
     }
   }
 
   .footer-link {
-    color: $color-text-secondary;
+    color: #6c757d;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.2s ease;
 
-    &:hover,
-    &:focus-visible,
-    &:focus {
-      color: $color-primary;
-      text-decoration: none;
-    }
-
-    &:focus-visible,
-    &:focus {
-      @include focus-ring();
-      outline: none;
+    &:hover {
+      color: #6146FF;
     }
   }
-}
-
-// Layout utilities
-.full-width {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-}
-
-.content-wrapper {
-  @include container();
-  padding-top: $spacing-lg;
-  padding-bottom: $spacing-lg;
-}
-
-// Page layout helpers
-.page-header {
-  margin-bottom: $spacing-xl;
-
-  .page-title {
-    margin-bottom: $spacing-sm;
-  }
-
-  .page-description {
-    color: $color-text-secondary;
-    font-size: 18px;
-    margin-bottom: 0;
-  }
-
-  .page-actions {
-    margin-top: $spacing-md;
-    display: flex;
-    gap: $spacing-sm;
-    flex-wrap: wrap;
-  }
-}
-
-.page-content {
-  // Основной контент страницы
-  // Добавляем минимальную высоту для демонстрации скролла
-  min-height: 120vh;
-}
-
-.page-sidebar {
-  // Боковая панель (если нужна)
-  @include breakpoint-up(desktop) {
-    width: 280px;
-    flex-shrink: 0;
-  }
-}
-
-// Layout modifiers
-.layout-centered {
-  .app-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-}
-
-.layout-narrow {
-  .app-content {
-    max-width: 800px;
-  }
-}
-
-.layout-wide {
-  .app-content {
-    max-width: none;
-    padding-left: $spacing-lg;
-    padding-right: $spacing-lg;
-  }
-}
-
-// Обеспечиваем плавную прокрутку
-html {
-  scroll-behavior: smooth;
 }
