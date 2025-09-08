@@ -1,13 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { StylesDemoComponent } from './components/styles-demo/styles-demo';
+import { Component } from '@angular/core';
+import { ShellComponent } from './layout/shell/shell.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, StylesDemoComponent],
-  templateUrl: './app.html',
+  imports: [ShellComponent],
+  template: '<app-shell></app-shell>',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('member-client');
-}
+export class App {}

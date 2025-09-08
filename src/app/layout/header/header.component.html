@@ -1,0 +1,91 @@
+<header class="app-header">
+  <div class="container">
+    <nav class="header-nav" role="navigation" aria-label="Основная навигация">
+
+      <!-- Brand / Logo -->
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="Member Client - Главная страница">
+          <div class="brand-icon">👥</div>
+          <span class="brand-text">Member Client</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="nav-desktop">
+        <ul class="nav-list" role="menubar">
+          @for (link of navLinks; track link.href) {
+            <li class="nav-item" role="none">
+              <a
+                [href]="link.href"
+                class="nav-link"
+                [class.active]="link.active"
+                role="menuitem"
+                [attr.aria-current]="link.active ? 'page' : null"
+                (click)="onNavLinkClick(link.href); $event.preventDefault()"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="mobile-menu-btn"
+        type="button"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-controls="mobile-nav"
+        aria-label="Переключить меню навигации"
+        (click)="toggleMenu()"
+        [ngClass]="{ 'is-open': isMenuOpen() }"
+      >
+        <span class="hamburger">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div
+      id="mobile-nav"
+      class="nav-mobile"
+      [ngClass]="{ 'is-open': isMenuOpen() }"
+      [attr.aria-hidden]="!isMenuOpen()"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Меню навигации"
+    >
+      <div class="nav-mobile-content">
+        <ul class="nav-mobile-list" role="menu">
+          @for (link of navLinks; track link.href) {
+            <li class="nav-mobile-item" role="none">
+              <a
+                [href]="link.href"
+                class="nav-mobile-link"
+                [class.active]="link.active"
+                role="menuitem"
+                [attr.aria-current]="link.active ? 'page' : null"
+                (click)="onNavLinkClick(link.href); $event.preventDefault()"
+                tabindex="0"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mobile Backdrop -->
+    @if (isMenuOpen()) {
+      <div
+        class="nav-mobile-backdrop"
+        (click)="toggleMenu()"
+        aria-hidden="true"
+      ></div>
+    }
+  </div>
+</header>

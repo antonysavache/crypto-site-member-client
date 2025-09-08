@@ -1,0 +1,159 @@
+// ================================
+// LAYOUT SYSTEM
+// ================================
+
+// App Shell - основная оболочка приложения
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header - базовые стили (основные стили в header.component.scss)
+.app-header {
+  // Базовые стили уже в HeaderComponent
+}
+
+// Main content area
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  @include container();
+  flex: 1;
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+
+  @include breakpoint-down(desktop) {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+}
+
+// Footer
+.app-footer {
+  background-color: $color-bg-muted;
+  border-top: 1px solid $color-bg-light;
+  padding: $spacing-lg 0;
+  margin-top: auto;
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-lg;
+
+    @include breakpoint-down(desktop) {
+      flex-direction: column;
+      text-align: center;
+      gap: $spacing-md;
+    }
+  }
+
+  .footer-info {
+    flex: 1;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    @include breakpoint-down(desktop) {
+      gap: $spacing-md;
+    }
+  }
+
+  .footer-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus-visible,
+    &:focus {
+      color: $color-primary;
+      text-decoration: none;
+    }
+
+    &:focus-visible,
+    &:focus {
+      @include focus-ring();
+      outline: none;
+    }
+  }
+}
+
+// Layout utilities
+.full-width {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.content-wrapper {
+  @include container();
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-lg;
+}
+
+// Page layout helpers
+.page-header {
+  margin-bottom: $spacing-xl;
+
+  .page-title {
+    margin-bottom: $spacing-sm;
+  }
+
+  .page-description {
+    color: $color-text-secondary;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  .page-actions {
+    margin-top: $spacing-md;
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+  }
+}
+
+.page-content {
+  // Основной контент страницы
+}
+
+.page-sidebar {
+  // Боковая панель (если нужна)
+  @include breakpoint-up(desktop) {
+    width: 280px;
+    flex-shrink: 0;
+  }
+}
+
+// Layout modifiers
+.layout-centered {
+  .app-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.layout-narrow {
+  .app-content {
+    max-width: 800px;
+  }
+}
+
+.layout-wide {
+  .app-content {
+    max-width: none;
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+}

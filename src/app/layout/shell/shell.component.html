@@ -1,0 +1,28 @@
+<div class="app-shell">
+  <!-- Header Component -->
+  <app-header></app-header>
+
+  <main class="app-main">
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p class="text-muted mb-0">
+            © {{ currentYear }} Member Client. Система управления участниками.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="/privacy" class="footer-link">Конфиденциальность</a>
+          <a href="/terms" class="footer-link">Условия</a>
+          <a href="/support" class="footer-link">Поддержка</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
