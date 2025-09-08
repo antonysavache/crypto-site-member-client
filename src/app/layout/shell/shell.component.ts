@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent]
+  imports: [RouterOutlet, HeaderComponent, FooterComponent]
 })
-export class ShellComponent {
-  protected readonly currentYear = new Date().getFullYear();
-}
+export class ShellComponent {}
