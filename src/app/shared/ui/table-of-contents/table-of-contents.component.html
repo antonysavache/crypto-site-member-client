@@ -1,0 +1,23 @@
+<div class="toc-container">
+  <div class="toc-header">
+    <h4 class="toc-title">{{ title }}</h4>
+  </div>
+
+  <nav class="toc-nav" role="navigation" aria-label="Table of contents">
+    <ul class="toc-list">
+      @for (item of tocItems(); track item.id) {
+        <li class="toc-item" [class]="'toc-level-' + item.level">
+          <button
+            type="button"
+            class="toc-link"
+            [ngClass]="{ 'active': activeItemId() === item.id }"
+            (click)="scrollToHeading(item)"
+            [attr.aria-current]="activeItemId() === item.id ? 'true' : null"
+          >
+            {{ item.title }}
+          </button>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
