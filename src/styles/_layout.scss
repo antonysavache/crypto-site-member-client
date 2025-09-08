@@ -1,36 +1,30 @@
 // ================================
-// LAYOUT SYSTEM
+// LAYOUT SYSTEM - SIMPLIFIED FOR STICKY DEBUG
 // ================================
 
 // App Shell - основная оболочка приложения
 .app-shell {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  // УБИРАЕМ min-height: 100vh и transform - они могут мешать sticky
 }
 
 // Header - базовые стили (основные стили в header.component.scss)
 .app-header {
   // Базовые стили уже в HeaderComponent
+  flex-shrink: 0;
 }
 
 // Main content area
 .app-main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  // УБИРАЕМ все position, z-index, overflow свойства
 }
 
 .app-content {
-  @include container();
-  flex: 1;
-  padding-top: $spacing-xl;
-  padding-bottom: $spacing-xl;
-
-  @include breakpoint-down(desktop) {
-    padding-top: $spacing-lg;
-    padding-bottom: $spacing-lg;
-  }
+  padding: 2rem;
+  // Добавляем достаточно контента для скролла
+  min-height: 200vh;
 }
 
 // Footer
@@ -39,6 +33,8 @@
   border-top: 1px solid $color-bg-light;
   padding: $spacing-lg 0;
   margin-top: auto;
+  // Обеспечиваем что footer всегда внизу
+  flex-shrink: 0;
 
   .footer-content {
     display: flex;
@@ -124,6 +120,8 @@
 
 .page-content {
   // Основной контент страницы
+  // Добавляем минимальную высоту для демонстрации скролла
+  min-height: 120vh;
 }
 
 .page-sidebar {
@@ -156,4 +154,9 @@
     padding-left: $spacing-lg;
     padding-right: $spacing-lg;
   }
+}
+
+// Обеспечиваем плавную прокрутку
+html {
+  scroll-behavior: smooth;
 }

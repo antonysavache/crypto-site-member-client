@@ -1,9 +1,28 @@
-// Локальные стили для ShellComponent
-// Основные стили находятся в _layout.scss
+// ================================
+// SHELL COMPONENT STYLES - SIMPLIFIED FOR STICKY DEBUG
+// ================================
+
+.app-shell {
+  // НЕ УСТАНАВЛИВАЕМ min-height: 100vh - это может мешать sticky!
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  // НЕ ИСПОЛЬЗУЕМ overflow: hidden или height: 100% здесь!
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem;
+  // Добавляем много контента для тестирования скролла
+  min-height: 200vh;
+}
 
 .nav-link {
   transition: color 0.2s ease;
-  
+
   &:hover {
     color: var(--color-primary);
   }
@@ -12,7 +31,7 @@
 .footer-link {
   font-size: 14px;
   transition: color 0.2s ease;
-  
+
   &:hover {
     color: var(--color-primary);
   }

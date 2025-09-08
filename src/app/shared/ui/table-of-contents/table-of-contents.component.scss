@@ -1,0 +1,150 @@
+// ================================
+// TABLE OF CONTENTS COMPONENT STYLES
+// ================================
+
+// Import variables
+@import '../../../../styles/variables';
+
+.toc-container {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  // Показываем только на desktop
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.toc-header {
+  background-color: #383545;
+  padding: 1rem 1.25rem;
+}
+
+.toc-title {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.toc-nav {
+  padding: 0;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  border-bottom: 1px solid #F3F4F6;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.toc-link {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #F9FAFB;
+    color: #1F2937;
+  }
+
+  &:focus-visible,
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+    background-color: rgba($color-primary, 0.05);
+  }
+
+  // Активное состояние - темный фон как в референсе
+  &.active {
+    background-color: #383545;
+    color: #FFFFFF;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #4A4659;
+      color: #FFFFFF;
+    }
+  }
+}
+
+// Уровни заголовков - отступы для иерархии
+.toc-level-2 .toc-link {
+  padding-left: 1.25rem;
+}
+
+.toc-level-3 .toc-link {
+  padding-left: 2rem;
+  font-size: 0.8125rem;
+  color: #6B7280;
+
+  &.active {
+    color: #FFFFFF;
+  }
+}
+
+.toc-level-4 .toc-link {
+  padding-left: 2.75rem;
+  font-size: 0.8125rem;
+  color: #9CA3AF;
+
+  &.active {
+    color: #FFFFFF;
+  }
+}
+
+// Анимация для активного элемента
+.toc-link.active {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: $color-primary;
+  }
+}
+
+// Responsive adjustments для больших экранов
+@media (max-width: 1200px) {
+  .toc-container {
+    font-size: 0.8125rem;
+  }
+
+  .toc-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .toc-level-3 .toc-link {
+    padding-left: 1.75rem;
+  }
+
+  .toc-level-4 .toc-link {
+    padding-left: 2.25rem;
+  }
+}
