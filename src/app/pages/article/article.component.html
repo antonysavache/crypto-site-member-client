@@ -1,5 +1,12 @@
 <!-- Article Page Layout - ИСПОЛЬЗУЕТ ГЛОБАЛЬНЫЕ КЛАССЫ -->
 <div class="page-layout">
+  <!-- Mobile TOC - показывается только на мобилке -->
+  <app-table-of-contents
+    title="Article Contents"
+    contentSelector=".article-content"
+    [showMobile]="true">
+  </app-table-of-contents>
+
   <div class="layout-sidebar">
 
     <!-- Main Content -->
@@ -64,11 +71,12 @@
       </footer>
     </article>
 
-    <!-- Sidebar for TOC -->
+    <!-- Desktop Sidebar for TOC -->
     <aside class="sidebar sidebar-hidden-mobile">
       <app-table-of-contents
         title="Best Stock Trading Apps of 2025"
-        contentSelector=".article-content">
+        contentSelector=".article-content"
+        [showMobile]="false">
       </app-table-of-contents>
     </aside>
 

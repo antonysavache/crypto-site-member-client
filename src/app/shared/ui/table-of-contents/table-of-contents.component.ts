@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, signal } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, signal, HostListener } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export interface TocItem {
@@ -18,9 +18,12 @@ export interface TocItem {
 export class TableOfContentsComponent implements OnInit, OnDestroy {
   @Input() title: string = 'Best Stock Trading Apps of 2025';
   @Input() contentSelector: string = '.article-content'; // CSS selector для поиска заголовков
+  @Input() showMobile: boolean = false; // Показывать ли мобильную версию
 
   protected readonly tocItems = signal<TocItem[]>([]);
   protected readonly activeItemId = signal<string>('');
+  protected readonly isMobileOpen = signal<boolean>(false);
+  protected readonly currentActiveTitle = signal<string>('');
 
   private observer?: IntersectionObserver;
 
@@ -34,6 +37,17 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+  }
+
+  // Закрываем мобильное меню при клике вне его
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as Element;
+    const tocElement = target.closest('.mobile-toc');
+
+    if (!tocElement && this.isMobileOpen()) {
+      this.isMobileOpen.set(false);
+    }
   }
 
   // Генерируем элементы TOC из заголовков в статье
@@ -65,6 +79,11 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
     });
 
     this.tocItems.set(items);
+
+    // Устанавливаем первый заголовок как активный
+    if (items.length > 0) {
+      this.currentActiveTitle.set(items[0].title);
+    }
   }
 
   // Настраиваем Intersection Observer для отслеживания видимых заголовков
@@ -84,6 +103,12 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
       if (visibleHeadings.length > 0) {
         const activeElement = visibleHeadings[0].target as HTMLElement;
         this.activeItemId.set(activeElement.id);
+
+        // Обновляем заголовок для мобильной версии
+        const activeItem = this.tocItems().find(item => item.id === activeElement.id);
+        if (activeItem) {
+          this.currentActiveTitle.set(activeItem.title);
+        }
       }
     }, options);
 
@@ -109,5 +134,14 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
     // Обновляем активный элемент
     this.activeItemId.set(item.id);
+    this.currentActiveTitle.set(item.title);
+
+    // Закрываем мобильное меню
+    this.isMobileOpen.set(false);
+  }
+
+  // Переключаем мобильное меню
+  protected toggleMobileMenu(): void {
+    this.isMobileOpen.update(current => !current);
   }
 }

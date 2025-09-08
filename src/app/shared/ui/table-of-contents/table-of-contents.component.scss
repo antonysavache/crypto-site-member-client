@@ -1,150 +1,264 @@
 // ================================
-// TABLE OF CONTENTS COMPONENT STYLES
+// TABLE OF CONTENTS COMPONENT
 // ================================
 
-// Import variables
+// Import variables with correct path
 @import '../../../../styles/variables';
 
-.toc-container {
-  background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+// ================================
+// DESKTOP VERSION (SIDEBAR)
+// ================================
 
-  // Показываем только на desktop
+.desktop-toc {
   @media (max-width: 1024px) {
-    display: none;
+    display: none; // Скрываем на планшетах и мобилке
   }
 }
 
+.toc-container {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
 .toc-header {
-  background-color: #383545;
-  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f3f4f6;
 }
 
 .toc-title {
-  color: #FFFFFF;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
+  color: #374151;
   margin: 0;
-  line-height: 1.4;
 }
 
 .toc-nav {
-  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .toc-list {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .toc-item {
-  border-bottom: 1px solid #F3F4F6;
+  margin: 0;
+}
+
+.toc-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &.active {
+    color: $color-primary;
+    font-weight: 500;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 16px;
+      background-color: $color-primary;
+      border-radius: 2px;
+    }
+  }
+}
+
+// Индентация для разных уровней заголовков
+.toc-level-2 .toc-link {
+  padding-left: 0;
+}
+
+.toc-level-3 .toc-link {
+  padding-left: 1rem;
+  font-size: 13px;
+}
+
+.toc-level-4 .toc-link {
+  padding-left: 1.5rem;
+  font-size: 12px;
+}
+
+// ================================
+// MOBILE VERSION (STICKY)
+// ================================
+
+.mobile-toc {
+  position: fixed;
+  top: 65px; // Под header'ом
+  left: 0;
+  right: 0;
+  z-index: 500;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 1025px) {
+    display: none; // Скрываем на десктопе
+  }
+}
+
+.mobile-toc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+  }
+}
+
+.current-heading {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+}
+
+.chevron-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  &.rotated {
+    transform: rotate(180deg);
+  }
+}
+
+.mobile-toc-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+
+  .mobile-toc.is-open & {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.mobile-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-toc-item {
+  margin: 0;
+  border-bottom: 1px solid #f3f4f6;
 
   &:last-child {
     border-bottom: none;
   }
 }
 
-.toc-link {
+.mobile-toc-link {
   display: block;
   width: 100%;
-  padding: 0.875rem 1.25rem;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6b7280;
   background: none;
   border: none;
-  text-align: left;
-  color: #374151;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.4;
   cursor: pointer;
   transition: all 0.2s ease;
-  text-decoration: none;
 
   &:hover {
-    background-color: #F9FAFB;
-    color: #1F2937;
+    background-color: #f9fafb;
+    color: $color-primary;
   }
 
-  &:focus-visible,
-  &:focus {
-    outline: 2px solid $color-primary;
-    outline-offset: -2px;
-    background-color: rgba($color-primary, 0.05);
-  }
-
-  // Активное состояние - темный фон как в референсе
   &.active {
-    background-color: #383545;
-    color: #FFFFFF;
+    color: $color-primary;
+    background-color: rgba($color-primary, 0.05);
     font-weight: 500;
+    position: relative;
 
-    &:hover {
-      background-color: #4A4659;
-      color: #FFFFFF;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: $color-primary;
     }
   }
-}
 
-// Уровни заголовков - отступы для иерархии
-.toc-level-2 .toc-link {
-  padding-left: 1.25rem;
-}
-
-.toc-level-3 .toc-link {
-  padding-left: 2rem;
-  font-size: 0.8125rem;
-  color: #6B7280;
-
-  &.active {
-    color: #FFFFFF;
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
   }
 }
 
-.toc-level-4 .toc-link {
-  padding-left: 2.75rem;
-  font-size: 0.8125rem;
-  color: #9CA3AF;
-
-  &.active {
-    color: #FFFFFF;
-  }
+.mobile-toc-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
 }
 
-// Анимация для активного элемента
-.toc-link.active {
-  position: relative;
+// ================================
+// ANIMATIONS
+// ================================
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background-color: $color-primary;
-  }
-}
-
-// Responsive adjustments для больших экранов
-@media (max-width: 1200px) {
-  .toc-container {
-    font-size: 0.8125rem;
-  }
-
-  .toc-link {
-    padding: 0.75rem 1rem;
-    font-size: 0.8125rem;
-  }
-
-  .toc-level-3 .toc-link {
-    padding-left: 1.75rem;
-  }
-
-  .toc-level-4 .toc-link {
-    padding-left: 2.25rem;
+@media (prefers-reduced-motion: reduce) {
+  .mobile-toc-menu,
+  .chevron-icon {
+    transition: none;
   }
 }
