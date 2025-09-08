@@ -13,6 +13,13 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #e0e0e0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  // Отключаем все gesture/touch действия
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .header-nav {
