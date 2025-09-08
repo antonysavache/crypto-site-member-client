@@ -4,6 +4,13 @@
 
 @import '../../../styles/variables';
 
+// Отступ для мобильной TOC панели
+.article-content-wrapper {
+  @media (max-width: 1024px) {
+    margin-top: 60px; // Отступ для мобильной TOC панели
+  }
+}
+
 // Article-specific meta styles
 .article-meta {
   display: flex;
