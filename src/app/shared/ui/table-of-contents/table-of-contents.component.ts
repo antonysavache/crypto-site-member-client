@@ -24,10 +24,13 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
   protected readonly activeItemId = signal<string>('');
   protected readonly isMobileOpen = signal<boolean>(false);
   protected readonly currentActiveTitle = signal<string>('');
+  protected readonly isMobileDevice = signal<boolean>(false);
 
   private observer?: IntersectionObserver;
 
   ngOnInit(): void {
+    this.checkMobileDevice();
+
     // Небольшая задержка чтобы innerHTML успел отрендериться
     setTimeout(() => {
       this.generateTocItems();
@@ -37,6 +40,12 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+  }
+
+  // Проверяем размер экрана
+  @HostListener('window:resize')
+  protected checkMobileDevice(): void {
+    this.isMobileDevice.set(window.innerWidth < 1025);
   }
 
   // Закрываем мобильное меню при клике вне его

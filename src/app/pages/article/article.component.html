@@ -1,11 +1,13 @@
 <!-- Article Page Layout - ИСПОЛЬЗУЕТ ГЛОБАЛЬНЫЕ КЛАССЫ -->
 <div class="page-layout">
-  <!-- Mobile TOC - показывается только на мобилке -->
-  <app-table-of-contents
-    title="Article Contents"
-    contentSelector=".article-content"
-    [showMobile]="true">
-  </app-table-of-contents>
+  <!-- Mobile TOC - ТОЛЬКО на мобилке -->
+  @if (isMobile()) {
+    <app-table-of-contents
+      title="Article Contents"
+      contentSelector=".article-content"
+      [showMobile]="true">
+    </app-table-of-contents>
+  }
 
   <div class="layout-sidebar">
 

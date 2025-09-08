@@ -6,119 +6,174 @@
 @import '../../../../styles/variables';
 
 // ================================
-// DESKTOP VERSION (SIDEBAR)
+// DESKTOP VERSION (SIDEBAR) - ПРАВИЛЬНЫЕ СТИЛИ
 // ================================
 
 .desktop-toc {
   @media (max-width: 1024px) {
-    display: none; // Скрываем на планшетах и мобилке
+    display: none;
   }
 }
 
 .toc-container {
-  background: white;
-  border: 1px solid #e5e7eb;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
   border-radius: 8px;
-  padding: 1.5rem;
+  overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  // Показываем только на desktop
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 
 .toc-header {
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f3f4f6;
+  background-color: #383545;
+  padding: 1rem 1.25rem;
 }
 
 .toc-title {
-  font-size: 1rem;
+  color: #FFFFFF;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
   margin: 0;
+  line-height: 1.4;
 }
 
 .toc-nav {
-  max-height: 400px;
-  overflow-y: auto;
+  padding: 0;
 }
 
 .toc-list {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .toc-item {
-  margin: 0;
+  border-bottom: 1px solid #F3F4F6;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .toc-link {
   display: block;
   width: 100%;
-  text-align: left;
-  padding: 0.5rem 0;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #6b7280;
+  padding: 0.875rem 1.25rem;
   background: none;
   border: none;
+  text-align: left;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
 
   &:hover {
-    color: $color-primary;
+    background-color: #F9FAFB;
+    color: #1F2937;
   }
 
+  &:focus-visible,
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: -2px;
+    background-color: rgba($color-primary, 0.05);
+  }
+
+  // Активное состояние - темный фон как в референсе
   &.active {
-    color: $color-primary;
+    background-color: #383545;
+    color: #FFFFFF;
     font-weight: 500;
     position: relative;
+
+    &:hover {
+      background-color: #4A4659;
+      color: #FFFFFF;
+    }
 
     &::before {
       content: '';
       position: absolute;
-      left: -1rem;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 3px;
-      height: 16px;
       background-color: $color-primary;
-      border-radius: 2px;
     }
   }
 }
 
-// Индентация для разных уровней заголовков
+// Уровни заголовков - отступы для иерархии
 .toc-level-2 .toc-link {
-  padding-left: 0;
+  padding-left: 1.25rem;
 }
 
 .toc-level-3 .toc-link {
-  padding-left: 1rem;
-  font-size: 13px;
+  padding-left: 2rem;
+  font-size: 0.8125rem;
+  color: #6B7280;
+
+  &.active {
+    color: #FFFFFF;
+  }
 }
 
 .toc-level-4 .toc-link {
-  padding-left: 1.5rem;
-  font-size: 12px;
+  padding-left: 2.75rem;
+  font-size: 0.8125rem;
+  color: #9CA3AF;
+
+  &.active {
+    color: #FFFFFF;
+  }
+}
+
+// Responsive adjustments для больших экранов
+@media (max-width: 1200px) {
+  .toc-container {
+    font-size: 0.8125rem;
+  }
+
+  .toc-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .toc-level-3 .toc-link {
+    padding-left: 1.75rem;
+  }
+
+  .toc-level-4 .toc-link {
+    padding-left: 2.25rem;
+  }
 }
 
 // ================================
-// MOBILE VERSION (STICKY)
+// MOBILE VERSION (STICKY) - ОБНОВЛЯЕМ ПОД DESKTOP СТИЛИ
 // ================================
 
 .mobile-toc {
   position: fixed;
-  top: 65px; // Под header'ом
+  top: 75px;
   left: 0;
   right: 0;
   z-index: 500;
   background: white;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #E5E7EB;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
+  // Показываем только на мобилке и планшете
   @media (min-width: 1025px) {
-    display: none; // Скрываем на десктопе
+    display: none !important;
   }
 }
 
@@ -127,17 +182,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: white;
+  padding: 0.875rem 1.25rem;
+  background: #383545; // Темный фон как в desktop
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFFFFF; // Белый текст
   transition: background-color 0.2s ease;
+  min-height: 48px;
 
   &:hover {
-    background-color: #f9fafb;
+    background-color: #4A4659;
   }
 
   &:focus-visible {
@@ -149,15 +205,18 @@
 .current-heading {
   flex: 1;
   text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
   margin-right: 0.5rem;
+  line-height: 1.4;
+  color: #FFFFFF; // Белый цвет текста
 }
 
 .chevron-icon {
   flex-shrink: 0;
   transition: transform 0.2s ease;
+  color: #FFFFFF; // Белая иконка
 
   &.rotated {
     transform: rotate(180deg);
@@ -170,7 +229,8 @@
   left: 0;
   right: 0;
   background: white;
-  border-bottom: 1px solid #e5e7eb;
+  border: 1px solid #E5E7EB;
+  border-top: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-height: 300px;
   overflow-y: auto;
@@ -194,7 +254,7 @@
 
 .mobile-toc-item {
   margin: 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #F3F4F6;
 
   &:last-child {
     border-bottom: none;
@@ -205,27 +265,33 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: 0.75rem 1rem;
-  font-size: 14px;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.4;
-  color: #6b7280;
+  color: #374151;
   background: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #f9fafb;
-    color: $color-primary;
+    background-color: #F9FAFB;
+    color: #1F2937;
   }
 
   &.active {
-    color: $color-primary;
-    background-color: rgba($color-primary, 0.05);
+    background-color: #383545; // Темный фон для активного как в desktop
+    color: #FFFFFF;
     font-weight: 500;
     position: relative;
 
-    &::after {
+    &:hover {
+      background-color: #4A4659;
+      color: #FFFFFF;
+    }
+
+    &::before {
       content: '';
       position: absolute;
       left: 0;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, OnInit, HostListener } from '@angular/core';
 import { TldrComponent, TldrItem } from '../../shared/ui/tldr/tldr.component';
 import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/table-of-contents.component';
 
@@ -9,7 +9,17 @@ import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/tabl
   standalone: true,
   imports: [TldrComponent, TableOfContentsComponent]
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
+  protected readonly isMobile = signal<boolean>(false);
+
+  ngOnInit(): void {
+    this.checkMobile();
+  }
+
+  @HostListener('window:resize')
+  protected checkMobile(): void {
+    this.isMobile.set(window.innerWidth < 1025);
+  }
   protected readonly tldrItems: TldrItem[] = [
     {
       text: 'Et urna ac et maecenas fusce amet. Nibh nec commodo massa sed. Tincidunt porttitor in pharetra egestas sit neque ac lacus. Amet a nunc at neque ac. Odio at volutpat volutpat in leo eget ipsum diam elementum. Erat magna arcu orci lorem senectus orci fringilla.'
