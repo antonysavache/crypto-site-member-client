@@ -1,13 +1,15 @@
 import { Component, signal, OnInit, HostListener } from '@angular/core';
 import { TldrComponent, TldrItem } from '../../shared/ui/tldr/tldr.component';
 import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/table-of-contents.component';
+import { KeyValueTableComponent, KeyValueTableItem } from '../../shared/ui/key-value-table/key-value-table.component';
+import { ProsConsTableComponent, ProsConsItem } from '../../shared/ui/pros-cons-table/pros-cons-table.component';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   standalone: true,
-  imports: [TldrComponent, TableOfContentsComponent]
+  imports: [TldrComponent, TableOfContentsComponent, KeyValueTableComponent, ProsConsTableComponent]
 })
 export class ArticleComponent implements OnInit {
   protected readonly isMobile = signal<boolean>(false);
@@ -32,6 +34,36 @@ export class ArticleComponent implements OnInit {
     },
     {
       text: 'Research and understand the fees, supported cryptocurrencies, and withdrawal limits.'
+    }
+  ];
+
+  protected readonly prosData: ProsConsItem[] = [
+    { text: 'Low fees' },
+    { text: 'Quick check-in' },
+    { text: 'Convenient application' }
+  ];
+
+  protected readonly consData: ProsConsItem[] = [
+    { text: 'Limited coin selection' },
+    { text: 'No 24-hour support' }
+  ];
+
+  protected readonly keyFactsData: KeyValueTableItem[] = [
+    {
+      key: 'Year of foundation',
+      value: '2020'
+    },
+    {
+      key: 'Regulation',
+      value: 'EC, MiCA'
+    },
+    {
+      key: 'Currency',
+      value: 'USD, EUR, RUB'
+    },
+    {
+      key: 'Support for local methods',
+      value: 'Yes'
     }
   ];
 

@@ -41,6 +41,22 @@
       <!-- Article Content -->
       <div class="article-content content-spacing">
         <div [innerHTML]="article.content"></div>
+
+        <!-- Pros and Cons Table -->
+        <app-pros-cons-table
+          title="Commissions and licenses"
+          description="Here you will find information on commissions, licenses, user support methods and other important parameters."
+          [pros]="prosData"
+          [cons]="consData"
+          prosTitle="Pluses"
+          consTitle="Minuses">
+        </app-pros-cons-table>
+
+        <!-- Key Facts Table -->
+        <app-key-value-table
+          title="Key facts"
+          [items]="keyFactsData">
+        </app-key-value-table>
       </div>
 
       <!-- Article Footer -->

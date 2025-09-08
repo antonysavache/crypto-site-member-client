@@ -1,0 +1,101 @@
+// ================================
+// KEY-VALUE TABLE COMPONENT
+// ================================
+
+@import '../../../../styles/variables';
+
+.key-value-table {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  background-color: #F8F9FA;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.table-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1F2937;
+  line-height: 1.5;
+}
+
+.table-body {
+  padding: 0;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #F9FAFB;
+  }
+}
+
+.table-key {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.5;
+}
+
+.table-value {
+  flex: 0 0 auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1F2937;
+  line-height: 1.5;
+  text-align: right;
+  margin-left: 1rem;
+}
+
+// Responsive design
+@media (max-width: 640px) {
+  .table-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .table-title {
+    font-size: 0.9375rem;
+  }
+
+  .table-row {
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .table-key {
+    font-size: 0.8125rem;
+  }
+
+  .table-value {
+    font-size: 0.8125rem;
+    text-align: left;
+    margin-left: 0;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .table-row {
+    transition: none;
+  }
+}

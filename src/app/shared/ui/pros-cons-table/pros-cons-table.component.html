@@ -1,0 +1,48 @@
+<div class="pros-cons-table">
+  <!-- Header Section -->
+  <div class="table-header">
+    <h2 class="table-title">{{ title }}</h2>
+    <p class="table-description">{{ description }}</p>
+  </div>
+
+  <!-- Pros and Cons Grid -->
+  <div class="pros-cons-grid">
+    
+    <!-- Pros Column -->
+    <div class="pros-column">
+      <div class="column-header">
+        <h3 class="column-title">{{ prosTitle }}</h3>
+      </div>
+      <div class="column-content">
+        @for (item of pros; track item.text) {
+          <div class="pros-item">
+            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#10B981"/>
+              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="item-text">{{ item.text }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cons Column -->
+    <div class="cons-column">
+      <div class="column-header">
+        <h3 class="column-title">{{ consTitle }}</h3>
+      </div>
+      <div class="column-content">
+        @for (item of cons; track item.text) {
+          <div class="cons-item">
+            <svg class="cross-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#EF4444"/>
+              <path d="M15 9l-6 6M9 9l6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="item-text">{{ item.text }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</div>

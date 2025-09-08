@@ -1,0 +1,146 @@
+// ================================
+// PROS & CONS TABLE COMPONENT
+// ================================
+
+@import '../../../../styles/variables';
+
+.pros-cons-table {
+  margin: 3rem 0;
+}
+
+.table-header {
+  margin-bottom: 2rem;
+}
+
+.table-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+}
+
+.table-description {
+  font-size: 1rem;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
+
+  @media (max-width: 767px) {
+    font-size: 0.9375rem;
+  }
+}
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.pros-column,
+.cons-column {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.column-header {
+  padding: 1rem 1.25rem;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.column-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.column-content {
+  padding: 1.25rem;
+}
+
+.pros-item,
+.cons-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.check-icon,
+.cross-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem; // Slight alignment adjustment
+}
+
+.item-text {
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+// Responsive adjustments
+@media (max-width: 640px) {
+  .pros-cons-table {
+    margin: 2rem 0;
+  }
+
+  .table-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .column-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .column-title {
+    font-size: 1rem;
+  }
+
+  .column-content {
+    padding: 1rem;
+  }
+
+  .pros-item,
+  .cons-item {
+    gap: 0.625rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .item-text {
+    font-size: 0.875rem;
+  }
+
+  .check-icon,
+  .cross-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none;
+  }
+}
