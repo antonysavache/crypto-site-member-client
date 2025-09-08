@@ -230,6 +230,18 @@
   @include focus-ring();
 }
 
+// Grid utilities
+.d-grid { display: grid; }
+
+// Border utilities
+.border-radius { border-radius: $border-radius; }
+.border-radius-sm { border-radius: $border-radius-sm; }
+.border-radius-lg { border-radius: $border-radius-lg; }
+
+// Text decoration utilities
+.text-decoration-none { text-decoration: none; }
+.text-decoration-underline { text-decoration: underline; }
+
 // Responsive utilities
 @each $breakpoint in (mobile, tablet, desktop) {
   @include breakpoint($breakpoint) {
