@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
   {
+    path: 'article',
+    loadComponent: () => import('./pages/article/article.component').then(m => m.ArticleComponent)
+  },
+  {
     path: 'members',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) // Пока заглушка
   },

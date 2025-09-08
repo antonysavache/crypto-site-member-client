@@ -1,5 +1,6 @@
 import { Component, signal, HostListener, OnDestroy } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,19 @@ export class HeaderComponent implements OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
 
+  constructor(private router: Router) {
+    // Отключаем браузерные swipe/edge gestures на мобилке
+    if (typeof window !== 'undefined') {
+      document.addEventListener('touchstart', this.preventEdgeSwipe, { passive: false });
+      document.addEventListener('touchmove', this.preventEdgeSwipe, { passive: false });
+    }
+  }
+
   // Navigation links
   protected readonly navLinks = [
     { label: 'Главная', href: '/home', active: true },
     { label: 'Участники', href: '/members', active: false },
+    { label: 'Статья (демо)', href: '/article', active: false },
     { label: 'Руководства', href: '/guides', active: false },
     { label: 'Настройки', href: '/settings', active: false }
   ];
@@ -63,6 +73,9 @@ export class HeaderComponent implements OnDestroy {
     this.isMenuOpen.set(false);
     document.body.classList.remove('menu-open');
 
+    // Navigate using Angular Router
+    this.router.navigate([href]);
+
     // Update active state (в реальном приложении это делал бы Router)
     this.navLinks.forEach(link => {
       link.active = link.href === href;
@@ -72,5 +85,21 @@ export class HeaderComponent implements OnDestroy {
   // Cleanup on destroy
   ngOnDestroy(): void {
     document.body.classList.remove('menu-open');
+
+    // Удаляем event listeners
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('touchstart', this.preventEdgeSwipe);
+      document.removeEventListener('touchmove', this.preventEdgeSwipe);
+    }
   }
+
+  // Предотвращаем edge swipe который может открывать меню
+  private preventEdgeSwipe = (event: TouchEvent): void => {
+    // Проверяем если swipe начинается с края экрана
+    const touch = event.touches[0];
+    if (touch && touch.clientX < 20) { // Левый край экрана
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
 }
