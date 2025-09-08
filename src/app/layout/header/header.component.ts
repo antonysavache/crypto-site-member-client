@@ -1,4 +1,4 @@
-import { Component, signal, HostListener, OnDestroy } from '@angular/core';
+import { Component, signal, HostListener, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,14 @@ export class HeaderComponent implements OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
 
-  constructor(private router: Router) {
+  // Scroll state for header styling
+  private isScrolled = false;
+
+  constructor(
+    private router: Router,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {
     // Отключаем браузерные swipe/edge gestures на мобилке
     if (typeof window !== 'undefined') {
       document.addEventListener('touchstart', this.preventEdgeSwipe, { passive: false });
@@ -29,6 +36,26 @@ export class HeaderComponent implements OnDestroy {
     { label: 'Руководства', href: '/guides', active: false },
     { label: 'Настройки', href: '/settings', active: false }
   ];
+
+  // Listen to scroll events for header animation
+  @HostListener('window:scroll')
+  protected onScroll(): void {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const shouldHaveScrolledClass = scrollTop > 50;
+
+    if (shouldHaveScrolledClass !== this.isScrolled) {
+      this.isScrolled = shouldHaveScrolledClass;
+      const headerElement = this.elementRef.nativeElement.querySelector('.app-header');
+
+      if (headerElement) {
+        if (this.isScrolled) {
+          this.renderer.addClass(headerElement, 'scrolled');
+        } else {
+          this.renderer.removeClass(headerElement, 'scrolled');
+        }
+      }
+    }
+  }
 
   // Toggle mobile menu
   protected toggleMenu(): void {

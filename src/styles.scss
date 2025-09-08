@@ -24,6 +24,10 @@ body {
   font-family: $font-family-primary;
   background-color: $color-bg;
   color: $color-text;
+  // УБИРАЕМ возможные проблемы со sticky
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
 
   // CSS переменные для компонентов
   --color-primary: #{$color-primary};
@@ -34,17 +38,29 @@ body {
   --border-radius: #{$border-radius};
 }
 
+// ДОБАВЛЯЕМ стили для html тоже
+html {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
+}
+
+// ПРИНУДИТЕЛЬНО делаем header sticky глобально
+app-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+
 // Global focus styles for better accessibility
 *:focus-visible {
   @include focus-ring();
 }
 
-// Prevent body scroll when mobile menu is open
+// Prevent body scroll when mobile menu is open - УПРОЩЕНО
 body.menu-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  // УБРАЛИ position: fixed и height: 100% - они могут мешать sticky
 }
 
 // Main application container
