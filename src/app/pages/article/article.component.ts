@@ -3,14 +3,14 @@ import { TldrComponent, TldrItem } from '../../shared/ui/tldr/tldr.component';
 import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/table-of-contents.component';
 import { KeyValueTableComponent, KeyValueTableItem } from '../../shared/ui/key-value-table/key-value-table.component';
 import { ProsConsTableComponent, ProsConsItem } from '../../shared/ui/pros-cons-table/pros-cons-table.component';
-import { ComparisonTableComponent, ComparisonColumn, ComparisonRow } from '../../shared/ui/comparison-table/comparison-table.component';
+import { MaterialComparisonTableComponent, MaterialComparisonColumn, MaterialComparisonRow } from '../../shared/ui/material-comparison-table/material-comparison-table.component';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   standalone: true,
-  imports: [TldrComponent, TableOfContentsComponent, KeyValueTableComponent, ProsConsTableComponent, ComparisonTableComponent]
+  imports: [TldrComponent, TableOfContentsComponent, KeyValueTableComponent, ProsConsTableComponent, MaterialComparisonTableComponent]
 })
 export class ArticleComponent implements OnInit {
   protected readonly isMobile = signal<boolean>(false);
@@ -38,7 +38,7 @@ export class ArticleComponent implements OnInit {
     }
   ];
 
-  protected readonly comparisonColumns: ComparisonColumn[] = [
+  protected readonly materialComparisonColumns: MaterialComparisonColumn[] = [
     { key: 'platform', title: 'Platform', type: 'text' },
     { key: 'commission', title: 'Commission', type: 'percentage' },
     { key: 'support', title: 'Support', type: 'text' },
@@ -51,7 +51,7 @@ export class ArticleComponent implements OnInit {
     { key: 'rating', title: 'Rating', type: 'text' }
   ];
 
-  protected readonly comparisonRows: ComparisonRow[] = [
+  protected readonly materialComparisonRows: MaterialComparisonRow[] = [
     {
       platform: 'Platform A',
       commission: '0.1%',

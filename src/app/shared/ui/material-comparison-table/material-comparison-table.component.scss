@@ -1,0 +1,80 @@
+// ================================
+// MATERIAL COMPARISON TABLE
+// ================================
+
+@import '../../../../styles/variables';
+
+.material-comparison-table {
+  margin: 3rem 0;
+}
+
+.table-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 2rem 0;
+  line-height: 1.3;
+}
+
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-table {
+  width: 100%;
+  
+  // Переопределяем стили Material Table
+  .mat-mdc-table {
+    background: transparent;
+  }
+
+  .mat-mdc-header-row {
+    background-color: #383545;
+    height: 56px;
+  }
+
+  .mat-mdc-row {
+    height: 48px;
+    border-bottom: 1px solid #F3F4F6;
+
+    &:hover {
+      background-color: #F9FAFB;
+    }
+
+    &.highlighted-row {
+      background-color: rgba($color-primary, 0.05);
+    }
+  }
+
+  .mat-mdc-header-cell {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-right: 1px solid #4A4659;
+    padding: 0 1rem;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .mat-mdc-cell {
+    color: #374151;
+    font-size: 0.875rem;
+    border-right: 1px solid #F3F4F6;
+    padding: 0 1rem;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &.percentage-cell {
+      color: $color-primary;
+      font-weight: 500;
+    }
+  }
+}
