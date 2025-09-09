@@ -1,5 +1,5 @@
 // ================================
-// COMPARISON TABLE - ЧИСТОЕ 100% ОТ РОДИТЕЛЯ
+// COMPARISON TABLE - ЕСТЕСТВЕННАЯ ШИРИНА КОЛОНОК
 // ================================
 
 @import '../../../../styles/variables';
@@ -17,7 +17,6 @@
 }
 
 .table-container {
-  width: 100%;
   overflow-x: auto;
   background: white;
   border: 1px solid #E5E7EB;
@@ -27,8 +26,7 @@
 
 .comparison-grid {
   border-collapse: collapse;
-  max-width: 100%; // Не превышаем ширину контейнера
-  min-width: 800px; // Минимальная ширина для нормального отображения 10 колонок
+  width: auto; // Позволяем таблице определить свою ширину
 }
 
 .table-header {
@@ -36,8 +34,8 @@
 }
 
 .header-cell {
-  padding: 1rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #FFFFFF;
   border-right: 1px solid #4A4659;
@@ -65,8 +63,8 @@
 }
 
 .data-cell {
-  padding: 0.875rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
   color: #374151;
   border-right: 1px solid #F3F4F6;
   white-space: nowrap;
