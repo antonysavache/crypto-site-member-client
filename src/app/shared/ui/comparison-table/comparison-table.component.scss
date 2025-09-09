@@ -1,15 +1,11 @@
 // ================================
-// COMPARISON TABLE - АБСОЛЮТНЫЕ ОГРАНИЧЕНИЯ ШИРИНЫ
+// COMPARISON TABLE - ПРОСТОЕ РЕШЕНИЕ КАК НА WEBOPEDIA
 // ================================
 
 @import '../../../../styles/variables';
 
 .comparison-table {
   margin: 3rem 0;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden; // КРИТИЧНО: скрываем все что вылазит
-  box-sizing: border-box;
 }
 
 .table-title {
@@ -31,29 +27,13 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-  // АБСОЛЮТНЫЕ ОГРАНИЧЕНИЯ
-  width: 100% !important;
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  box-sizing: border-box;
-  position: relative;
-
-  // Дополнительная защита от растягивания
-  min-width: 0;
-  flex-shrink: 1;
+  overflow-x: auto; // ОСНОВНОЙ СТИЛЬ КАК НА WEBOPEDIA
 }
 
 .comparison-grid {
+  width: 100%;
   border-collapse: collapse;
-  min-width: 600px; // УМЕНЬШИЛ минимальную ширину
-  width: auto;
-  display: table;
-
-  @media (max-width: 767px) {
-    min-width: 500px;
-  }
+  white-space: nowrap; // Запрещаем перенос
 }
 
 // Header styles
@@ -62,34 +42,16 @@
 }
 
 .header-cell {
-  padding: 1rem 0.5rem; // УМЕНЬШИЛ padding
+  padding: 1rem 1.25rem;
   text-align: left;
-  font-size: 0.8125rem; // УМЕНЬШИЛ шрифт
+  font-size: 0.875rem;
   font-weight: 600;
   color: #FFFFFF;
   line-height: 1.4;
   border-right: 1px solid #4A4659;
 
-  // КРИТИЧНО: фиксированная ширина колонок
-  width: 80px;
-  max-width: 80px;
-  min-width: 80px;
-
-  // Обрезаем текст
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
   &:last-child {
     border-right: none;
-  }
-
-  @media (max-width: 640px) {
-    padding: 0.75rem 0.25rem;
-    font-size: 0.75rem;
-    width: 60px;
-    max-width: 60px;
-    min-width: 60px;
   }
 }
 
@@ -100,7 +62,6 @@
 
 .data-row {
   border-bottom: 1px solid #F3F4F6;
-  transition: background-color 0.2s ease;
 
   &:last-child {
     border-bottom: none;
@@ -124,21 +85,11 @@
 }
 
 .data-cell {
-  padding: 0.875rem 0.5rem; // УМЕНЬШИЛ padding
-  font-size: 0.8125rem; // УМЕНЬШИЛ шрифт
+  padding: 0.875rem 1.25rem;
+  font-size: 0.875rem;
   color: #374151;
   line-height: 1.5;
   border-right: 1px solid #F3F4F6;
-
-  // КРИТИЧНО: фиксированная ширина колонок
-  width: 80px;
-  max-width: 80px;
-  min-width: 80px;
-
-  // Обрезаем текст
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
   &:last-child {
     border-right: none;
@@ -152,20 +103,5 @@
   &.highlight-cell {
     font-weight: 600;
     color: #1F2937;
-  }
-
-  @media (max-width: 640px) {
-    padding: 0.75rem 0.25rem;
-    font-size: 0.75rem;
-    width: 60px;
-    max-width: 60px;
-    min-width: 60px;
-  }
-}
-
-// Responsive adjustments
-@media (max-width: 640px) {
-  .comparison-table {
-    margin: 2rem 0;
   }
 }
