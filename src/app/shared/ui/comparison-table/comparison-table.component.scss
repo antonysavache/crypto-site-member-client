@@ -1,14 +1,11 @@
 // ================================
-// COMPARISON TABLE - ВОЗВРАЩАЕМ РАБОЧУЮ ВЕРСИЮ
+// COMPARISON TABLE - МАКСИМАЛЬНО ПРОСТОЕ РЕШЕНИЕ
 // ================================
 
 @import '../../../../styles/variables';
 
 .comparison-table {
   margin: 3rem 0;
-  width: 100%;
-  max-width: 100%;
-  display: flow-root; // Создает новый блочный контекст форматирования БЕЗ изоляции от потока
 }
 
 .table-title {
@@ -20,26 +17,31 @@
 }
 
 .table-container {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
   background: white;
   border: 1px solid #E5E7EB;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
 
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  // Умные ограничения ширины на основе брейкпоинтов
+  max-width: calc(100vw - 320px); // Desktop: полная ширина минус сайдбар и отступы
+
+  @media (max-width: 1440px) {
+    max-width: calc(100vw - 280px); // Меньший сайдбар на средних экранах
+  }
+
+  @media (max-width: 1024px) {
+    max-width: calc(100vw - 60px); // Tablet: без сайдбара, только отступы
+  }
+
+  @media (max-width: 768px) {
+    max-width: calc(100vw - 40px); // Mobile: минимальные отступы
+  }
 }
 
 .comparison-grid {
-  width: auto;
   border-collapse: collapse;
-  margin: 0;
+  min-width: 800px; // Минимальная ширина для 10 колонок
 }
 
 .table-header {
@@ -47,12 +49,14 @@
 }
 
 .header-cell {
-  padding: 0.75rem 1rem;
-  font-size: 0.8125rem;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #FFFFFF;
   border-right: 1px solid #4A4659;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:last-child {
     border-right: none;
@@ -76,11 +80,13 @@
 }
 
 .data-cell {
-  padding: 0.75rem 1rem;
-  font-size: 0.8125rem;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.75rem;
   color: #374151;
   border-right: 1px solid #F3F4F6;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:last-child {
     border-right: none;
