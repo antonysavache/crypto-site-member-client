@@ -6,10 +6,8 @@
 
 .comparison-table {
   margin: 3rem 0;
-  // КРИТИЧНО: изоляция от родительского layout
-  contain: layout size;
+  display: block;
   width: 100%;
-  max-width: 100%;
 }
 
 .table-title {
@@ -21,11 +19,9 @@
 }
 
 .table-container {
-  // КРИТИЧНО: создаем новый блочный контекст форматирования
   display: block;
   width: 100%;
-  max-width: 100%;
-  overflow: hidden; // Сначала полностью скрываем
+  overflow: hidden;
   background: white;
   border: 1px solid #E5E7EB;
   border-radius: 8px;
