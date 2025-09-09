@@ -28,6 +28,8 @@
 .comparison-grid {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed; // КРИТИЧНО: фиксированная разметка
+  max-width: 100%; // Принудительно ограничиваем
 }
 
 .table-header {
