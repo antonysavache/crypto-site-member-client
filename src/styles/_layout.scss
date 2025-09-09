@@ -55,6 +55,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  // КРИТИЧНО: изолируем grid от дочерних элементов
+  overflow: hidden;
+  box-sizing: border-box;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -63,6 +66,12 @@
 
   @media (min-width: 768px) {
     padding: 0 2rem;
+  }
+
+  // Главная колонка с контентом должна быть ограничена
+  > *:first-child {
+    min-width: 0; // Позволяет grid item сжиматься
+    overflow-x: auto; // Изолирует overflow
   }
 }
 
