@@ -26,11 +26,14 @@
 }
 
 .comparison-table {
-  width: 100%;
+  min-width: 1000px; // Минимальная ширина для 10 колонок
+  width: auto; // Убираем принудительную ширину
 
   // Переопределяем стили Material Table
   .mat-mdc-table {
     background: transparent;
+    width: 1000px; // Фиксированная ширина таблицы
+    min-width: 1000px;
   }
 
   .mat-mdc-header-row {
@@ -57,6 +60,8 @@
     font-size: 0.875rem;
     border-right: 1px solid #4A4659;
     padding: 0 1rem;
+    min-width: 100px; // Минимальная ширина колонки
+    white-space: nowrap; // Запрещаем перенос текста
 
     &:last-child {
       border-right: none;
@@ -68,6 +73,8 @@
     font-size: 0.875rem;
     border-right: 1px solid #F3F4F6;
     padding: 0 1rem;
+    min-width: 100px; // Минимальная ширина колонки
+    white-space: nowrap; // Запрещаем перенос текста
 
     &:last-child {
       border-right: none;
