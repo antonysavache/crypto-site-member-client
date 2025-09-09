@@ -1,13 +1,14 @@
 // ================================
-// COMPARISON TABLE - ИЗОЛЯЦИЯ ОТ РОДИТЕЛЬСКОГО LAYOUT
+// COMPARISON TABLE - ВОЗВРАЩАЕМ РАБОЧУЮ ВЕРСИЮ
 // ================================
 
 @import '../../../../styles/variables';
 
 .comparison-table {
   margin: 3rem 0;
-  display: block;
+  contain: layout size;
   width: 100%;
+  max-width: 100%;
 }
 
 .table-title {
@@ -21,6 +22,7 @@
 .table-container {
   display: block;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
   background: white;
   border: 1px solid #E5E7EB;
@@ -30,12 +32,12 @@
 
 .table-wrapper {
   width: 100%;
-  overflow-x: auto; // Скролл на обертке
+  overflow-x: auto;
   overflow-y: hidden;
 }
 
 .comparison-grid {
-  width: auto; // Естественная ширина
+  width: auto;
   border-collapse: collapse;
   margin: 0;
 }
