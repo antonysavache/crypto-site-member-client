@@ -77,6 +77,7 @@ export class ArticleComponent implements OnInit {
       alt: 'How to Buy Bitcoin Safely'
     },
     content: `
+
       <h2>What is Bitcoin Trading?</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
