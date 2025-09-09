@@ -42,7 +42,13 @@ export class ArticleComponent implements OnInit {
     { key: 'platform', title: 'Platform', type: 'text' },
     { key: 'commission', title: 'Commission', type: 'percentage' },
     { key: 'support', title: 'Support', type: 'text' },
-    { key: 'coins', title: 'Монеты', type: 'text' }
+    { key: 'coins', title: 'Монеты', type: 'text' },
+    { key: 'fees', title: 'Fees', type: 'percentage' },
+    { key: 'security', title: 'Security', type: 'text' },
+    { key: 'mobile', title: 'Mobile App', type: 'text' },
+    { key: 'withdrawal', title: 'Withdrawal', type: 'text' },
+    { key: 'deposit', title: 'Deposit', type: 'text' },
+    { key: 'rating', title: 'Rating', type: 'text' }
   ];
 
   protected readonly comparisonRows: ComparisonRow[] = [
@@ -50,19 +56,37 @@ export class ArticleComponent implements OnInit {
       platform: 'Platform A',
       commission: '0.1%',
       support: '24/7',
-      coins: '50+'
+      coins: '50+',
+      fees: '0.5%',
+      security: 'High',
+      mobile: 'iOS/Android',
+      withdrawal: 'Fast',
+      deposit: 'Instant',
+      rating: '4.5/5'
     },
     {
       platform: 'Platform B',
       commission: '0.1%',
       support: '24/7',
-      coins: '50+'
+      coins: '50+',
+      fees: '0.3%',
+      security: 'High',
+      mobile: 'iOS/Android',
+      withdrawal: 'Medium',
+      deposit: 'Instant',
+      rating: '4.2/5'
     },
     {
       platform: 'Our platform',
       commission: '0.1%',
       support: '24/7',
-      coins: '50+'
+      coins: '50+',
+      fees: '0.2%',
+      security: 'Highest',
+      mobile: 'iOS/Android',
+      withdrawal: 'Instant',
+      deposit: 'Instant',
+      rating: '4.8/5'
     }
   ];
 

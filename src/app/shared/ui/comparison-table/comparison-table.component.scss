@@ -1,5 +1,5 @@
 // ================================
-// COMPARISON TABLE COMPONENT - СТРОГО ПО ШИРИНЕ КОНТЕЙНЕРА!
+// COMPARISON TABLE COMPONENT - ТЕСТ 10 КОЛОНОК
 // ================================
 
 @import '../../../../styles/variables';
@@ -35,21 +35,18 @@
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-
-  // Предотвращаем растягивание контейнера
   box-sizing: border-box;
 }
 
 .comparison-grid {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; // ВАЖНО: фиксированная разметка таблицы
 
-  // Минимальная ширина только для контента, НЕ для контейнера
-  min-width: 400px;
+  // Для 10 колонок нужна большая минимальная ширина
+  min-width: 1000px;
 
   @media (max-width: 767px) {
-    min-width: 350px;
+    min-width: 800px;
   }
 }
 
@@ -63,7 +60,7 @@
 }
 
 .header-cell {
-  padding: 1rem 0.75rem; // Уменьшил padding
+  padding: 1rem 0.75rem;
   text-align: left;
   font-size: 0.875rem;
   font-weight: 600;
@@ -71,8 +68,9 @@
   line-height: 1.4;
   border-right: 1px solid #4A4659;
 
-  // КРИТИЧНО: равная ширина колонок
-  width: 25%; // 4 колонки = 25% каждая
+  // Минимальная ширина для 10 колонок
+  min-width: 100px;
+  width: auto;
 
   // Обрезаем длинный текст
   overflow: hidden;
@@ -86,6 +84,7 @@
   @media (max-width: 640px) {
     padding: 0.75rem 0.5rem;
     font-size: 0.8125rem;
+    min-width: 80px;
   }
 }
 
@@ -121,14 +120,15 @@
 }
 
 .data-cell {
-  padding: 0.875rem 0.75rem; // Уменьшил padding
+  padding: 0.875rem 0.75rem;
   font-size: 0.875rem;
   color: #374151;
   line-height: 1.5;
   border-right: 1px solid #F3F4F6;
 
-  // КРИТИЧНО: равная ширина колонок
-  width: 25%; // 4 колонки = 25% каждая
+  // Минимальная ширина для 10 колонок
+  min-width: 100px;
+  width: auto;
 
   // Обрезаем длинный текст
   overflow: hidden;
@@ -154,6 +154,7 @@
   @media (max-width: 640px) {
     padding: 0.75rem 0.5rem;
     font-size: 0.8125rem;
+    min-width: 80px;
   }
 }
 
