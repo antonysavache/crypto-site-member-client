@@ -1,11 +1,15 @@
 // ================================
-// COMPARISON TABLE - ЕСТЕСТВЕННАЯ ШИРИНА КОЛОНОК
+// COMPARISON TABLE - ИЗОЛЯЦИЯ ОТ РОДИТЕЛЬСКОГО LAYOUT
 // ================================
 
 @import '../../../../styles/variables';
 
 .comparison-table {
   margin: 3rem 0;
+  // КРИТИЧНО: изоляция от родительского layout
+  contain: layout size;
+  width: 100%;
+  max-width: 100%;
 }
 
 .table-title {
@@ -17,16 +21,27 @@
 }
 
 .table-container {
-  overflow-x: auto;
+  // КРИТИЧНО: создаем новый блочный контекст форматирования
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; // Сначала полностью скрываем
   background: white;
   border: 1px solid #E5E7EB;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; // Скролл на обертке
+  overflow-y: hidden;
+}
+
 .comparison-grid {
+  width: auto; // Естественная ширина
   border-collapse: collapse;
-  width: auto; // Позволяем таблице определить свою ширину
+  margin: 0;
 }
 
 .table-header {

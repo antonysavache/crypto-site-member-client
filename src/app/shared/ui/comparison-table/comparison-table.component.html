@@ -2,35 +2,37 @@
   <!-- Table Title -->
   <h2 class="table-title">{{ title }}</h2>
 
-  <!-- Table Container -->
+  <!-- Table Container with isolation -->
   <div class="table-container">
-    <table class="comparison-grid">
-      
-      <!-- Table Header -->
-      <thead class="table-header">
-        <tr class="header-row">
-          @for (column of columns; track column.key) {
-            <th class="header-cell">{{ column.title }}</th>
-          }
-        </tr>
-      </thead>
+    <div class="table-wrapper">
+      <table class="comparison-grid">
 
-      <!-- Table Body -->
-      <tbody class="table-body">
-        @for (row of rows; track $index) {
-          <tr class="data-row" [ngClass]="{ 'highlighted-row': highlightRowIndex === $index }">
+        <!-- Table Header -->
+        <thead class="table-header">
+          <tr class="header-row">
             @for (column of columns; track column.key) {
-              <td class="data-cell" [ngClass]="{
-                'percentage-cell': column.type === 'percentage',
-                'highlight-cell': column.type === 'highlight'
-              }">
-                {{ row[column.key] }}
-              </td>
+              <th class="header-cell">{{ column.title }}</th>
             }
           </tr>
-        }
-      </tbody>
+        </thead>
 
-    </table>
+        <!-- Table Body -->
+        <tbody class="table-body">
+          @for (row of rows; track $index) {
+            <tr class="data-row" [ngClass]="{ 'highlighted-row': highlightRowIndex === $index }">
+              @for (column of columns; track column.key) {
+                <td class="data-cell" [ngClass]="{
+                  'percentage-cell': column.type === 'percentage',
+                  'highlight-cell': column.type === 'highlight'
+                }">
+                  {{ row[column.key] }}
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+
+      </table>
+    </div>
   </div>
 </div>
