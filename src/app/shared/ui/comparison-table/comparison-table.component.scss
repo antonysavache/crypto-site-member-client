@@ -1,11 +1,13 @@
 // ================================
-// COMPARISON TABLE COMPONENT - НЕ ЛОМАЕМ LAYOUT!
+// COMPARISON TABLE COMPONENT - СТРОГО ПО ШИРИНЕ КОНТЕЙНЕРА!
 // ================================
 
 @import '../../../../styles/variables';
 
 .comparison-table {
   margin: 3rem 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .table-title {
@@ -27,15 +29,28 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 100%; // Фиксированная ширина - НЕ ЛОМАЕМ LAYOUT
-  overflow-x: auto; // Скролл только по горизонтали
-  -webkit-overflow-scrolling: touch; // Плавный скролл на iOS
+
+  // КРИТИЧНО: строгое ограничение ширины
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Предотвращаем растягивание контейнера
+  box-sizing: border-box;
 }
 
 .comparison-grid {
   width: 100%;
   border-collapse: collapse;
-  min-width: 500px; // Минимум чтобы не съежилось
+  table-layout: fixed; // ВАЖНО: фиксированная разметка таблицы
+
+  // Минимальная ширина только для контента, НЕ для контейнера
+  min-width: 400px;
+
+  @media (max-width: 767px) {
+    min-width: 350px;
+  }
 }
 
 // Header styles
@@ -48,24 +63,29 @@
 }
 
 .header-cell {
-  padding: 1rem 1.25rem;
+  padding: 1rem 0.75rem; // Уменьшил padding
   text-align: left;
   font-size: 0.875rem;
   font-weight: 600;
   color: #FFFFFF;
   line-height: 1.4;
   border-right: 1px solid #4A4659;
-  white-space: nowrap; // Не переносим заголовки
-  min-width: 120px; // Минимальная ширина колонки
+
+  // КРИТИЧНО: равная ширина колонок
+  width: 25%; // 4 колонки = 25% каждая
+
+  // Обрезаем длинный текст
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:last-child {
     border-right: none;
   }
 
   @media (max-width: 640px) {
-    padding: 0.875rem 1rem;
+    padding: 0.75rem 0.5rem;
     font-size: 0.8125rem;
-    min-width: 100px;
   }
 }
 
@@ -101,13 +121,19 @@
 }
 
 .data-cell {
-  padding: 0.875rem 1.25rem;
+  padding: 0.875rem 0.75rem; // Уменьшил padding
   font-size: 0.875rem;
   color: #374151;
   line-height: 1.5;
   border-right: 1px solid #F3F4F6;
-  white-space: nowrap; // Не переносим содержимое
-  min-width: 120px; // Такая же ширина как заголовок
+
+  // КРИТИЧНО: равная ширина колонок
+  width: 25%; // 4 колонки = 25% каждая
+
+  // Обрезаем длинный текст
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:last-child {
     border-right: none;
@@ -126,9 +152,8 @@
   }
 
   @media (max-width: 640px) {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 0.5rem;
     font-size: 0.8125rem;
-    min-width: 100px;
   }
 }
 
