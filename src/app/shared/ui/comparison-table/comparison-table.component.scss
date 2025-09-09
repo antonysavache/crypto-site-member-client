@@ -1,5 +1,5 @@
 // ================================
-// COMPARISON TABLE COMPONENT - ТЕСТ 10 КОЛОНОК
+// COMPARISON TABLE - АБСОЛЮТНЫЕ ОГРАНИЧЕНИЯ ШИРИНЫ
 // ================================
 
 @import '../../../../styles/variables';
@@ -8,6 +8,8 @@
   margin: 3rem 0;
   width: 100%;
   max-width: 100%;
+  overflow: hidden; // КРИТИЧНО: скрываем все что вылазит
+  box-sizing: border-box;
 }
 
 .table-title {
@@ -30,23 +32,27 @@
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
-  // КРИТИЧНО: строгое ограничение ширины
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  // АБСОЛЮТНЫЕ ОГРАНИЧЕНИЯ
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   box-sizing: border-box;
+  position: relative;
+
+  // Дополнительная защита от растягивания
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .comparison-grid {
-  width: 100%;
   border-collapse: collapse;
-
-  // Для 10 колонок нужна большая минимальная ширина
-  min-width: 1000px;
+  min-width: 600px; // УМЕНЬШИЛ минимальную ширину
+  width: auto;
+  display: table;
 
   @media (max-width: 767px) {
-    min-width: 800px;
+    min-width: 500px;
   }
 }
 
@@ -55,24 +61,21 @@
   background-color: #383545;
 }
 
-.header-row {
-  border: none;
-}
-
 .header-cell {
-  padding: 1rem 0.75rem;
+  padding: 1rem 0.5rem; // УМЕНЬШИЛ padding
   text-align: left;
-  font-size: 0.875rem;
+  font-size: 0.8125rem; // УМЕНЬШИЛ шрифт
   font-weight: 600;
   color: #FFFFFF;
   line-height: 1.4;
   border-right: 1px solid #4A4659;
 
-  // Минимальная ширина для 10 колонок
-  min-width: 100px;
-  width: auto;
+  // КРИТИЧНО: фиксированная ширина колонок
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
 
-  // Обрезаем длинный текст
+  // Обрезаем текст
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -82,9 +85,11 @@
   }
 
   @media (max-width: 640px) {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8125rem;
-    min-width: 80px;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.75rem;
+    width: 60px;
+    max-width: 60px;
+    min-width: 60px;
   }
 }
 
@@ -105,7 +110,6 @@
     background-color: #F9FAFB;
   }
 
-  // Выделенная строка (наша платформа)
   &.highlighted-row {
     background-color: rgba($color-primary, 0.05);
 
@@ -120,17 +124,18 @@
 }
 
 .data-cell {
-  padding: 0.875rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 0.875rem 0.5rem; // УМЕНЬШИЛ padding
+  font-size: 0.8125rem; // УМЕНЬШИЛ шрифт
   color: #374151;
   line-height: 1.5;
   border-right: 1px solid #F3F4F6;
 
-  // Минимальная ширина для 10 колонок
-  min-width: 100px;
-  width: auto;
+  // КРИТИЧНО: фиксированная ширина колонок
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
 
-  // Обрезаем длинный текст
+  // Обрезаем текст
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -139,22 +144,22 @@
     border-right: none;
   }
 
-  // Процентные значения - фиолетовый цвет
   &.percentage-cell {
     color: $color-primary;
     font-weight: 500;
   }
 
-  // Особые выделения
   &.highlight-cell {
     font-weight: 600;
     color: #1F2937;
   }
 
   @media (max-width: 640px) {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.8125rem;
-    min-width: 80px;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.75rem;
+    width: 60px;
+    max-width: 60px;
+    min-width: 60px;
   }
 }
 
@@ -162,12 +167,5 @@
 @media (max-width: 640px) {
   .comparison-table {
     margin: 2rem 0;
-  }
-}
-
-// Accessibility
-@media (prefers-reduced-motion: reduce) {
-  .data-row {
-    transition: none;
   }
 }
