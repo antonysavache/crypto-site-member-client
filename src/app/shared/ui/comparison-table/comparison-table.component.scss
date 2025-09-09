@@ -6,9 +6,9 @@
 
 .comparison-table {
   margin: 3rem 0;
-  contain: layout size;
   width: 100%;
   max-width: 100%;
+  display: flow-root; // Создает новый блочный контекст форматирования БЕЗ изоляции от потока
 }
 
 .table-title {
