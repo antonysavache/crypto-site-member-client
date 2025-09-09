@@ -4,13 +4,14 @@ import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/tabl
 import { KeyValueTableComponent, KeyValueTableItem } from '../../shared/ui/key-value-table/key-value-table.component';
 import { ProsConsTableComponent, ProsConsItem } from '../../shared/ui/pros-cons-table/pros-cons-table.component';
 import { MaterialComparisonTableComponent, MaterialComparisonColumn, MaterialComparisonRow } from '../../shared/ui/material-comparison-table/material-comparison-table.component';
+import { FaqComponent, FaqItem } from '../../shared/ui/faq/faq.component';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
   standalone: true,
-  imports: [TldrComponent, TableOfContentsComponent, KeyValueTableComponent, ProsConsTableComponent, MaterialComparisonTableComponent]
+  imports: [TldrComponent, TableOfContentsComponent, KeyValueTableComponent, ProsConsTableComponent, MaterialComparisonTableComponent, FaqComponent]
 })
 export class ArticleComponent implements OnInit {
   protected readonly isMobile = signal<boolean>(false);
@@ -35,6 +36,34 @@ export class ArticleComponent implements OnInit {
     },
     {
       text: 'Research and understand the fees, supported cryptocurrencies, and withdrawal limits.'
+    }
+  ];
+
+  protected readonly faqItems: FaqItem[] = [
+    {
+      question: 'Which crypto exchange is the safest?',
+      answer: 'Security depends on multiple factors including regulatory compliance, insurance coverage, cold storage practices, and security track record. Exchanges like Coinbase, Kraken, and Gemini are known for their strong security measures and regulatory compliance.',
+      isOpen: false
+    },
+    {
+      question: 'How do I choose the right cryptocurrency exchange?',
+      answer: 'Consider factors like security features, supported cryptocurrencies, trading fees, payment methods, user interface, customer support, and regulatory compliance in your jurisdiction.',
+      isOpen: false
+    },
+    {
+      question: 'What are the typical fees on crypto exchanges?',
+      answer: 'Fees vary by exchange but typically include trading fees (0.1%-1%), deposit/withdrawal fees, and spread costs. Many exchanges offer reduced fees for higher trading volumes.',
+      isOpen: false
+    },
+    {
+      question: 'Is it safe to store crypto on an exchange?',
+      answer: 'For large amounts or long-term storage, it\'s recommended to use hardware wallets. Exchanges are convenient for trading but represent a security risk for storage.',
+      isOpen: false
+    },
+    {
+      question: 'How long does verification take on crypto exchanges?',
+      answer: 'Verification typically takes 1-3 business days, though it can take longer during high-demand periods. Have your documents ready and ensure they meet the exchange requirements.',
+      isOpen: false
     }
   ];
 
