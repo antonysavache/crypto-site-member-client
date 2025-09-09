@@ -26,10 +26,9 @@
 }
 
 .comparison-grid {
-  width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; // КРИТИЧНО: фиксированная разметка
-  max-width: 100%; // Принудительно ограничиваем
+  max-width: 100%; // Не превышаем ширину контейнера
+  min-width: 800px; // Минимальная ширина для нормального отображения 10 колонок
 }
 
 .table-header {
