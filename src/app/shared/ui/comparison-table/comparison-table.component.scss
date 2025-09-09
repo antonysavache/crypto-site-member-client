@@ -1,0 +1,147 @@
+// ================================
+// COMPARISON TABLE COMPONENT - НЕ ЛОМАЕМ LAYOUT!
+// ================================
+
+@import '../../../../styles/variables';
+
+.comparison-table {
+  margin: 3rem 0;
+}
+
+.table-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 2rem 0;
+  line-height: 1.3;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.table-container {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%; // Фиксированная ширина - НЕ ЛОМАЕМ LAYOUT
+  overflow-x: auto; // Скролл только по горизонтали
+  -webkit-overflow-scrolling: touch; // Плавный скролл на iOS
+}
+
+.comparison-grid {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px; // Минимум чтобы не съежилось
+}
+
+// Header styles
+.table-header {
+  background-color: #383545;
+}
+
+.header-row {
+  border: none;
+}
+
+.header-cell {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.4;
+  border-right: 1px solid #4A4659;
+  white-space: nowrap; // Не переносим заголовки
+  min-width: 120px; // Минимальная ширина колонки
+
+  &:last-child {
+    border-right: none;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.875rem 1rem;
+    font-size: 0.8125rem;
+    min-width: 100px;
+  }
+}
+
+// Body styles
+.table-body {
+  background: white;
+}
+
+.data-row {
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #F9FAFB;
+  }
+
+  // Выделенная строка (наша платформа)
+  &.highlighted-row {
+    background-color: rgba($color-primary, 0.05);
+
+    &:hover {
+      background-color: rgba($color-primary, 0.08);
+    }
+
+    .data-cell {
+      font-weight: 500;
+    }
+  }
+}
+
+.data-cell {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.5;
+  border-right: 1px solid #F3F4F6;
+  white-space: nowrap; // Не переносим содержимое
+  min-width: 120px; // Такая же ширина как заголовок
+
+  &:last-child {
+    border-right: none;
+  }
+
+  // Процентные значения - фиолетовый цвет
+  &.percentage-cell {
+    color: $color-primary;
+    font-weight: 500;
+  }
+
+  // Особые выделения
+  &.highlight-cell {
+    font-weight: 600;
+    color: #1F2937;
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    min-width: 100px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 640px) {
+  .comparison-table {
+    margin: 2rem 0;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .data-row {
+    transition: none;
+  }
+}
