@@ -1,9 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-export interface TldrItem {
-  text: string;
-}
-
 @Component({
   selector: 'app-tldr',
   templateUrl: './tldr.component.html',
@@ -12,6 +8,6 @@ export interface TldrItem {
   imports: []
 })
 export class TldrComponent {
-  @Input() items: TldrItem[] = [];
+  @Input() items: string[] = [];
   @Input() title: string = 'TL;DR';
 }

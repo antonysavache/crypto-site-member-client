@@ -15,6 +15,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/article/article.component').then(m => m.ArticleComponent)
   },
   {
+    path: 'coinbase-review',
+    loadComponent: () => import('./pages/coinbase-review/coinbase-review.component').then(m => m.CoinbaseReviewComponent)
+  },
+  {
     path: 'members',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) // Пока заглушка
   },

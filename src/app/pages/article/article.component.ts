@@ -1,5 +1,5 @@
 import { Component, signal, OnInit, HostListener } from '@angular/core';
-import { TldrComponent, TldrItem } from '../../shared/ui/tldr/tldr.component';
+import { TldrComponent } from '../../shared/ui/tldr/tldr.component';
 import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/table-of-contents.component';
 import { KeyValueTableComponent, KeyValueTableItem } from '../../shared/ui/key-value-table/key-value-table.component';
 import { ProsConsTableComponent, ProsConsItem } from '../../shared/ui/pros-cons-table/pros-cons-table.component';
@@ -24,19 +24,11 @@ export class ArticleComponent implements OnInit {
   protected checkMobile(): void {
     this.isMobile.set(window.innerWidth < 1025);
   }
-  protected readonly tldrItems: TldrItem[] = [
-    {
-      text: 'Et urna ac et maecenas fusce amet. Nibh nec commodo massa sed. Tincidunt porttitor in pharetra egestas sit neque ac lacus. Amet a nunc at neque ac. Odio at volutpat volutpat in leo eget ipsum diam elementum. Erat magna arcu orci lorem senectus orci fringilla.'
-    },
-    {
-      text: 'Choose reputable exchanges with strong security measures and regulatory compliance.'
-    },
-    {
-      text: 'Always enable two-factor authentication and use hardware wallets for large amounts.'
-    },
-    {
-      text: 'Research and understand the fees, supported cryptocurrencies, and withdrawal limits.'
-    }
+  protected readonly tldrItems: string[] = [
+    'Et urna ac et maecenas fusce amet. Nibh nec commodo massa sed. Tincidunt porttitor in pharetra egestas sit neque ac lacus. Amet a nunc at neque ac. Odio at volutpat volutpat in leo eget ipsum diam elementum. Erat magna arcu orci lorem senectus orci fringilla.',
+    'Choose reputable exchanges with strong security measures and regulatory compliance.',
+    'Always enable two-factor authentication and use hardware wallets for large amounts.',
+    'Research and understand the fees, supported cryptocurrencies, and withdrawal limits.'
   ];
 
   protected readonly faqItems: FaqItem[] = [
