@@ -55,8 +55,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  // КРИТИЧНО: изолируем grid от дочерних элементов
-  overflow: hidden;
   box-sizing: border-box;
 
   @media (max-width: 1024px) {
@@ -71,7 +69,6 @@
   // Главная колонка с контентом должна быть ограничена
   > *:first-child {
     min-width: 0; // Позволяет grid item сжиматься
-    overflow-x: auto; // Изолирует overflow
   }
 }
 
@@ -139,6 +136,17 @@
 
   @media (max-width: 768px) {
     padding: 1rem 0;
+  }
+}
+
+// Hero section container - глобальный стиль
+.hero-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
   }
 }
 

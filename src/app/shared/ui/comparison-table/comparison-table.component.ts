@@ -22,5 +22,5 @@ export class ComparisonTableComponent {
   @Input() title: string = 'Comparison with competitors';
   @Input() columns: ComparisonColumn[] = [];
   @Input() rows: ComparisonRow[] = [];
-  @Input() highlightRowIndex?: number; // Индекс строки для выделения (наша платформа)
+  @Input() highlightRowIndex?: number;
 }

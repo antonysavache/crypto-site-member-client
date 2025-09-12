@@ -1,12 +1,14 @@
-<div class="article-container">
-  <!-- Hero Section -->
+<!-- Coinbase Review - Исправленный layout -->
+<div class="page-layout">
+
+  <!-- Hero секция - оставляем как есть -->
   <div class="hero-section">
     <div class="hero-content">
       <div class="article-meta">
         <span class="category">{{ article.category }}</span>
         <span class="date">{{ article.date }}</span>
       </div>
-      <h1 class="article-title">{{ article.title }}</h1>
+      <h1 class="page-title">{{ article.title }}</h1>
       <div class="author-info">
         <span class="author">By {{ article.author }}</span>
       </div>
@@ -16,89 +18,137 @@
     </div>
   </div>
 
-  <!-- Article Layout -->
-  <div class="article-layout">
-    <!-- Table of Contents (Desktop Sidebar) -->
-    @if (!isMobile()) {
-      <aside class="toc-sidebar">
-        <app-table-of-contents></app-table-of-contents>
-      </aside>
-    }
+  <!-- Mobile TOC - только на мобилке -->
+  @if (isMobile()) {
+    <app-table-of-contents
+      title="Coinbase Review Guide"
+      contentSelector=".article-content"
+      [showMobile]="true">
+    </app-table-of-contents>
+  }
 
-    <!-- Main Content -->
-    <main class="article-main">
-      <!-- Mobile TOC -->
-      @if (isMobile()) {
-        <div class="mobile-toc">
-          <app-table-of-contents></app-table-of-contents>
-        </div>
-      }
+  <!-- Main layout с сайдбаром -->
+  <div class="layout-sidebar">
 
-      <!-- TL;DR Section -->
-      <section class="tldr-section">
-        <app-tldr [items]="tldrItems" title="Quick Verdict"></app-tldr>
-      </section>
+    <!-- Main контент -->
+    <main class="article-content-wrapper">
+      <div class="article-content content-spacing">
+        <p>
+          Interest in digital currencies in the UK keeps growing, and Coinbase UK has established itself as one of the best-known services for buying and selling crypto assets. But is it the right choice for you?
+        </p>
 
-      <!-- Key Facts -->
-      <section class="key-facts-section">
-        <h2>Key Facts</h2>
-        <app-key-value-table [items]="keyFactsData"></app-key-value-table>
-      </section>
+        <p>
+          In this review, we'll give you a full breakdown of what Coinbase offers for British customers, including its fees, safety measures, and how it compares to other platforms.
+        </p>
 
-      <!-- Pros & Cons -->
-      <section class="pros-cons-section">
-        <h2>Pros & Cons</h2>
-        <app-pros-cons-table
-          [pros]="prosData"
-          [cons]="consData"
-          prosTitle="Advantages"
-          consTitle="Drawbacks">
-        </app-pros-cons-table>
-      </section>
+        <!-- TL;DR Section -->
+        <section>
+          <app-tldr [items]="tldrItems" title="Quick Verdict"></app-tldr>
+        </section>
 
-      <!-- Article Content -->
-      <section class="article-content">
-        <div [innerHTML]="article.content"></div>
-      </section>
+        <!-- Pros & Cons -->
+        <section>
+          <h2>Pros & Cons</h2>
+          <app-pros-cons-table
+            [pros]="prosData"
+            [cons]="consData"
+            prosTitle="Advantages"
+            consTitle="Drawbacks">
+          </app-pros-cons-table>
+        </section>
 
-      <!-- Fee Comparison Table -->
-      <section class="fee-comparison-section">
-        <h2>Coinbase Fee Comparison</h2>
-        <app-material-comparison-table
-          [columns]="feeComparisonColumns"
-          [rows]="feeComparisonRows"
-          title="Fee Structure: Basic vs Pro">
-        </app-material-comparison-table>
-      </section>
+        <!-- Article Content -->
+        <h2>What is Coinbase UK?</h2>
+        <p>Coinbase was founded in San Francisco in 2012 and initially worked as a simple Bitcoin broker. Over the years, it transformed into one of the most significant cryptocurrency businesses globally. In 2021, the company was listed on NASDAQ, which brought additional transparency and trust to its operations.</p>
 
-      <!-- Competitor Comparison -->
-      <section class="competitor-comparison-section">
-        <h2>Coinbase vs UK Competitors (2025)</h2>
-        <app-material-comparison-table
-          [columns]="competitorColumns"
-          [rows]="competitorRows"
-          title="Exchange Comparison">
-        </app-material-comparison-table>
-      </section>
+        <img src="/images/coin-base-review-intro.png" alt="Coinbase Review Introduction" />
 
-      <!-- FAQ Section -->
-      <section class="faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <app-faq [items]="faqItems"></app-faq>
-      </section>
+        <p>
+          In the UK, <b>Coinbase exchange UK</b> serves retail investors, small businesses, and even institutions. The local platform allows users to deposit GBP through Faster Payments, link a bank card, and trade more than 100 digital assets. Coinbase UK has millions of customers, making it one of the most popular ways to access the crypto market in Britain.
+        </p>
 
-      <!-- Final Conclusion -->
-      <section class="conclusion-section">
-        <div class="conclusion-box">
-          <h3>Bottom Line</h3>
-          <p>
-            Coinbase UK remains the most beginner-friendly cryptocurrency exchange in Britain, offering strong regulatory compliance and security.
-            While fees are higher than competitors, the platform excels in ease of use and trustworthiness.
-            <strong>Best for:</strong> newcomers and casual investors.
-            <strong>Consider alternatives if:</strong> you're an active trader prioritizing low fees.
-          </p>
-        </div>
-      </section>
+        <p>
+          The company’s mission is to create an open financial system for the world. For British investors, this means having an accessible entry point to Bitcoin, Ethereum, and many other tokens without relying on smaller or unregulated exchanges.
+        </p>
+
+        <h3>
+          Coinbase FCA Regulation and Safety
+        </h3>
+
+        <p>
+          One of the most important questions for new users is: Is Coinbase legal in UK? The answer is yes — but with important nuances. Coinbase operates under an <b>FCA e-money licence</b> in the UK. This licence applies to fiat transactions such as GBP deposits and withdrawals, ensuring that customer funds are handled in compliance with financial standards.
+        </p>
+
+        <p>
+          However, the <b>crypto trading activity itself is not directly regulated by the FCA</b>, since digital assets are considered high-risk investments. Coinbase is registered with the FCA under the Money Laundering Regulations, which means it must follow strict anti-money laundering (AML) and Know Your Customer (KYC) rules.
+        </p>
+
+        <p>
+          For safety, Coinbase keeps the majority of digital assets in cold storage, applies two-factor authentication, and insures custodial holdings against theft or cybersecurity breaches. British users should also be aware of tax obligations: profits from crypto are subject to <b>Capital Gains Tax</b>, which must be reported to HMRC.
+        </p>
+
+        <app-key-value-table [items]="regulationAndSafetyFeatures" [title]="'Regulation & Safety Features'" />
+
+        <p>
+          Overall, while crypto itself is not covered by the FCA’s investor protection schemes, Coinbase’s regulatory status provides more confidence than many <b>Coinbase alternatives</b> available in the UK.
+        </p>
+
+        <h3>
+          Coinbase Products Available in the UK
+        </h3>
+
+        <p>
+          For British users, <b>Coinbase UK</b> offers a full ecosystem that goes beyond simple trading. Each service is designed to make cryptocurrency more accessible, whether you are a beginner or a professional investor. Below is an overview of the core products available in the UK.
+        </p>
+
+        <p>
+          The main platform, often called the “simple” <strong>Coinbase exchange UK</strong>, is built for newcomers. It allows users to <b>buy crypto UK</b> such as Bitcoin or Ethereum directly with pounds. The interface is straightforward: select the coin, enter the amount, and confirm the purchase. A clean dashboard shows balances, price charts, and transaction history.
+        </p>
+
+        <img src="/images/coinbase-pro.png" alt="coin-base-pro" />
+
+        <p>
+          For more experienced traders, Coinbase Pro offers a professional environment with lower fees, advanced charting tools, and order types (market, limit, stop). It is still linked to your Coinbase account, so you can move funds instantly between the two. Maker and taker fees are applied, which can be significantly cheaper than flat fees on the basic exchange.
+        </p>
+
+        <h3>
+          Coinbase Wallet
+        </h3>
+        <p>
+          <strong>Coinbase wallet UK</strong> is a self-custody app that lets you store your own private keys and interact with decentralised finance (DeFi) applications. It supports thousands of tokens and NFTs, giving more independence compared to the custodial exchange. For beginners, it is optional, but for advanced users, it offers greater control over assets.
+        </p>
+        <img src="/images/coinbase-wallet.png" alt="coin-base-pro" />
+
+        <h3>
+          Coinbase Card (Visa debit in UK)
+        </h3>
+
+        <p>
+          The Coinbase card UK is a Visa debit card that allows users to spend their crypto balance in pounds anywhere Visa is accepted. It can also earn cashback in crypto (up to 4% depending on the token). The card can be managed directly via the Coinbase app, making it a useful everyday tool for those who want to integrate crypto with daily spending.
+        </p>
+
+        <h3>
+          Coinbase Earn (crypto rewards)
+        </h3>
+
+        <p>
+          Coinbase Earn provides educational tutorials where users watch short videos about specific cryptocurrencies and receive small amounts of those coins as rewards. For UK users, this is a simple way to explore new tokens while learning about blockchain technology.
+        </p>
+
+
+
+
+      </div>
     </main>
+
+    <!-- Desktop сайдбар -->
+    <aside class="sidebar sidebar-hidden-mobile">
+      <app-table-of-contents
+        title="Coinbase Review Guide"
+        contentSelector=".article-content"
+        [showMobile]="false">
+      </app-table-of-contents>
+    </aside>
+
   </div>
 </div>
