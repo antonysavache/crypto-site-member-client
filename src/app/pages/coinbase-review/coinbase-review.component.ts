@@ -77,4 +77,39 @@ export class CoinbaseReviewComponent implements OnInit {
   ];
 
 
+  protected readonly materialComparisonColumns: MaterialComparisonColumn[] = [
+    { key: 'method', title: 'Method', type: 'text' },
+    { key: 'action', title: 'Action', type: 'text' },
+    { key: 'fees', title: 'Fees', type: 'text' },
+    { key: 'processingTime', title: 'Processing time', type: 'text' },
+  ];
+
+  protected readonly materialComparisonRows: MaterialComparisonRow[] = [
+    {
+      method: 'Faster Payments',
+      action: 'Deposit/Withdraw',
+      fees: 'Free (deposit) / up to £1 (withdrawal)',
+      processingTime: 'Same day (1–2 hours typical)',
+    },
+    {
+      method: 'SEPA transfer',
+      action: 'Deposit/Withdraw',
+      fees: 'Minimal bank fees',
+      processingTime: '1–2 business days',
+    },
+    {
+      method: 'Debit/Credit Card',
+      action: 'Buy crypto UK',
+      fees: '~3.99% per transaction',
+      processingTime: 'Instant',
+    },
+    {
+      method: 'PayPal',
+      action: 'Withdraw only',
+      fees: '2% (max £25)',
+      processingTime: 'Instant to 1 day',
+    },
+  ];
+
+
 }
