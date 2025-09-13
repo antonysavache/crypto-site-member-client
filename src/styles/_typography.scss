@@ -89,8 +89,11 @@ h6 {
 
 // Paragraph styles
 p {
-  font-size: $font-size-base;
-  line-height: $line-height-base;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: 0%;
   color: $color-text;
   margin-bottom: $spacing-md;
 
@@ -105,13 +108,13 @@ p {
   }
 
   &.text-large {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
   }
 
   &.lead {
-    font-size: 20px;
-    font-weight: $font-weight-medium;
+    font-size: 22px;
+    font-weight: 500;
     line-height: 1.5;
   }
 }
@@ -144,8 +147,13 @@ ul, ol {
   padding-left: $spacing-lg;
 
   li {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 160%;
+    letter-spacing: 0%;
     margin-bottom: $spacing-xs;
-    line-height: $line-height-base;
+    color: $color-text;
   }
 
   &:last-child {

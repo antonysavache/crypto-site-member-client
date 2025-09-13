@@ -14,6 +14,7 @@
   gap: 2.5rem;
   align-items: center;
   padding: 2.5rem 0;
+  margin-bottom: 40px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -21,6 +22,77 @@
     gap: 1.875rem;
     margin-bottom: 2.5rem;
     padding: 1.25rem 0;
+  }
+
+  // Hero banner с background image
+  &.hero-banner {
+    background-image: url('/images/coinbase-review-hero.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @media (max-width: 768px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    // Темная overlay для читаемости текста
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 600px;
+      flex: none;
+
+      .page-title {
+        color: white !important;
+      }
+
+      .author,
+      .date {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+
+      .category {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      background-position: center bottom;
+      min-height: 300px;
+      text-align: left;
+
+      &::before {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+    }
   }
 }
 
@@ -53,26 +125,7 @@
   font-size: 1rem;
 }
 
-.hero-image {
-  flex: 0 0 25rem;
 
-  img {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    border-radius: 0.75rem;
-    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    flex: none;
-
-    img {
-      max-width: 250px;
-      height: 250px;
-    }
-  }
-}
 
 // Main часть использует ТОЛЬКО глобальные стили из _layout.scss:
 // .page-layout, .layout-sidebar, .article-content-wrapper,

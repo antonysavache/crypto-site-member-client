@@ -111,12 +111,20 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
       if (visibleHeadings.length > 0) {
         const activeElement = visibleHeadings[0].target as HTMLElement;
-        this.activeItemId.set(activeElement.id);
+        const newActiveId = activeElement.id;
 
-        // Обновляем заголовок для мобильной версии
-        const activeItem = this.tocItems().find(item => item.id === activeElement.id);
-        if (activeItem) {
-          this.currentActiveTitle.set(activeItem.title);
+        // Только если активный элемент действительно изменился
+        if (this.activeItemId() !== newActiveId) {
+          this.activeItemId.set(newActiveId);
+
+          // Обновляем заголовок для мобильной версии
+          const activeItem = this.tocItems().find(item => item.id === newActiveId);
+          if (activeItem) {
+            this.currentActiveTitle.set(activeItem.title);
+          }
+
+          // Автоскролл до активного элемента в TOC
+          this.scrollToActiveItemInToc(newActiveId);
         }
       }
     }, options);
@@ -127,6 +135,62 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
         this.observer!.observe(item.element);
       }
     });
+  }
+
+  // Автоскролл до активного элемента в TOC
+  private scrollToActiveItemInToc(activeId: string): void {
+    // Небольшая задержка чтобы DOM успел обновиться
+    setTimeout(() => {
+      // Для десктопной версии
+      const desktopActiveLink = document.querySelector(`.toc-container .toc-link[data-id="${activeId}"]`);
+      if (desktopActiveLink) {
+        const tocNav = document.querySelector('.toc-nav');
+        if (tocNav) {
+          const containerTop = tocNav.scrollTop;
+          const containerHeight = tocNav.clientHeight;
+          const elementTop = (desktopActiveLink as HTMLElement).offsetTop;
+          const elementHeight = (desktopActiveLink as HTMLElement).offsetHeight;
+
+          // Проверяем, виден ли элемент полностью
+          const elementBottom = elementTop + elementHeight;
+          const containerBottom = containerTop + containerHeight;
+
+          if (elementTop < containerTop || elementBottom > containerBottom) {
+            // Скроллим так, чтобы элемент был в центре контейнера
+            const scrollTarget = elementTop - (containerHeight / 2) + (elementHeight / 2);
+            tocNav.scrollTo({
+              top: Math.max(0, scrollTarget),
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+
+      // Для мобильной версии (если открыто меню)
+      if (this.isMobileOpen()) {
+        const mobileActiveLink = document.querySelector(`.mobile-toc-menu .mobile-toc-link[data-id="${activeId}"]`);
+        if (mobileActiveLink) {
+          const mobileMenu = document.querySelector('.mobile-toc-menu');
+          if (mobileMenu) {
+            const containerTop = mobileMenu.scrollTop;
+            const containerHeight = mobileMenu.clientHeight;
+            const elementTop = (mobileActiveLink as HTMLElement).offsetTop;
+            const elementHeight = (mobileActiveLink as HTMLElement).offsetHeight;
+
+            const elementBottom = elementTop + elementHeight;
+            const containerBottom = containerTop + containerHeight;
+
+            if (elementTop < containerTop || elementBottom > containerBottom) {
+              const scrollTarget = elementTop - (containerHeight / 2) + (elementHeight / 2);
+              mobileMenu.scrollTo({
+                top: Math.max(0, scrollTarget),
+                behavior: 'smooth'
+              });
+            }
+          }
+        }
+      }
+    }, 100);
   }
 
   // Скролл к выбранному заголовку

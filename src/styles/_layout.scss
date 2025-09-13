@@ -54,16 +54,11 @@
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
   box-sizing: border-box;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     max-width: 800px;
-  }
-
-  @media (min-width: 768px) {
-    padding: 0 2rem;
   }
 
   // Главная колонка с контентом должна быть ограничена

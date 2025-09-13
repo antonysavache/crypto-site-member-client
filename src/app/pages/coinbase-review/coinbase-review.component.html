@@ -1,8 +1,8 @@
 <!-- Coinbase Review - Исправленный layout -->
 <div class="page-layout">
 
-  <!-- Hero секция - оставляем как есть -->
-  <div class="hero-section">
+  <!-- Hero секция как banner -->
+  <div class="hero-section hero-banner">
     <div class="hero-content">
       <div class="article-meta">
         <span class="category">{{ article.category }}</span>
@@ -12,9 +12,6 @@
       <div class="author-info">
         <span class="author">By {{ article.author }}</span>
       </div>
-    </div>
-    <div class="hero-image">
-      <img [src]="article.heroImage.src" [alt]="article.heroImage.alt" />
     </div>
   </div>
 

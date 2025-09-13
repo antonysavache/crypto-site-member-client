@@ -45,6 +45,31 @@
 
 .toc-nav {
   padding: 0;
+  max-height: 40vh;
+  overflow-y: auto;
+
+  // Стили для видимого скролла
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+
+  // Firefox scrollbar
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
 }
 
 .toc-list {
@@ -232,12 +257,35 @@
   border: 1px solid #E5E7EB;
   border-top: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
+  max-height: 40vh;
   overflow-y: auto;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;
+
+  // Стили для видимого скролла в мобильной версии
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+
+  // Firefox scrollbar
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
 
   .mobile-toc.is-open & {
     transform: translateY(0);

@@ -13,6 +13,7 @@
               type="button"
               class="toc-link"
               [ngClass]="{ 'active': activeItemId() === item.id }"
+              [attr.data-id]="item.id"
               (click)="scrollToHeading(item)"
               [attr.aria-current]="activeItemId() === item.id ? 'true' : null"
             >
@@ -63,6 +64,7 @@
                 type="button"
                 class="mobile-toc-link"
                 [ngClass]="{ 'active': activeItemId() === item.id }"
+                [attr.data-id]="item.id"
                 (click)="scrollToHeading(item)"
               >
                 {{ item.title }}
