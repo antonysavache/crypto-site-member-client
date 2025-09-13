@@ -35,8 +35,7 @@
         class="mobile-menu-btn"
         type="button"
         [attr.aria-expanded]="isMenuOpen()"
-        aria-controls="mobile-nav"
-        aria-label="Переключить меню навигации"
+        aria-label="Открыть меню навигации"
         (click)="toggleMenu()"
         [ngClass]="{ 'is-open': isMenuOpen() }"
       >
@@ -47,45 +46,52 @@
         </span>
       </button>
     </nav>
+  </div>
+</header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div
-      id="mobile-nav"
-      class="nav-mobile"
-      [ngClass]="{ 'is-open': isMenuOpen() }"
-      [attr.aria-hidden]="!isMenuOpen()"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Меню навигации"
-    >
-      <div class="nav-mobile-content">
-        <ul class="nav-mobile-list" role="menu">
+<!-- Mobile Navigation - создается динамически только при открытии -->
+@if (isMenuOpen()) {
+  <div class="mobile-overlay">
+    <!-- Backdrop -->
+    <div class="mobile-backdrop" (click)="closeMenu()"></div>
+
+    <!-- Menu Content -->
+    <div class="mobile-menu">
+      <!-- Header с кнопкой закрытия -->
+      <div class="mobile-menu-header">
+        <div class="mobile-brand">
+          <div class="brand-icon">👥</div>
+          <span class="brand-text">Member Client</span>
+        </div>
+        <button
+          class="mobile-close-btn"
+          (click)="closeMenu()"
+          aria-label="Закрыть меню"
+          type="button"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mobile-nav" role="navigation">
+        <ul class="mobile-nav-list" role="menu">
           @for (link of navLinks; track link.href) {
-            <li class="nav-mobile-item" role="none">
+            <li class="mobile-nav-item" role="none">
               <a
                 [href]="link.href"
-                class="nav-mobile-link"
+                class="mobile-nav-link"
                 [class.active]="link.active"
                 role="menuitem"
                 [attr.aria-current]="link.active ? 'page' : null"
                 (click)="onNavLinkClick(link.href); $event.preventDefault()"
-                tabindex="0"
               >
                 {{ link.label }}
               </a>
             </li>
           }
         </ul>
-      </div>
+      </nav>
     </div>
-
-    <!-- Mobile Backdrop -->
-    @if (isMenuOpen()) {
-      <div
-        class="nav-mobile-backdrop"
-        (click)="toggleMenu()"
-        aria-hidden="true"
-      ></div>
-    }
   </div>
-</header>
+}

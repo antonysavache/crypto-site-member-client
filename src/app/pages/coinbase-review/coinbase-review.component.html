@@ -1,20 +1,6 @@
 <!-- Coinbase Review - Исправленный layout -->
 <div class="page-layout">
 
-  <!-- Hero секция как banner -->
-  <div class="hero-section hero-banner">
-    <div class="hero-content">
-      <div class="article-meta">
-        <span class="category">{{ article.category }}</span>
-        <span class="date">{{ article.date }}</span>
-      </div>
-      <h1 class="page-title">{{ article.title }}</h1>
-      <div class="author-info">
-        <span class="author">By {{ article.author }}</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Mobile TOC - только на мобилке -->
   @if (isMobile()) {
     <app-table-of-contents
@@ -29,6 +15,20 @@
 
     <!-- Main контент -->
     <main class="article-content-wrapper">
+      <!-- Hero секция как banner -->
+      <div class="hero-section hero-banner">
+        <div class="hero-content">
+          <div class="article-meta">
+            <span class="category">{{ article.category }}</span>
+            <span class="date">{{ article.date }}</span>
+          </div>
+          <h1 class="page-title">{{ article.title }}</h1>
+          <div class="author-info">
+            <span class="author">By {{ article.author }}</span>
+          </div>
+        </div>
+      </div>
+
       <div class="article-content content-spacing">
         <p>
           Interest in digital currencies in the UK keeps growing, and Coinbase UK has established itself as one of the best-known services for buying and selling crypto assets. But is it the right choice for you?
