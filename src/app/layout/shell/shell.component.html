@@ -1,6 +1,12 @@
 <div class="app-shell">
-  <!-- Header Component -->
-  <app-header></app-header>
+  <!-- Sticky Header Container - содержит header и мобильную TOC -->
+  <div class="header-container">
+    <!-- Header Component -->
+    <app-header></app-header>
+
+    <!-- Mobile TOC Slot - будет заполняться из страниц -->
+    <div id="mobile-toc-slot"></div>
+  </div>
 
   <main class="app-main">
     <div class="app-content">

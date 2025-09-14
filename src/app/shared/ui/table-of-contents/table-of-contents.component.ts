@@ -31,6 +31,11 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.checkMobileDevice();
 
+    // Перемещаем мобильную TOC в header-container
+    if (this.isMobileDevice()) {
+      this.moveTocToHeaderContainer();
+    }
+
     // Небольшая задержка чтобы innerHTML успел отрендериться
     setTimeout(() => {
       this.generateTocItems();
@@ -40,12 +45,47 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+    // Возвращаем TOC обратно если нужно
+    this.moveTocBackFromHeader();
   }
 
   // Проверяем размер экрана
   @HostListener('window:resize')
   protected checkMobileDevice(): void {
+    const wasMobile = this.isMobileDevice();
     this.isMobileDevice.set(window.innerWidth < 1025);
+
+    // Если изменился режим мобиле/десктоп
+    if (wasMobile !== this.isMobileDevice()) {
+      if (this.isMobileDevice()) {
+        this.moveTocToHeaderContainer();
+      } else {
+        this.moveTocBackFromHeader();
+      }
+    }
+  }
+
+  // Перемещаем мобильную TOC в header container
+  private moveTocToHeaderContainer(): void {
+    setTimeout(() => {
+      const mobileToc = document.querySelector('.mobile-toc') as HTMLElement;
+      const headerSlot = document.querySelector('#mobile-toc-slot') as HTMLElement;
+
+      if (mobileToc && headerSlot && !headerSlot.contains(mobileToc)) {
+        headerSlot.appendChild(mobileToc);
+      }
+    }, 0);
+  }
+
+  // Возвращаем TOC обратно
+  private moveTocBackFromHeader(): void {
+    const mobileToc = document.querySelector('.mobile-toc') as HTMLElement;
+    const headerSlot = document.querySelector('#mobile-toc-slot') as HTMLElement;
+
+    if (mobileToc && headerSlot && headerSlot.contains(mobileToc)) {
+      // Можно вернуть в оригинальное место или просто скрыть
+      mobileToc.style.display = 'none';
+    }
   }
 
   // Закрываем мобильное меню при клике вне его

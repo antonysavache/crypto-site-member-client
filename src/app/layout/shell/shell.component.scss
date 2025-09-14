@@ -1,16 +1,22 @@
 // ================================
-// SHELL COMPONENT STYLES - SIMPLIFIED FOR STICKY DEBUG
+// SHELL COMPONENT STYLES - WITH STICKY HEADER CONTAINER
 // ================================
 
 .app-shell {
-  // НЕ УСТАНАВЛИВАЕМ min-height: 100vh - это может мешать sticky!
   display: flex;
   flex-direction: column;
 }
 
+// Sticky контейнер для header + mobile TOC
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+}
+
 .app-main {
   flex: 1;
-  // НЕ ИСПОЛЬЗУЕМ overflow: hidden или height: 100% здесь!
 }
 
 .app-content {

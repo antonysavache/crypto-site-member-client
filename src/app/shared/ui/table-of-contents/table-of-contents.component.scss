@@ -183,18 +183,16 @@
 }
 
 // ================================
-// MOBILE VERSION (STICKY) - ПРАВИЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ
+// MOBILE VERSION (STATIC IN HEADER CONTAINER) - НОВАЯ АРХИТЕКТУРА
 // ================================
 
 .mobile-toc {
-  position: sticky;
-  top: 0;
-  z-index: 900; // Меньше чем header (1000), но больше контента
+  position: static; // Теперь статичная внутри sticky header-container
   background: transparent;
   border: none;
   box-shadow: none;
-  margin: 0; // Убираем любые отступы
-  padding: 0; // Убираем любые отступы
+  margin: 0;
+  padding: 0;
 
   // Показываем только на мобилке и планшете
   @media (min-width: 1025px) {
