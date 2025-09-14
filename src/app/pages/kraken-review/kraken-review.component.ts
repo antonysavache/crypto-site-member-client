@@ -10,11 +10,12 @@ import {
 import {FaqComponent, FaqItem} from '../../shared/ui/faq/faq.component';
 import {TableOfContentsComponent} from '../../shared/ui/table-of-contents/table-of-contents.component';
 import {ProsListComponent, ProsItem} from '../../shared/ui/pros-list/pros-list.component';
+import {BulletListComponent} from '../../shared/ui/bullet-list/bullet-list.component';
 
 @Component({
   selector: 'app-coinbase-review',
-  templateUrl: './coinbase-review.component.html',
-  styleUrl: './coinbase-review.component.scss',
+  templateUrl: './kraken-review.component.html',
+  styleUrl: './kraken-review.component.scss',
   standalone: true,
   imports: [
     TldrComponent,
@@ -23,10 +24,11 @@ import {ProsListComponent, ProsItem} from '../../shared/ui/pros-list/pros-list.c
     MaterialComparisonTableComponent,
     FaqComponent,
     TableOfContentsComponent,
-    ProsListComponent
+    ProsListComponent,
+    BulletListComponent
   ]
 })
-export class CoinbaseReviewComponent implements OnInit {
+export class KrakenReviewComponent implements OnInit {
 
   // Mobile detection
   protected readonly isMobile = signal<boolean>(false);
@@ -42,7 +44,7 @@ export class CoinbaseReviewComponent implements OnInit {
 
   // Hero данные - минимально
   protected readonly article = {
-    title: 'Coinbase Review UK 2025: Fees, FCA Regulation & Alternatives',
+    title: 'Kraken Exchange Review: Your Guide to Crypto Trading in the UK',
     author: 'Crypto Expert Team',
     date: 'January 2025',
     category: 'Exchange Review',
@@ -54,7 +56,7 @@ export class CoinbaseReviewComponent implements OnInit {
 
   // Данные для компонентов - оставляем как есть
   protected readonly tldrItems: string[] = [
-    'For beginners who want a simple way to buy crypto in the UK, Coinbase is often the first recommendation. The interface is uncluttered, deposits can be made through several methods, and additional products like a Visa debit card or a non-custodial wallet are also available. However, the pricing model is less attractive for those who trade actively, and advanced investors may find the tools somewhat restrictive.',
+    'Kraken is a well-established cryptocurrency exchange operating in the UK, offering a wide range of features for both novice and experienced traders.  It supports a diverse selection of trading pairs, including major cryptocurrencies like Bitcoin and Ethereum, alongside numerous altcoins.  Kraken also provides staking options for eligible crypto assets, allowing users to earn passive income.',
   ];
 
   protected readonly regulationAndSafetyFeatures: KeyValueTableItem[] = [
@@ -66,20 +68,84 @@ export class CoinbaseReviewComponent implements OnInit {
   ];
 
   protected readonly prosData: ProsConsItem[] = [
-    {text: 'Straightforward for newcomers '},
-    {text: 'FCA registration and e-money licence '},
-    {text: 'Multiple deposit options in GBP  '},
-    {text: 'Wallet and Card integration '},
-    {text: 'Friendly design that is easy to navigate for first-time users '},
-    {text: 'Strong compliance and a solid security record '},
-    {text: 'Support for a large number of coins and tokens '},
+    {text: 'Wide range of cryptocurrency trading pairs, including Bitcoin, Ethereum, and many altcoins'},
+    {text: 'FCA registration and compliance with UK regulations'},
+    {text: 'Multiple deposit and withdrawal options in GBP (Faster Payments, CHAPS)'},
+    {text: 'Mobile app for trading on the go'},
+    {text: 'Staking options available for select cryptocurrencies'},
+    {text: 'Strong security measures and solid track record'},
+    {text: 'User-friendly interface suitable for beginners and experienced traders'},
   ];
 
   protected readonly consData: ProsConsItem[] = [
-    {text: 'Higher transaction costs  '},
-    {text: 'Restricted tools on main app '},
-    {text: 'Delays in customer service  '},
-    {text: 'Fewer advanced features than rivals  '},
+    {text: 'Higher fees for certain trading pairs or payment methods'},
+    {text: 'Some features may be restricted for UK retail users (e.g., derivatives)'},
+    {text: 'Verification process can take time'},
+    {text: 'Customer support response may be slower at peak times'},
+  ];
+
+  // Kraken Key Features from your text
+  protected readonly krakenFeatures: ProsItem[] = [
+    {
+      title: 'Robust Security Features:',
+      description: 'Kraken\'s robust security features, including two-factor authentication and advanced encryption, protect your assets from unauthorized access. They consistently undergo security audits and proactively address vulnerabilities, providing a high level of confidence for UK users. This commitment to security is a key differentiator.'
+    },
+    {
+      title: 'FCA Registration:',
+      description: 'Kraken is registered with the Financial Conduct Authority (FCA) in the UK, demonstrating compliance with local regulations and providing an added layer of security and trust. This regulatory oversight ensures that Kraken operates within the legal framework set by the UK government. It\'s vital for UK users to choose regulated exchanges.'
+    },
+    {
+      title: 'Competitive Trading Fees:',
+      description: 'Kraken offers competitive trading fees, varying depending on the trading pair and volume. For example, fees for trading BTC/GBP or ETH/GBP are highly competitive compared to other UK exchanges. Transparent fee structures and multiple payment options are key to success in the market.'
+    },
+    {
+      title: 'Responsive Customer Support:',
+      description: 'Kraken provides responsive customer support channels, including email, phone, and a comprehensive FAQ section. Their multilingual support team addresses queries efficiently, and the robust help center offers solutions to common problems experienced by UK traders. Excellent customer service helps mitigate trading issues.'
+    }
+  ];
+
+  // Derivative Types List with strong tags
+  protected readonly derivativeTypes: string[] = [
+    '<strong>Futures Contracts:</strong> Agreements to buy or sell an asset at a predetermined price on a specific future date. These are commonly used for hedging and medium-term speculation.',
+    '<strong>Perpetual Contracts:</strong> Similar to futures but without an expiration date, allowing positions to be held indefinitely, provided maintenance margin requirements are met.',
+    '<strong>Options:</strong> Contracts that grant the holder the right, but not the obligation, to buy or sell an asset at a specified strike price within a set timeframe. Options are often employed to hedge against volatility with defined downside risk.'
+  ];
+
+  // Derivatives Comparison Table
+  protected readonly derivativesComparisonColumns: MaterialComparisonColumn[] = [
+    {key: 'instrumentType', title: 'Instrument Type', type: 'text'},
+    {key: 'riskLevel', title: 'Risk Level', type: 'text'},
+    {key: 'leverage', title: 'Leverage', type: 'text'},
+    {key: 'expiration', title: 'Expiration', type: 'text'},
+    {key: 'obligation', title: 'Obligation', type: 'text'},
+    {key: 'typicalUseCase', title: 'Typical Use Case', type: 'text'},
+  ];
+
+  protected readonly derivativesComparisonRows: MaterialComparisonRow[] = [
+    {
+      instrumentType: 'Futures',
+      riskLevel: 'High',
+      leverage: 'up to 50x',
+      expiration: 'Fixed',
+      obligation: 'Mandatory',
+      typicalUseCase: 'Hedging, medium-term speculation',
+    },
+    {
+      instrumentType: 'Perpetuals',
+      riskLevel: 'Very High',
+      leverage: 'up to 10x',
+      expiration: 'None',
+      obligation: 'Mandatory',
+      typicalUseCase: 'Flexible speculation, long-term holds',
+    },
+    {
+      instrumentType: 'Options',
+      riskLevel: 'Moderate',
+      leverage: 'N/A',
+      expiration: 'Fixed',
+      obligation: 'Optional',
+      typicalUseCase: 'Hedging volatility with defined downside',
+    },
   ];
 
 

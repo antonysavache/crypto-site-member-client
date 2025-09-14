@@ -1,0 +1,130 @@
+<!-- Coinbase Review - Исправленный layout -->
+
+<!-- Mobile TOC - выносим из page-layout чтобы убрать отступы -->
+@if (isMobile()) {
+  <app-table-of-contents
+    title="Kraken Review Guide"
+    contentSelector=".article-content"
+    [showMobile]="true">
+  </app-table-of-contents>
+}
+
+<div class="page-layout">
+  <!-- Main layout с сайдбаром -->
+  <div class="layout-sidebar">
+
+    <!-- Main контент -->
+    <main class="article-content-wrapper">
+      <!-- Hero секция как banner -->
+      <div class="hero-section hero-banner">
+        <div class="hero-content">
+          <div class="article-meta">
+            <span class="category">{{ article.category }}</span>
+            <span class="date">{{ article.date }}</span>
+          </div>
+          <h1 class="page-title">{{ article.title }}</h1>
+          <div class="author-info">
+            <span class="author">By {{ article.author }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-content content-spacing">
+        <section>
+          <app-tldr [items]="tldrItems" title="Quick Verdict"></app-tldr>
+
+          <p>
+            The exchange offers a user-friendly mobile app for iOS and Android devices, providing convenient access to trading and account management on the go.  Users in the UK can fund their accounts and withdraw funds using various methods including Faster Payments and bank transfers, facilitating seamless integration with the local financial system.
+          </p>
+
+          <p>
+            Kraken operates within the regulatory framework of the UK, adhering to relevant AML/KYC requirements and other compliance measures.  Its regulatory status and commitment to security provide users with a level of assurance in a regulated market.
+          </p>
+        </section>
+
+        <section>
+          <h2>Pros & Cons</h2>
+          <app-pros-cons-table
+            [pros]="prosData"
+            [cons]="consData"
+            prosTitle="Advantages"
+            consTitle="Drawbacks">
+          </app-pros-cons-table>
+        </section>
+
+        <section>
+          <h2>Why Choose Kraken?</h2>
+          <app-pros-list [items]="krakenFeatures"></app-pros-list>
+        </section>
+
+        <section>
+          <h2>
+            Extensive Trading Options
+          </h2>
+
+          <p>
+            Kraken offers a comprehensive suite of trading options tailored for both newcomers and professional traders. This section delves into the primary instruments available, their functionalities, and specific considerations for UK users when selecting a product.
+          </p>
+
+          <p>
+           <strong>Derivatives</strong> — Futures, Perpetuals, and Options
+          </p>
+
+          <img src="/images/kraken/kraken-derivatives-banner.png" alt="Kraken derivatives trading interface showing perpetuals with leverage selector and order book" />
+
+          <p>
+            Derivatives are contracts whose value is derived from an underlying asset, such as <strong>BTC</strong> or <strong>ETH</strong>. Kraken provides several derivative instruments:
+          </p>
+
+          <app-bullet-list [items]="derivativeTypes"></app-bullet-list>
+
+
+           <p>
+            Mechanically, trading derivatives involves margin and maintenance requirements: traders post collateral, open leveraged positions, and must top up collateral if losses approach margin thresholds. Leverage settings and allowable multipliers vary by product and trading pair; always check the platform’s current limits before trading. For most users, derivatives are high-risk tools best suited to experienced traders or those who fully understand margin calls and liquidation risks.
+          </p>
+
+          <app-material-comparison-table
+            title="Derivatives Comparison: Futures vs Perpetuals vs Options"
+            [columns]="derivativesComparisonColumns"
+            [rows]="derivativesComparisonRows">
+          </app-material-comparison-table>
+
+          <h3>Spot Trading and Margin</h3>
+
+          Spot trading is the simplest form — you buy or sell the underlying crypto and take custody of the asset. It’s the right choice for investors who want direct ownership or to hold long term. Margin trading lets a trader borrow funds to increase position size; it magnifies both gains and losses and requires careful risk management. Margin rules (available leverage, interest on borrowed funds, liquidation discipline) differ per market and by user verification level.
+
+          Copy Trading, Trading Bots, and Demo Accounts
+
+          Copy Trading: Replicate experienced traders’ strategies via third-party tools or integrated leaderboards; useful for users learning strategy execution.
+
+          Trading Bots: Automation via APIs or built-in scripting can execute strategies around the clock — beneficial for systematic approaches, but bot parameters must be tested on a demo first.
+
+          Demo Trading: Low-risk environment to trial strategies and learn order types without real funds.
+
+          [SCREENSHOT: copy trading interface or leaderboard]
+
+          Supported Assets and Practical Notes for UK Users
+
+          Kraken supports a wide selection of cryptocurrencies — from BTC and ETH to numerous altcoins — giving traders flexibility in building spot or derivatives portfolios. For UK customers, funding rails such as Faster Payments and bank transfers are commonly supported; however, available fiat options and withdrawal limits depend on verification level and local rules. Regulatory compliance and AML/KYC processes are enforced, so expect identity verification steps before higher-risk products are enabled.
+
+          Bottom Line
+
+          Kraken’s trading ecosystem ranges from straightforward spot purchases to advanced leveraged derivatives and automated strategies. These instruments enable diverse approaches (hedging, yield, speculation), but they require appropriate risk controls—start with demos, use position sizing, and verify current product limits on the exchange before trading.
+        </section>
+
+
+
+      </div>
+    </main>
+
+    <!-- Desktop сайдбар -->
+    <aside class="sidebar sidebar-hidden-mobile">
+      <app-table-of-contents
+        title="Coinbase Review Guide"
+        contentSelector=".article-content"
+        [showMobile]="false">
+      </app-table-of-contents>
+    </aside>
+
+  </div>
+</div>

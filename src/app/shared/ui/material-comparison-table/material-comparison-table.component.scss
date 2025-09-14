@@ -52,11 +52,12 @@
   }
 
   .mat-mdc-row {
-    height: 48px;
+    height: auto; // Автоматическая высота для многострочного текста
+    min-height: 48px; // Минимальная высота
     border-bottom: 1px solid #F3F4F6;
 
     @media (max-width: 768px) {
-      height: 44px;
+      min-height: 44px;
     }
 
     &:hover {
@@ -74,7 +75,7 @@
     font-size: 0.875rem;
     border-right: 1px solid #4A4659;
     padding: 0 0.75rem;
-    min-width: 80px; // Уменьшаем минимальную ширину колонки
+    min-width: 80px;
     white-space: nowrap;
 
     @media (max-width: 768px) {
@@ -85,6 +86,12 @@
 
     &:last-child {
       border-right: none;
+      min-width: 180px; // Увеличиваем для последней колонки
+      white-space: normal; // Разрешаем перенос в последней колонке
+
+      @media (max-width: 768px) {
+        min-width: 120px;
+      }
     }
   }
 
@@ -93,8 +100,9 @@
     font-size: 0.875rem;
     border-right: 1px solid #F3F4F6;
     padding: 0 0.75rem;
-    min-width: 80px; // Уменьшаем минимальную ширину колонки
+    min-width: 80px;
     white-space: nowrap;
+    vertical-align: top; // Выравнивание по верху для многострочного текста
 
     @media (max-width: 768px) {
       font-size: 0.75rem;
@@ -104,6 +112,13 @@
 
     &:last-child {
       border-right: none;
+      min-width: 180px; // Увеличиваем для последней колонки
+      white-space: normal; // Разрешаем перенос в последней колонке
+      line-height: 1.4; // Увеличиваем межстрочный интервал
+
+      @media (max-width: 768px) {
+        min-width: 120px;
+      }
     }
 
     &.percentage-cell {
