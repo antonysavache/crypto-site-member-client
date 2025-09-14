@@ -55,64 +55,115 @@
         <section>
           <h2>Why Choose Kraken?</h2>
           <app-pros-list [items]="krakenFeatures"></app-pros-list>
+
+          <img src="/images/kraken/kraken-cta-1.png" alt="Kraken trading opportunities interface" style="display: block; margin: 0 auto; margin-bottom: 10px">
         </section>
 
         <section>
           <h2>
-            Extensive Trading Options
+            Extensive Trading Options (Kraken — UK)
           </h2>
+          <p>
+            Kraken offers a broad set of market products for UK users: core <strong>spot</strong> markets, <strong>margin</strong>-enabled spot positions for eligible accounts, and <strong>derivatives</strong> via Kraken Perps / Kraken Futures. Availability and per-product limits depend on your verification level and regional eligibility — always confirm live details on Kraken’s product pages.
+          </p>
+
+          <img src="/images/kraken/kraken-trading-opportunities.png" alt="Kraken trading opportunities interface" style="display: block; margin: 0 auto; margin-bottom: 10px">
+
+
+          <h3>
+            Spot trading
+          </h3>
 
           <p>
-            Kraken offers a comprehensive suite of trading options tailored for both newcomers and professional traders. This section delves into the primary instruments available, their functionalities, and specific considerations for UK users when selecting a product.
+            Kraken’s spot markets let you buy, sell and custody cryptocurrencies directly via orderbooks. The exchange lists hundreds of supported coins and tokens across spot and Pro markets; asset availability can vary by country and by network.
           </p>
+
+          <app-bullet-list [items]="spotTradingFeatures"></app-bullet-list>
+
+          <h3>
+            Margin (spot margin)
+          </h3>
 
           <p>
-           <strong>Derivatives</strong> — Futures, Perpetuals, and Options
+            Margin trading on Kraken allows eligible users to borrow funds to increase position size on spot pairs. Leverage levels vary by pair, but Kraken’s margin product documentation shows commonly available leverage up to around 5–10× depending on the market and pair — exact max leverage is shown per pair in Kraken’s margin tables. UK clients must meet specific eligibility rules (for example declaring high net worth borrower status) to use margin with fiat and fiat-backed stablecoins. Always verify eligibility and per-pair limits in Kraken Pro.
           </p>
 
-          <img src="/images/kraken/kraken-derivatives-banner.png" alt="Kraken derivatives trading interface showing perpetuals with leverage selector and order book" />
+          <h3>
+            Perpetuals & Futures (Derivatives)
+          </h3>
 
           <p>
-            Derivatives are contracts whose value is derived from an underlying asset, such as <strong>BTC</strong> or <strong>ETH</strong>. Kraken provides several derivative instruments:
+            Kraken provides perpetual futures (“Perps”) and broader futures products via Kraken Perps / Kraken Futures. Perps on Kraken advertise up to <strong> 10× buying power </strong>for retail/Perps products, designed to let traders take directional positions without an expiry; Kraken’s derivatives platform documentation also notes that certain professional/institutional contracts can offer higher leverage (support docs reference up to 50× for specific derivative offerings). Access to derivatives is eligibility-gated and may be restricted by jurisdiction. Derivatives carry high risk — margin, funding rates and liquidation mechanics apply.
           </p>
 
-          <app-bullet-list [items]="derivativeTypes"></app-bullet-list>
-
-
-           <p>
-            Mechanically, trading derivatives involves margin and maintenance requirements: traders post collateral, open leveraged positions, and must top up collateral if losses approach margin thresholds. Leverage settings and allowable multipliers vary by product and trading pair; always check the platform’s current limits before trading. For most users, derivatives are high-risk tools best suited to experienced traders or those who fully understand margin calls and liquidation risks.
-          </p>
+          <h3>Trading Instruments Comparison</h3>
 
           <app-material-comparison-table
-            title="Derivatives Comparison: Futures vs Perpetuals vs Options"
-            [columns]="derivativesComparisonColumns"
-            [rows]="derivativesComparisonRows">
+            title="Comparison: Spot / Margin / Perpetuals & Futures"
+            [columns]="tradingInstrumentsColumns"
+            [rows]="tradingInstrumentsRows">
           </app-material-comparison-table>
 
-          <h3>Spot Trading and Margin</h3>
+          <h3>Automation, APIs & demo trading</h3>
 
-          Spot trading is the simplest form — you buy or sell the underlying crypto and take custody of the asset. It’s the right choice for investors who want direct ownership or to hold long term. Margin trading lets a trader borrow funds to increase position size; it magnifies both gains and losses and requires careful risk management. Margin rules (available leverage, interest on borrowed funds, liquidation discipline) differ per market and by user verification level.
+          <p>
+            Kraken provides REST and WebSocket APIs for programmatic trading and data access; the docs cover order placement, account and market data endpoints. Kraken also runs a derivatives demo/paper-trading environment so traders can test strategies without risking real funds — use the demo to validate bots and logic before going live. API and demo access details are in Kraken's developer and support documentation.
+          </p>
 
-          Copy Trading, Trading Bots, and Demo Accounts
+          <h3>Practical notes for UK users</h3>
 
-          Copy Trading: Replicate experienced traders’ strategies via third-party tools or integrated leaderboards; useful for users learning strategy execution.
+          <app-bullet-list [items]="practicalNotesItems"></app-bullet-list>
 
-          Trading Bots: Automation via APIs or built-in scripting can execute strategies around the clock — beneficial for systematic approaches, but bot parameters must be tested on a demo first.
-
-          Demo Trading: Low-risk environment to trial strategies and learn order types without real funds.
-
-          [SCREENSHOT: copy trading interface or leaderboard]
-
-          Supported Assets and Practical Notes for UK Users
-
-          Kraken supports a wide selection of cryptocurrencies — from BTC and ETH to numerous altcoins — giving traders flexibility in building spot or derivatives portfolios. For UK customers, funding rails such as Faster Payments and bank transfers are commonly supported; however, available fiat options and withdrawal limits depend on verification level and local rules. Regulatory compliance and AML/KYC processes are enforced, so expect identity verification steps before higher-risk products are enabled.
-
-          Bottom Line
-
-          Kraken’s trading ecosystem ranges from straightforward spot purchases to advanced leveraged derivatives and automated strategies. These instruments enable diverse approaches (hedging, yield, speculation), but they require appropriate risk controls—start with demos, use position sizing, and verify current product limits on the exchange before trading.
+          <p>
+            <strong>Bottom line.</strong> Kraken covers spot, margin (to eligible UK users), perpetuals and futures (via Kraken Perps / Futures), plus APIs and a demo environment for testing strategies. These instruments offer wide flexibility but carry materially different risk profiles and access rules — always confirm your account eligibility, per-product leverage and live limits on Kraken's official pages before trading.
+          </p>
         </section>
 
+        <section>
+          <h2>How Does Kraken Work?</h2>
 
+          <p>
+            Kraken is more than just a cryptocurrency exchange — it's a platform designed to help UK traders navigate the crypto market safely and efficiently. From creating your account to executing your first trade, here's how Kraken works for UK users.
+          </p>
+
+          <h3>How to Sign Up on Kraken UK</h3>
+
+          <p>
+            Getting started on Kraken is surprisingly straightforward, even if you're new to crypto. UK users begin by visiting the <strong>Kraken registration page</strong>, where you'll enter a valid email, choose a username, and create a strong password. After agreeing to the terms of service and privacy policy, a confirmation link will be sent to your inbox.
+          </p>
+
+          <p>
+            Clicking this link gives you access to a basic Kraken account, which lets you explore the platform. However, to <strong>trade crypto in the UK</strong> or deposit GBP, you'll need to verify your identity — a necessary step to comply with financial regulations and keep your account secure.
+          </p>
+
+          <p>
+            At this stage, it's worth noting: <strong>Kraken's user interface is designed to guide you smoothly through registration</strong>, making it accessible for both beginners and more experienced traders.
+          </p>
+
+          <h3>How to Verify Your Identity on Kraken UK</h3>
+
+          <p>
+            Verification is a cornerstone of Kraken's commitment to security and regulatory compliance. Following strict <strong>AML/KYC requirements</strong>, Kraken offers tiered verification levels that affect <strong>deposit limits, withdrawal limits, and trading access</strong>:
+          </p>
+
+          <app-bullet-list [items]="verificationLevels"></app-bullet-list>
+
+          <p>
+            Verification is done through Kraken's secure upload portal, and processing usually takes a few hours to a few days. For UK traders, completing this step efficiently ensures access to all trading features and GBP banking options without delays.
+          </p>
+
+          <h3>How to Trade on Kraken UK</h3>
+
+          <p>
+            Once verified, trading on Kraken opens up a world of opportunities. The platform supports <strong>Spot, Margin, and Futures (Perps) trading</strong>, giving UK users flexibility depending on their experience and strategy.
+          </p>
+
+          <app-bullet-list [items]="tradingSteps"></app-bullet-list>
+
+          <p>
+            Kraken also provides <strong>API access</strong> and a demo environment, allowing UK traders to test strategies without risking real funds. Always check <strong>margin requirements, leverage limits, and live fees</strong> before engaging in derivatives trading — these can significantly affect outcomes.
+          </p>
+        </section>
 
       </div>
     </main>
