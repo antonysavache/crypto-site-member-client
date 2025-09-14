@@ -215,6 +215,38 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
   // Переключаем мобильное меню
   protected toggleMobileMenu(): void {
+    const wasOpen = this.isMobileOpen();
     this.isMobileOpen.update(current => !current);
+
+    // Если меню только что открылось, прокручиваем к активному элементу
+    if (!wasOpen && this.isMobileOpen()) {
+      this.scrollToActiveItemInMobileToc();
+    }
+  }
+
+  // Прокрутка к активному элементу при открытии мобильного меню
+  private scrollToActiveItemInMobileToc(): void {
+    const activeId = this.activeItemId();
+    if (!activeId) return;
+
+    // Ждем, пока анимация открытия завершится
+    setTimeout(() => {
+      const mobileActiveLink = document.querySelector(`.mobile-toc-menu .mobile-toc-link[data-id="${activeId}"]`);
+      if (mobileActiveLink) {
+        const mobileMenu = document.querySelector('.mobile-toc-menu');
+        if (mobileMenu) {
+          const elementTop = (mobileActiveLink as HTMLElement).offsetTop;
+          const elementHeight = (mobileActiveLink as HTMLElement).offsetHeight;
+          const containerHeight = mobileMenu.clientHeight;
+
+          // Центрируем активный элемент в контейнере
+          const scrollTarget = elementTop - (containerHeight / 2) + (elementHeight / 2);
+          mobileMenu.scrollTo({
+            top: Math.max(0, scrollTarget),
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 250); // Ждем завершения CSS transition (0.2s + небольшой запас)
   }
 }

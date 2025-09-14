@@ -1,13 +1,6 @@
 // coinbase-review.component.scss - МИНИМУМ стилей
 @import '../../../styles/variables';
 
-// Отступ для мобильной TOC панели
-.article-content-wrapper {
-  @media (max-width: 1024px) {
-    margin-top: 60px; // Отступ для мобильной TOC панели
-  }
-}
-
 // Специфичный background для Coinbase Review
 .hero-banner {
   background-image: url('/images/coinbase-review-hero.png');

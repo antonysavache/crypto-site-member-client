@@ -1,15 +1,15 @@
 <!-- Coinbase Review - Исправленный layout -->
+
+<!-- Mobile TOC - выносим из page-layout чтобы убрать отступы -->
+@if (isMobile()) {
+  <app-table-of-contents
+    title="Coinbase Review Guide"
+    contentSelector=".article-content"
+    [showMobile]="true">
+  </app-table-of-contents>
+}
+
 <div class="page-layout">
-
-  <!-- Mobile TOC - только на мобилке -->
-  @if (isMobile()) {
-    <app-table-of-contents
-      title="Coinbase Review Guide"
-      contentSelector=".article-content"
-      [showMobile]="true">
-    </app-table-of-contents>
-  }
-
   <!-- Main layout с сайдбаром -->
   <div class="layout-sidebar">
 
@@ -39,9 +39,7 @@
         </p>
 
         <!-- TL;DR Section -->
-        <section>
           <app-tldr [items]="tldrItems" title="Quick Verdict"></app-tldr>
-        </section>
 
         <!-- Pros & Cons -->
         <section>
@@ -149,8 +147,8 @@
 
         <app-material-comparison-table
           title="Comparison with competitors"
-          [columns]="materialComparisonColumns"
-          [rows]="materialComparisonRows"
+          [columns]="paymentsComparisonColumns"
+          [rows]="paymentsComparisonRows"
           [highlightRowIndex]="2">
         </app-material-comparison-table>
 
@@ -199,6 +197,23 @@
         <p>
           This structure means that occasional retail investors may pay more on the basic app, while active traders benefit from Pro.
         </p>
+
+        <app-material-comparison-table
+          title="Coinbase Fees UK: Basic vs Pro"
+          [columns]="coinbaseProComparisonColumns"
+          [rows]="coinbaseProComparisonRows"
+          [highlightRowIndex]="2">
+        </app-material-comparison-table>
+
+        <h3>
+          Comparison with Other UK Crypto Exchanges
+        </h3>
+
+        <p>
+          When evaluating <strong>Coinbase UK</strong>, it is useful to compare it with other major crypto exchanges in the UK, such as Binance, Kraken, and Bitstamp. Each platform offers a different balance of fees, regulation, available assets, and overall usability.
+        </p>
+
+
 
       </div>
     </main>
