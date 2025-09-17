@@ -63,6 +63,16 @@
   line-height: 1.5;
   text-align: right;
   margin-left: 1rem;
+
+  a {
+    color: #f7931a;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #e8820e;
+    }
+  }
 }
 
 // Responsive design

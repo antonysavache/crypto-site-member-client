@@ -23,6 +23,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/kraken-review/kraken-review.component').then(m => m.KrakenReviewComponent)
   },
   {
+    path: 'bitcoin-origin',
+    loadComponent: () => import('./pages/bitcoin-origin/bitcoin-origin.component').then(m => m.BitcoinOriginComponent)
+  },
+  {
     path: 'members',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) // Пока заглушка
   },

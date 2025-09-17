@@ -20,6 +20,7 @@ export class HeaderComponent implements OnDestroy {
     { label: 'Главная', href: '/home', active: true },
     { label: 'Участники', href: '/members', active: false },
     { label: 'Статья (демо)', href: '/coinbase-review', active: false },
+    { label: 'Bitcoin: Происхождение', href: '/bitcoin-origin', active: false },
     { label: 'Руководства', href: '/guides', active: false },
     { label: 'Настройки', href: '/settings', active: false }
   ];
