@@ -15,35 +15,39 @@
 
     <!-- Main контент -->
     <main class="article-content-wrapper">
-      <!-- Hero секция как banner -->
+      <!-- Мета-информация над hero -->
+      <div class="article-header">
+        <div class="breadcrumb-nav">
+          <span class="breadcrumb-item">Home</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item">Category</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item">DeFi</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-item current">Review</span>
+        </div>
+
+        <p class="hero-subtitle">Complete Guide to Trading Crypto in the UK</p>
+
+        <div class="article-meta">
+          <span class="meta-item">By <strong>{{ article.author }}</strong></span>
+          <span class="meta-separator">•</span>
+          <span class="meta-item">{{ article.date }}</span>
+          <span class="meta-separator">•</span>
+          <span class="meta-item">{{ article.category }}</span>
+        </div>
+      </div>
+
+      <!-- Hero секция как banner с заголовком внутри -->
       <div class="hero-section hero-banner">
         <div class="hero-content">
-          <div class="article-meta">
-            <span class="category">{{ article.category }}</span>
-            <span class="date">{{ article.date }}</span>
-          </div>
           <h1 class="page-title">{{ article.title }}</h1>
-          <p class="hero-subtitle">Complete Guide to Trading Crypto in the UK</p>
-          <div class="author-info">
-            <span class="author">By {{ article.author }}</span>
-          </div>
         </div>
       </div>
 
       <div class="article-content content-spacing">
-        <!-- TL;DR Section -->
-        <section>
-          <app-tldr [items]="tldrItems" title="TL;DR"></app-tldr>
-
-          <p>Kraken is a well-established cryptocurrency exchange with a strong presence in the UK market. The platform combines robust security measures with professional-grade trading tools, making it suitable for both newcomers and experienced traders. What sets Kraken apart is its <strong>FCA registration</strong> and comprehensive approach to regulatory compliance, providing UK users with additional peace of mind.</p>
-
-          <p>The exchange supports a wide variety of cryptocurrencies and offers multiple ways to deposit and withdraw GBP, including <strong>Faster Payments</strong> for quick transfers and <strong>CHAPS</strong> for larger amounts. However, it's worth noting that some advanced features like derivatives trading are restricted to professional clients in the UK due to regulatory requirements.</p>
-        </section>
-
         <!-- Quick Verdict with Visual -->
         <section>
-          <h2>Quick Verdict</h2>
-
           <p>For UK traders seeking a balance between security, regulatory clarity, and advanced trading features, Kraken presents a compelling option. The platform's <strong>FCA authorisation</strong> and defence-in-depth security approach make it particularly attractive to security-conscious investors.</p>
 
           <p>The competitive maker/taker pricing structure benefits active traders, while practical GBP rails ensure smooth deposits and withdrawals. However, retail UK users should complete <strong>Intermediate verification</strong> before moving significant amounts or attempting to access advanced products.</p>
