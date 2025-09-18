@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   protected readonly navLinks = [
     { label: 'Kraken Review', href: '/kraken-review', active: false },
     { label: 'Coinbase Review', href: '/coinbase-review', active: true }, // По умолчанию активна
-    { label: 'Bitcoin: Origin', href: '/bitcoin-origin', active: false }
+    { label: 'Bitcoin: Origin', href: '/bitcoin-origin', active: false },
+    { label: 'Storybook', href: '/storybook', active: false }
   ];
 
   ngOnInit(): void {

@@ -28,6 +28,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/bitcoin-origin/bitcoin-origin.component').then(m => m.BitcoinOriginComponent)
   },
   {
+    path: 'storybook',
+    loadComponent: () => import('./pages/storybook/storybook.component').then(m => m.StorybookComponent)
+  },
+  {
     path: 'members',
     redirectTo: '/coinbase-review'
   },
