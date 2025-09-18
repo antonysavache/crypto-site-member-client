@@ -1,16 +1,16 @@
 // ================================
-// HEADER COMPONENT STYLES - MINIMAL FOR DEBUG
+// HEADER COMPONENT STYLES - FIXED MOBILE MENU
 // ================================
 
 .app-header {
-  position: static; // Убираем sticky, теперь это делает header-container
+  position: static;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid #e0e0e0;
   transition: all 0.2s ease;
+  z-index: 1000;
 
-  // Эффект при скролле - БЕЗ БЛЯДСКОЙ ТЕНИ
   &.scrolled {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
@@ -31,6 +31,10 @@
   gap: 0.75rem;
   text-decoration: none;
   color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .brand-icon {
@@ -43,6 +47,7 @@
   color: #6146FF;
 }
 
+// Desktop Navigation
 .nav-desktop {
   @media (max-width: 768px) {
     display: none;
@@ -64,6 +69,7 @@
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+  transition: all 0.2s ease;
 
   &:hover {
     color: #6146FF;
@@ -76,12 +82,19 @@
   }
 }
 
+// Mobile Menu Button
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 
   @media (max-width: 768px) {
     display: flex;
@@ -103,69 +116,152 @@
   height: 2px;
   background-color: #374151;
   border-radius: 1px;
+  transition: all 0.3s ease;
 }
 
-.nav-mobile {
+// Mobile Menu Animation
+.mobile-menu-btn.is-open .hamburger-line {
+  &:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  &:nth-child(2) {
+    opacity: 0;
+  }
+
+  &:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+// Mobile Overlay - Full Screen
+.mobile-overlay {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 100%;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background-color: #F4F4FF;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-
-  &.is-open {
-    transform: translateX(0);
-  }
+  z-index: 9999;
+  display: flex;
 
   @media (min-width: 769px) {
     display: none;
   }
 }
 
-.nav-mobile-content {
-  padding: 5rem 0 2rem;
+// Backdrop
+.mobile-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
 }
 
-.nav-mobile-list {
+// Mobile Menu Panel
+.mobile-menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Mobile Menu Header
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+}
+
+.mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .brand-icon {
+    font-size: 1.5rem;
+  }
+
+  .brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #6146FF;
+  }
+}
+
+.mobile-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #374151;
+  }
+}
+
+// Mobile Navigation
+.mobile-nav {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+.mobile-nav-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav-mobile-item {
+.mobile-nav-item {
   margin: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.nav-mobile-link {
+.mobile-nav-link {
   display: block;
   color: #374151;
   text-decoration: none;
-  padding: 1.25rem 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(97, 70, 255, 0.05);
+    color: #6146FF;
   }
 
   &.active {
     color: #6146FF;
     background-color: rgba(97, 70, 255, 0.1);
+    border-left: 4px solid #6146FF;
   }
 }
 
-.nav-mobile-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
+// Prevent body scroll when menu is open
 body.menu-open {
   overflow: hidden;
 }
+

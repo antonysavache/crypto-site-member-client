@@ -1,6 +1,7 @@
-import { Component, signal, HostListener, OnDestroy } from '@angular/core';
+import { Component, signal, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [NgClass]
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
 
@@ -17,13 +18,29 @@ export class HeaderComponent implements OnDestroy {
 
   // Navigation links
   protected readonly navLinks = [
-    { label: 'Главная', href: '/home', active: true },
-    { label: 'Участники', href: '/members', active: false },
-    { label: 'Статья (демо)', href: '/coinbase-review', active: false },
-    { label: 'Bitcoin: Происхождение', href: '/bitcoin-origin', active: false },
-    { label: 'Руководства', href: '/guides', active: false },
-    { label: 'Настройки', href: '/settings', active: false }
+    { label: 'Kraken Review', href: '/kraken-review', active: false },
+    { label: 'Coinbase Review', href: '/coinbase-review', active: true }, // По умолчанию активна
+    { label: 'Bitcoin: Origin', href: '/bitcoin-origin', active: false }
   ];
+
+  ngOnInit(): void {
+    // Set initial active state based on current route
+    this.updateActiveState(this.router.url);
+
+    // Listen for route changes
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.updateActiveState(event.url);
+      });
+  }
+
+  // Update active state based on current URL
+  private updateActiveState(currentUrl: string): void {
+    this.navLinks.forEach(link => {
+      link.active = currentUrl === link.href || currentUrl.startsWith(link.href + '/');
+    });
+  }
 
   // Toggle mobile menu
   protected toggleMenu(): void {
@@ -58,11 +75,6 @@ export class HeaderComponent implements OnDestroy {
 
     // Navigate using Angular Router
     this.router.navigate([href]);
-
-    // Update active state
-    this.navLinks.forEach(link => {
-      link.active = link.href === href;
-    });
   }
 
   // Cleanup on destroy

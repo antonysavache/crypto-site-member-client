@@ -3,12 +3,13 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/coinbase-review',
     pathMatch: 'full'
   },
   {
     path: 'home',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
+    redirectTo: '/coinbase-review',
+    pathMatch: 'full'
   },
   {
     path: 'article',
@@ -28,14 +29,14 @@ export const routes: Routes = [
   },
   {
     path: 'members',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) // Пока заглушка
+    redirectTo: '/coinbase-review'
   },
   {
     path: 'settings',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) // Пока заглушка
+    redirectTo: '/coinbase-review'
   },
   {
     path: '**',
-    redirectTo: '/home'
+    redirectTo: '/coinbase-review'
   }
 ];
