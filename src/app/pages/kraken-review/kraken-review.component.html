@@ -15,33 +15,17 @@
 
     <!-- Main контент -->
     <main class="article-content-wrapper">
-      <!-- Мета-информация над hero -->
-      <div class="article-header">
-        <div class="breadcrumb-nav">
-          <span class="breadcrumb-item">Home</span>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-item">Category</span>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-item">DeFi</span>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-item current">Review</span>
-        </div>
-
-        <p class="hero-subtitle">Complete Guide to Trading Crypto in the UK</p>
-
-        <div class="article-meta">
-          <span class="meta-item">By <strong>{{ article.author }}</strong></span>
-          <span class="meta-separator">•</span>
-          <span class="meta-item">{{ article.date }}</span>
-          <span class="meta-separator">•</span>
-          <span class="meta-item">{{ article.category }}</span>
-        </div>
-      </div>
-
-      <!-- Hero секция как banner с заголовком внутри -->
+      <!-- Hero секция как banner -->
       <div class="hero-section hero-banner">
         <div class="hero-content">
+          <div class="article-meta">
+            <span class="category">{{ article.category }}</span>
+            <span class="date">{{ article.date }}</span>
+          </div>
           <h1 class="page-title">{{ article.title }}</h1>
+          <div class="author-info">
+            <span class="author">By {{ article.author }}</span>
+          </div>
         </div>
       </div>
 

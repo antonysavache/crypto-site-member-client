@@ -25,7 +25,7 @@ export const routes: Routes = [
   },
   {
     path: 'bitcoin-origin',
-    loadComponent: () => import('./pages/bitcoin-origin/bitcoin-origin.component').then(m => m.BitcoinOriginComponent)
+    loadComponent: () => import('./pages/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
   },
   {
     path: 'storybook',

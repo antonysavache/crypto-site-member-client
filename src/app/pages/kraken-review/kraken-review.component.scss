@@ -71,66 +71,9 @@
   }
 }
 
-// Hero изображение с заголовком внутри
+// Hero изображение с заголовком внутри - КАК У COINBASE
 .hero-banner {
   background-image: url('/images/kraken/kraken-review-hero.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  min-height: 500px;
-  margin: 1rem 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-
-  // Добавляем subtle overlay для глубины
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, transparent 50%, rgba(147, 51, 234, 0.1) 100%);
-    pointer-events: none;
-  }
-
-  .hero-content {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .page-title {
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.2;
-    margin: 0;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    min-height: 300px;
-    margin: 0.5rem 0;
-    background-position: center center;
-    border-radius: 8px;
-
-    .hero-content {
-      padding: 1.5rem;
-    }
-
-    .page-title {
-      font-size: 1.8rem;
-    }
-  }
 }
 
 // CTA sections styling
