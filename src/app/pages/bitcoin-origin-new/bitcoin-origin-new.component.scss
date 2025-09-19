@@ -1,9 +1,10 @@
-// bitcoin-origin-new.component.scss - МИНИМУМ стилей
+// ethereum-review.component.scss - МИНИМУМ стилей
 @import '../../../styles/_variables';
 
-// Специфичный background для Bitcoin Review
+// Специфичный background для Ethereum Review
 .hero-banner {
-  background-image: url('/images/bitcoin-review/btc-review-hero.png');
+  background-image: url('/images/ethereum-review/ethereum-review-hero.png');
+  background-position: center 60% !important;
 }
 
 // Main часть использует ТОЛЬКО глобальные стили из _layout.scss:

@@ -120,6 +120,19 @@
   }
 }
 
+// Дополнительные отступы для заголовков в article-content
+.article-content {
+  h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .content-spacing-large {
   > * + * {
     margin-top: 3rem;

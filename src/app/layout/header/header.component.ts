@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     { label: 'Kraken Review', href: '/kraken-review', active: false },
     { label: 'Coinbase Review', href: '/coinbase-review', active: true }, // По умолчанию активна
     { label: 'Bitcoin: Origin', href: '/bitcoin-origin', active: false },
+    { label: 'Ethereum Review', href: '/ethereum-review', active: false },
     { label: 'Storybook', href: '/storybook', active: false }
   ];
 
