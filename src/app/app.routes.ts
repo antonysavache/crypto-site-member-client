@@ -28,6 +28,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
   },
   {
+    path: 'ethereum-review',
+    loadComponent: () => import('./pages/ethereum-review/ethereum-review.component').then(m => m.EthereumReviewComponent)
+  },
+  {
     path: 'storybook',
     loadComponent: () => import('./pages/storybook/storybook.component').then(m => m.StorybookComponent)
   },
