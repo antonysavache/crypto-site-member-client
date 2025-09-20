@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Navigation links
   protected readonly navLinks = [
-    { label: 'Kraken Review', href: '/kraken-review', active: false },
-    { label: 'Coinbase Review', href: '/coinbase-review', active: true }, // По умолчанию активна
-    { label: 'Bitcoin: Origin', href: '/bitcoin-origin', active: false },
-    { label: 'Ethereum Review', href: '/ethereum-review', active: false },
-    { label: 'Storybook', href: '/storybook', active: false }
+    { label: 'Home', href: '/home', active: true }, // По умолчанию активна
+    { label: 'Exchanges', href: '/exchanges', active: false },
+    { label: 'Coins Review', href: '/coins', active: false },
+    { label: 'Guides', href: '/guides', active: false },
+    { label: 'About', href: '/about', active: false }
   ];
 
   ngOnInit(): void {

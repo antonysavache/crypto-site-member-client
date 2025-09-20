@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { StylesDemoComponent } from '../../components/styles-demo/styles-demo';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
   standalone: true,
-  imports: [StylesDemoComponent]
+  imports: [RouterLink]
 })
 export class HomeComponent {
-
+  constructor() {}
 }

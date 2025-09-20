@@ -6,6 +6,7 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// Custom theme setup - simplified
 html {
   @include mat.theme((
     color: (
@@ -17,21 +18,24 @@ html {
   ));
 }
 
+// Reset Material body styles
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
   color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
   margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+// Remove any potential white space
+* {
+  box-sizing: border-box;
+}
+
+// Additional reset for the app root
+app-root {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
 }
 // ================================
 // MAIN STYLES ENTRY POINT
@@ -59,10 +63,8 @@ body {
   font-family: $font-family-primary;
   background-color: $color-bg;
   color: $color-text;
-  // УБИРАЕМ возможные проблемы со sticky
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-  height: auto !important;
+  margin: 0;
+  padding: 0;
 
   // CSS переменные для компонентов
   --color-primary: #{$color-primary};
@@ -75,16 +77,15 @@ body {
 
 // ДОБАВЛЯЕМ стили для html тоже
 html {
-  overflow-x: visible !important;
-  overflow-y: visible !important;
-  height: auto !important;
+  margin: 0;
+  padding: 0;
 }
 
 // ПРИНУДИТЕЛЬНО делаем header sticky глобально
 app-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 9999 !important;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 // Global focus styles for better accessibility
@@ -92,10 +93,9 @@ app-header {
   @include focus-ring();
 }
 
-// Prevent body scroll when mobile menu is open - УПРОЩЕНО
+// Prevent body scroll when mobile menu is open
 body.menu-open {
   overflow: hidden;
-  // УБРАЛИ position: fixed и height: 100% - они могут мешать sticky
 }
 
 // Main application container

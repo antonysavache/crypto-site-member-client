@@ -1,0 +1,119 @@
+<!-- Breadcrumbs -->
+<nav class="breadcrumbs" aria-label="Навигация">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li><a routerLink="/home">Home</a></li>
+      <li><span>Category</span></li>
+      <li>{{ categoryConfig.title }}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Category Header -->
+<section class="category-header">
+  <div class="container">
+    <h1 class="category-title">Category: {{ categoryConfig.title }}</h1>
+    <p class="category-description">{{ categoryConfig.description }}</p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="articles-section">
+  <div class="container">
+    <div class="content-wrapper">
+      <!-- Articles Grid -->
+      <div class="articles-grid">
+        <!-- Featured Review (если биржи) -->
+        <div *ngIf="categoryConfig.showFeaturedReview" class="featured-review">
+          <div class="featured-content">
+            <span class="featured-label">About new</span>
+            <h2 class="featured-title">Featured reviews</h2>
+            <p class="featured-description">{{ categoryConfig.featuredDescription }}</p>
+            <div class="featured-stats">
+              <span class="stat">Spot trading</span>
+              <span class="stat">BRT ★ 4</span>
+              <span class="stat">Categories ★ 5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article Cards -->
+        <div
+          *ngFor="let article of categoryConfig.articles"
+          class="article-card"
+          [class.dark-theme]="article.theme === 'dark'"
+        >
+          <div class="article-image">
+            <div class="article-icon">{{ article.icon }}</div>
+            <span class="article-label">{{ article.label }}</span>
+          </div>
+          <div class="article-content">
+            <h3 class="article-title">{{ article.title }}</h3>
+            <div class="article-meta">
+              <span class="article-category">{{ article.category }}</span>
+              <span class="article-date">{{ article.date }}</span>
+            </div>
+            <div class="article-footer">
+              <span class="article-author">{{ article.author }}</span>
+              <a [routerLink]="article.link" class="article-btn">
+                {{ article.buttonText }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-content">
+          <h3 class="sidebar-title">Popular</h3>
+          <div class="popular-items">
+            <div
+              *ngFor="let item of categoryConfig.popularItems"
+              class="popular-item"
+            >
+              <a [routerLink]="item.link" class="popular-link">
+                {{ item.title }}
+              </a>
+              <span class="popular-meta">{{ item.category }} • {{ item.date }}</span>
+            </div>
+          </div>
+
+          <!-- Categories Section -->
+          <h3 class="sidebar-title">Categories</h3>
+          <div class="categories-list">
+            <a
+              *ngFor="let cat of categoryConfig.relatedCategories"
+              [routerLink]="cat.link"
+              class="category-link"
+            >
+              {{ cat.name }}
+            </a>
+          </div>
+
+          <!-- Market Rate (если биржи) -->
+          <div *ngIf="categoryConfig.showMarketRates" class="market-rates">
+            <h3 class="sidebar-title">Market Rate</h3>
+            <div class="rate-item">
+              <span class="rate-pair">BTC/USD</span>
+              <span class="rate-price">€52,240</span>
+            </div>
+            <div class="rate-item">
+              <span class="rate-pair">ETH/USD</span>
+              <span class="rate-price">€52,240</span>
+            </div>
+            <div class="rate-item">
+              <span class="rate-pair">SOL/USD</span>
+              <span class="rate-price">€52,240</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Load More -->
+    <div class="load-more">
+      <button class="btn btn-primary">Show more</button>
+    </div>
+  </div>
+</section>
