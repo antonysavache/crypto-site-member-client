@@ -1,0 +1,11 @@
+<div class="checklist">
+  <h3 class="checklist-title" *ngIf="title">{{ title }}</h3>
+  <ul class="checklist-items">
+    <li class="checklist-item" *ngFor="let item of items">
+      <div class="checklist-icon">
+        <img src="/icons/check.svg" alt="Check" />
+      </div>
+      <div class="checklist-content" [innerHTML]="item"></div>
+    </li>
+  </ul>
+</div>

@@ -15,6 +15,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/exchanges/exchanges.component').then(m => m.ExchangesComponent)
   },
   {
+    path: 'security',
+    loadComponent: () => import('./pages/security/security.component').then(m => m.SecurityComponent)
+  },
+  {
+    path: 'crypto-risks-security',
+    loadComponent: () => import('./pages/crypto-risks-security/crypto-risks-security.component').then(m => m.CryptoRisksSecurityComponent)
+  },
+  {
     path: 'how-to-buy-eth-uk',
     loadComponent: () => import('./pages/how-to-buy-eth-uk/how-to-buy-eth-uk.component').then(m => m.HowToBuyEthUkComponent)
   },
@@ -47,7 +55,7 @@ export const routes: Routes = [
     redirectTo: '/coinbase-review'
   },
   {
-    path: '**',
-    redirectTo: '/coinbase-review'
-  }
+    path: 'uk-crypto-tax',
+    loadComponent: () => import('./pages/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
+  },
 ];

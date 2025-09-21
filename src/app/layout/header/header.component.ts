@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     { label: 'Exchanges', href: '/exchanges', active: false },
     { label: 'Coins Review', href: '/coins', active: false },
     { label: 'Guides', href: '/guides', active: false },
-    { label: 'About', href: '/about', active: false }
+    { label: 'Security', href: '/security', active: false }
   ];
 
   ngOnInit(): void {

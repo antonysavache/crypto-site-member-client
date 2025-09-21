@@ -1,0 +1,12 @@
+// security.component.scss
+@import '../../../styles/_variables';
+
+// Security Hub background
+.hero-banner {
+  background-image: url('/images/security/security-hub-hero.png');
+  background-color: #1e293b; // fallback
+  background-position: center;
+  background-size: cover;
+}
+
+// Main часть использует ТОЛЬКО глобальные стили из _layout.scss

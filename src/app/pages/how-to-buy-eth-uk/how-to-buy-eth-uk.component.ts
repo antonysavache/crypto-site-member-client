@@ -8,6 +8,7 @@ import { TableOfContentsComponent } from '../../shared/ui/table-of-contents/tabl
 import { StickyCTABannerComponent } from '../../shared/ui/sticky-cta-banner/sticky-cta-banner.component';
 import { MaterialComparisonTableComponent, MaterialComparisonColumn, MaterialComparisonRow } from '../../shared/ui/material-comparison-table/material-comparison-table.component';
 import { BulletListComponent } from '../../shared/ui/bullet-list/bullet-list.component';
+import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
 
 @Component({
   selector: 'app-how-to-buy-eth-uk',
@@ -20,7 +21,8 @@ import { BulletListComponent } from '../../shared/ui/bullet-list/bullet-list.com
     TableOfContentsComponent,
     StickyCTABannerComponent,
     MaterialComparisonTableComponent,
-    BulletListComponent
+    BulletListComponent,
+    ProTipComponent
   ]
 })
 export class HowToBuyEthUkComponent {

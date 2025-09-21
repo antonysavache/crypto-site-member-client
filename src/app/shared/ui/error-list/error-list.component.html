@@ -1,0 +1,11 @@
+<div class="error-list">
+  <h3 class="error-list-title" *ngIf="title">{{ title }}</h3>
+  <ul class="error-list-items">
+    <li class="error-list-item" *ngFor="let item of items">
+      <div class="error-list-icon">
+        <img src="/icons/cross.svg" alt="Cross" />
+      </div>
+      <div class="error-list-content" [innerHTML]="item"></div>
+    </li>
+  </ul>
+</div>
