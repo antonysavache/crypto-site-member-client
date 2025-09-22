@@ -13,6 +13,7 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit, OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
+  private scrollPosition = 0; // Сохраняем позицию скролла
 
   constructor(private router: Router) {}
 
@@ -49,25 +50,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isMenuOpen.update(current => !current);
 
     if (this.isMenuOpen()) {
+      // Сохраняем текущую позицию скролла
+      this.scrollPosition = window.scrollY;
+
+      // Блокируем скролл с фиксацией позиции
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
+      document.body.style.top = `-${this.scrollPosition}px`;
       document.body.style.width = '100%';
-      document.body.style.touchAction = 'none';
     } else {
+      // Восстанавливаем скролл и позицию
       document.body.style.overflow = '';
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.touchAction = '';
+
+      // Возвращаемся к сохраненной позиции
+      window.scrollTo(0, this.scrollPosition);
     }
   }
 
   // Close menu
   protected closeMenu(): void {
     this.isMenuOpen.set(false);
+
+    // Восстанавливаем скролл и позицию
     document.body.style.overflow = '';
     document.body.style.position = '';
+    document.body.style.top = '';
     document.body.style.width = '';
-    document.body.style.touchAction = '';
+
+    // Возвращаемся к сохраненной позиции
+    window.scrollTo(0, this.scrollPosition);
   }
 
   // Close menu on escape key
@@ -91,7 +105,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     document.body.style.overflow = '';
     document.body.style.position = '';
+    document.body.style.top = '';
     document.body.style.width = '';
-    document.body.style.touchAction = '';
   }
 }
