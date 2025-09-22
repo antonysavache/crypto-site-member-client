@@ -61,12 +61,12 @@
     <div class="mobile-menu">
       <!-- Header с кнопкой закрытия -->
       <div class="mobile-menu-header">
-        <div class="mobile-brand">
+        <a href="/" class="mobile-brand" (click)="onNavLinkClick('/home'); $event.preventDefault()">
           <img src="/images/logo.png" alt="TokenOversity Logo" class="brand-logo" />
           <span class="brand-text">
             TOKENO<span class="brand-accent">VERSITY</span>
           </span>
-        </div>
+        </a>
         <button
           class="mobile-close-btn"
           (click)="closeMenu()"
