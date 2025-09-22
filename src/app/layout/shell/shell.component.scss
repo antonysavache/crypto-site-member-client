@@ -5,6 +5,8 @@
 .app-shell {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff; // Основной белый фон для всего приложения
 }
 
 // Sticky контейнер для header + mobile TOC
@@ -17,6 +19,7 @@
 
 .app-main {
   flex: 1;
+  background-color: #ffffff; // Дублируем для надежности
 }
 
 .app-content {

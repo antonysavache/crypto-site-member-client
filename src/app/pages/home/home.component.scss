@@ -1,15 +1,4 @@
-// Variables
-$primary-color: #6366f1;
-$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-$ethereum-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-$buying-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-$text-color: #333;
-$light-gray: #666;
-$border-color: #f0f0f0;
-$background-light: #f8f9fa;
-$success-color: #22c55e;
-$error-color: #ef4444;
-$warning-color: #ffc107;
+@import '../../../styles/variables';
 
 // Container
 .container {

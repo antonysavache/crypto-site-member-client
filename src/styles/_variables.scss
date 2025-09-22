@@ -1,25 +1,48 @@
 // ================================
-// DESIGN TOKENS / VARIABLES
+// DESIGN TOKENS / VARIABLES - UNIFIED SYSTEM
 // ================================
 
-// Colors
+// Colors - Унифицированная система цветов
 // --------------------------------
-$color-primary: #6146FF;
-$color-danger: #FF4757;
-$color-success: #2ED573;
-$color-warning: #FFA502;
+$color-primary: #6366f1;         // Главный фиолетовый
+$color-danger: #ef4444;          // Красный для ошибок
+$color-success: #22c55e;         // Зеленый для успеха
+$color-warning: #ffc107;         // Желтый для предупреждений
+$color-error: #ef4444;           // Алиас для danger
 
-// Text colors
-$color-text: #383545;
-$color-text-secondary: #D7DBE6;
-$color-text-muted: #F4F4FF;
-$color-text-light: #FFFFFF;
+// Text colors - Цвета текста
+$color-text: #333333;           // Основной темный текст
+$color-text-secondary: #666666; // Серый текст
+$color-text-muted: #999999;     // Приглушенный серый
+$color-text-light: #ffffff;     // Белый текст
 
-// Background colors
-$color-bg: #FFFFFF;
-$color-bg-dark: #383545;
-$color-bg-light: #CECECE;
-$color-bg-muted: #F8F9FA;
+// Background colors - Системные фоны
+$color-bg: #ffffff;              // Основной белый фон
+$color-bg-light: #f8f9fa;        // Светло-серый для карточек
+$color-bg-dark: #1a1a1a;         // Темный фон
+$color-bg-muted: #f1f3f4;        // Приглушенный для разделителей
+
+// Border colors - Цвета границ
+$color-border: #f0f0f0;          // Основные границы
+$color-border-light: #e5e7eb;    // Светлые границы
+$color-border-dark: #d1d5db;     // Темные границы
+
+// Gradients - Градиенты
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$ethereum-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$buying-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+
+// LEGACY ALIASES - для совместимости со старым кодом
+// Постепенно заменять на новые имена выше
+$primary-color: $color-primary;
+$text-color: $color-text;
+$light-gray: $color-text-secondary;
+$border-color: $color-border;
+$background-light: $color-bg-light;
+$background-dark: $color-bg-dark;
+$success-color: $color-success;
+$error-color: $color-error;
+$warning-color: $color-warning;
 
 // Typography
 // --------------------------------
