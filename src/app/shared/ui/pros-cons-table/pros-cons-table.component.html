@@ -9,10 +9,9 @@
       <div class="column-content">
         @for (item of pros; track item.text) {
           <div class="pros-item">
-            <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" fill="#10B981"/>
-              <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <div class="check-icon-wrapper">
+              <img src="/icons/check.svg" alt="Check" class="check-icon" />
+            </div>
             <span class="item-text">{{ item.text }}</span>
           </div>
         }
@@ -27,10 +26,9 @@
       <div class="column-content">
         @for (item of cons; track item.text) {
           <div class="cons-item">
-            <svg class="cross-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" fill="#EF4444"/>
-              <path d="M15 9l-6 6M9 9l6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <div class="cross-icon-wrapper">
+              <img src="/icons/cross.svg" alt="Cross" class="cross-icon" />
+            </div>
             <span class="item-text">{{ item.text }}</span>
           </div>
         }

@@ -10,6 +10,9 @@ import { MaterialComparisonTableComponent, MaterialComparisonColumn, MaterialCom
 import { BulletListComponent } from '../../shared/ui/bullet-list/bullet-list.component';
 import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
 import { FaqComponent, FaqItem } from '../../shared/ui/faq/faq.component';
+import { ErrorListComponent } from '../../shared/ui/error-list/error-list.component';
+import { ProsConsTableComponent, ProsConsItem } from '../../shared/ui/pros-cons-table/pros-cons-table.component';
+import { ChecklistComponent } from '../../shared/ui/checklist/checklist.component';
 
 @Component({
   selector: 'app-crypto-risks-security',
@@ -25,7 +28,10 @@ import { FaqComponent, FaqItem } from '../../shared/ui/faq/faq.component';
     MaterialComparisonTableComponent,
     BulletListComponent,
     ProTipComponent,
-    FaqComponent
+    FaqComponent,
+    ErrorListComponent,
+    ProsConsTableComponent,
+    ChecklistComponent
   ]
 })
 export class CryptoRisksSecurityComponent {
@@ -84,16 +90,45 @@ export class CryptoRisksSecurityComponent {
 
   // 10-Point Security Checklist
   securityChecklist = [
-    '✅ Enable 2FA with an authenticator app',
-    '✅ Use strong, unique passwords for all crypto accounts',
-    '✅ Whitelist withdrawal addresses',
-    '✅ Store your seed phrase offline (never in cloud or screenshots)',
-    '✅ Test with a small transaction before large transfers',
-    '✅ Avoid public Wi-Fi and shared devices',
-    '✅ Keep your OS and browser updated',
-    '✅ Use a hardware wallet for holdings above £1k',
-    '✅ Monitor your portfolio addresses on Etherscan or a portfolio tracker',
-    '✅ Keep a secure backup of your recovery phrases in a safe place'
+    'Enable 2FA with an authenticator app',
+    'Use strong, unique passwords for all crypto accounts',
+    'Whitelist withdrawal addresses',
+    'Store your seed phrase offline (never in cloud or screenshots)',
+    'Test with a small transaction before large transfers',
+    'Avoid public Wi-Fi and shared devices',
+    'Keep your OS and browser updated',
+    'Use a hardware wallet for holdings above £1k',
+    'Monitor your portfolio addresses on Etherscan or a portfolio tracker',
+    'Keep a secure backup of your recovery phrases in a safe place'
+  ];
+
+  // Custody Models - Pros and Cons
+  custodialPros: ProsConsItem[] = [
+    { text: 'Simple to start, easy access to trading, staking, and support' },
+    { text: 'No need to manage private keys or seed phrases' },
+    { text: 'Professional security infrastructure and insurance' },
+    { text: 'Customer support available if issues arise' }
+  ];
+
+  custodialCons: ProsConsItem[] = [
+    { text: 'You trust the exchange to stay solvent and secure' },
+    { text: 'Withdrawals can be paused during stress events' },
+    { text: 'Exchange controls your private keys ("not your keys, not your crypto")' },
+    { text: 'Potential counterparty risk if exchange fails' }
+  ];
+
+  selfCustodyPros: ProsConsItem[] = [
+    { text: '"Not your keys, not your crypto" — you have full control' },
+    { text: 'No counterparty risk from exchange failures' },
+    { text: 'Can access funds 24/7 without exchange restrictions' },
+    { text: 'True ownership and sovereignty over your assets' }
+  ];
+
+  selfCustodyCons: ProsConsItem[] = [
+    { text: 'You are 100% responsible for security and backups' },
+    { text: 'If you lose your seed phrase, funds are gone forever' },
+    { text: 'Risk of sending to wrong address with no recovery' },
+    { text: 'No customer support if you make mistakes' }
   ];
 
   // FAQ Data - используем FaqItem интерфейс

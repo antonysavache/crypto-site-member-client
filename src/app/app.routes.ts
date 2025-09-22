@@ -10,37 +10,82 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
+  // Exchanges Category
   {
     path: 'exchanges',
     loadComponent: () => import('./pages/exchanges/exchanges.component').then(m => m.ExchangesComponent)
   },
   {
+    path: 'exchanges/coinbase-review',
+    loadComponent: () => import('./pages/coinbase-review/coinbase-review.component').then(m => m.CoinbaseReviewComponent)
+  },
+  {
+    path: 'exchanges/kraken-review',
+    loadComponent: () => import('./pages/kraken-review/kraken-review.component').then(m => m.KrakenReviewComponent)
+  },
+  // Coins Review Category
+  {
+    path: 'coins',
+    loadComponent: () => import('./pages/coins/coins.component').then(m => m.CoinsComponent)
+  },
+  {
+    path: 'coins/bitcoin-review',
+    loadComponent: () => import('./pages/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
+  },
+  {
+    path: 'coins/ethereum-review',
+    loadComponent: () => import('./pages/ethereum-review/ethereum-review.component').then(m => m.EthereumReviewComponent)
+  },
+  // Guides Category
+  {
+    path: 'guides',
+    loadComponent: () => import('./pages/guides/guides.component').then(m => m.GuidesComponent)
+  },
+  {
+    path: 'guides/how-to-buy-eth-uk',
+    loadComponent: () => import('./pages/how-to-buy-eth-uk/how-to-buy-eth-uk.component').then(m => m.HowToBuyEthUkComponent)
+  },
+  // Security Category
+  {
     path: 'security',
     loadComponent: () => import('./pages/security/security.component').then(m => m.SecurityComponent)
   },
   {
-    path: 'crypto-risks-security',
+    path: 'security/crypto-risks',
     loadComponent: () => import('./pages/crypto-risks-security/crypto-risks-security.component').then(m => m.CryptoRisksSecurityComponent)
   },
   {
-    path: 'how-to-buy-eth-uk',
-    loadComponent: () => import('./pages/how-to-buy-eth-uk/how-to-buy-eth-uk.component').then(m => m.HowToBuyEthUkComponent)
+    path: 'security/uk-crypto-tax',
+    loadComponent: () => import('./pages/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
   },
+  // Legacy redirects
   {
     path: 'coinbase-review',
-    loadComponent: () => import('./pages/coinbase-review/coinbase-review.component').then(m => m.CoinbaseReviewComponent)
+    redirectTo: '/exchanges/coinbase-review'
   },
   {
     path: 'kraken-review',
-    loadComponent: () => import('./pages/kraken-review/kraken-review.component').then(m => m.KrakenReviewComponent)
+    redirectTo: '/exchanges/kraken-review'
   },
   {
     path: 'bitcoin-origin',
-    loadComponent: () => import('./pages/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
+    redirectTo: '/coins/bitcoin-review'
   },
   {
     path: 'ethereum-review',
-    loadComponent: () => import('./pages/ethereum-review/ethereum-review.component').then(m => m.EthereumReviewComponent)
+    redirectTo: '/coins/ethereum-review'
+  },
+  {
+    path: 'how-to-buy-eth-uk',
+    redirectTo: '/guides/how-to-buy-eth-uk'
+  },
+  {
+    path: 'crypto-risks-security',
+    redirectTo: '/security/crypto-risks'
+  },
+  {
+    path: 'uk-crypto-tax',
+    redirectTo: '/security/uk-crypto-tax'
   },
   {
     path: 'storybook',
@@ -48,14 +93,10 @@ export const routes: Routes = [
   },
   {
     path: 'members',
-    redirectTo: '/coinbase-review'
+    redirectTo: '/exchanges/coinbase-review'
   },
   {
     path: 'settings',
-    redirectTo: '/coinbase-review'
-  },
-  {
-    path: 'uk-crypto-tax',
-    loadComponent: () => import('./pages/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
-  },
+    redirectTo: '/exchanges/coinbase-review'
+  }
 ];

@@ -29,22 +29,10 @@
           <p>
             This UK-focused guide explains the main types of crypto risk — market volatility, exchange and custody risk, technical vulnerabilities, and compliance obligations — plus practical steps to stay safe.
           </p>
-
-          <div class="screenshot-placeholder">
-            Screenshot: Shield icon + quick checklist "Enable 2FA • Use FCA-registered exchanges • Test withdrawals • Store long-term holdings in a hardware wallet"
-          </div>
-
           <p>
             <strong>See our exchange reviews →</strong> <a href="/exchanges/kraken-review" style="color: #6366f1; text-decoration: underline;">Kraken</a>, <a href="/exchanges/coinbase-review" style="color: #6366f1; text-decoration: underline;">Coinbase</a> to compare FCA-registered platforms.
           </p>
         </section>
-
-        <!-- Quick Summary -->
-        <section>
-          <h2>Quick Summary</h2>
-          <app-tldr [items]="quickSummary" title="Crypto Risk Overview"></app-tldr>
-        </section>
-
         <!-- Core Types of Risk -->
         <section>
           <h2>Core Types of Risk</h2>
@@ -88,9 +76,7 @@
 
           <app-bullet-list [items]="secureAccountSteps"></app-bullet-list>
 
-          <div class="screenshot-placeholder">
-            Screenshot: Kraken security settings with 2FA enabled
-          </div>
+          <img src="/images/crypto-risks/crypto-risks-kraken-2fa.png" alt="Kraken security settings with 2FA enabled" class="security-guide-image" />
 
           <h3>Safe Devices & Networks</h3>
 
@@ -108,9 +94,6 @@
 
           <app-bullet-list [items]="withdrawalSafetySteps"></app-bullet-list>
 
-          <p>
-            <strong>CTA:</strong> For long-term storage setup, see our <a href="/guides/hardware-wallet-setup" style="color: #6366f1; text-decoration: underline;">Hardware Wallet Setup Guide</a> →
-          </p>
         </section>
 
         <!-- Custody Models Explained -->
@@ -122,30 +105,30 @@
           </p>
 
           <h3>Custodial (Exchange)</h3>
-
           <p>
             You keep your crypto on an exchange like Kraken or Coinbase.
           </p>
 
-          <ul>
-            <li><strong>Pros:</strong> simple to start, easy access to trading, staking, and support.</li>
-            <li><strong>Cons:</strong> you trust the exchange to stay solvent and secure; withdrawals can be paused during stress events.</li>
-          </ul>
+          <app-pros-cons-table
+            [pros]="custodialPros"
+            [cons]="custodialCons"
+            prosTitle="Why Choose Exchange Custody"
+            consTitle="Risks & Limitations">
+          </app-pros-cons-table>
 
           <h3>Non-Custodial (Self-Custody)</h3>
-
           <p>
             You hold the private keys yourself in a hardware or software wallet.
           </p>
 
-          <ul>
-            <li><strong>Pros:</strong> "Not your keys, not your crypto" — you have full control, no counterparty risk.</li>
-            <li><strong>Cons:</strong> you are 100% responsible. If you lose your seed phrase or send to the wrong address, funds are gone forever.</li>
-          </ul>
+          <app-pros-cons-table
+            [pros]="selfCustodyPros"
+            [cons]="selfCustodyCons"
+            prosTitle="Benefits of Self-Custody"
+            consTitle="Responsibilities & Risks">
+          </app-pros-cons-table>
 
-          <div class="screenshot-placeholder">
-            Screenshot: Diagram showing exchange custody vs. hardware wallet custody — with arrows "You control keys" vs. "Exchange controls keys"
-          </div>
+          <img src="/images/crypto-risks/exchange-vs-hard-wallet.png" alt="Diagram showing exchange custody vs. hardware wallet custody — with arrows 'You control keys' vs. 'Exchange controls keys'" class="security-guide-image" />
         </section>
 
         <!-- Common Scams & How to Avoid Them -->
@@ -156,11 +139,10 @@
             Crypto attracts innovation — but also scammers. Staying alert can save you from devastating losses.
           </p>
 
-          <app-bullet-list [items]="commonScams"></app-bullet-list>
-
-          <div class="screenshot-placeholder">
-            Screenshot: Warning icon + list of top 5 red flags with small icons next to each
-          </div>
+          <app-error-list
+            title="Common Crypto Scams to Avoid"
+            [items]="commonScams">
+          </app-error-list>
 
           <app-pro-tip text="if it sounds too good to be true, it probably is."></app-pro-tip>
         </section>
@@ -173,11 +155,10 @@
             Follow this checklist to reduce 90% of common crypto losses:
           </p>
 
-          <app-bullet-list [items]="securityChecklist"></app-bullet-list>
-
-          <div class="screenshot-placeholder">
-            Screenshot: Simple checklist layout with tick icons — ideal for skimmable UX
-          </div>
+          <app-checklist
+            title="Essential Security Steps"
+            [items]="securityChecklist">
+          </app-checklist>
         </section>
 
         <!-- Links & Next Steps -->

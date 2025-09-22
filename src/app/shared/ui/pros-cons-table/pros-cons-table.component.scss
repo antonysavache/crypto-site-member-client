@@ -79,17 +79,29 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
+.check-icon-wrapper,
+.cross-icon-wrapper {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.125rem;
+}
+
 .check-icon,
 .cross-icon {
-  flex-shrink: 0;
-  margin-top: 0.125rem; // Slight alignment adjustment
+  width: 16px;
+  height: 16px;
+  // Убираем фильтр, чтобы использовать оригинальные цвета ваших SVG
 }
 
 .item-text {

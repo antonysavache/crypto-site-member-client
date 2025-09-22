@@ -3,7 +3,7 @@
 
 // Специфичный background для Security Guide
 .hero-banner {
-  background-image: url('/images/security/crypto-security-hero.png');
+  background-image: url('/images/crypto-risks/crypto-security-hero.png');
   background-color: #1e293b; // fallback для безопасности
   background-position: center;
   background-size: cover;
@@ -25,31 +25,18 @@
   justify-content: center;
 }
 
-// FAQ Section Styles
-.faq-section {
-  margin-bottom: 30px;
-}
+// Security guide images - centered and resized
+.security-guide-image {
+  width: 50%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-.faq-item {
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e7eb;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  h4 {
-    color: #1f2937;
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin: 0;
+  @media (max-width: 768px) {
+    width: 70%;
   }
 }
 
