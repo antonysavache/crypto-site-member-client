@@ -50,8 +50,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     if (this.isMenuOpen()) {
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.touchAction = 'none';
     } else {
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.touchAction = '';
     }
   }
 
@@ -59,6 +65,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   protected closeMenu(): void {
     this.isMenuOpen.set(false);
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.touchAction = '';
   }
 
   // Close menu on escape key
@@ -81,5 +90,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // Cleanup on destroy
   ngOnDestroy(): void {
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+    document.body.style.touchAction = '';
   }
 }
