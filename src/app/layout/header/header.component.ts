@@ -98,7 +98,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.closeMenu();
 
     // Navigate using Angular Router
-    this.router.navigate([href]);
+    this.router.navigate([href]).then(() => {
+      // Прокрутка в начало после навигации
+      window.scrollTo(0, 0);
+    });
   }
 
   // Cleanup on destroy
