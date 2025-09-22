@@ -149,6 +149,7 @@
   height: 100vh;
   z-index: 9999;
   display: flex;
+  overflow: hidden; // Блокируем скролл внутри overlay
 
   @media (min-width: 769px) {
     display: none;
@@ -277,7 +278,9 @@
 }
 
 // Prevent body scroll when menu is open
-body.menu-open {
-  overflow: hidden;
+body {
+  &.menu-open {
+    overflow: hidden;
+  }
 }
 

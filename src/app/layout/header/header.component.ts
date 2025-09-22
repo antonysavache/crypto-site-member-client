@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   protected toggleMenu(): void {
     this.isMenuOpen.update(current => !current);
 
-    // Управление скроллом body при открытии
     if (this.isMenuOpen()) {
       document.body.style.overflow = 'hidden';
     } else {
