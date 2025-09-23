@@ -2,31 +2,62 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-title">Your Complete Crypto Guide</h1>
+      <h1 class="hero-title">Start Safely with Kraken</h1>
       <p class="hero-description">
-        Reviews, guides, and insights for cryptocurrency exchanges and coins.
-        Make informed decisions with our comprehensive analysis and real-time data.
+        Unbiased review and a step-by-step guide—fees and security explained in plain English.
       </p>
-      <a routerLink="/bitcoin-origin" class="btn btn-primary">Start Learning</a>
+
+      <div class="hero-cta">
+        <a routerLink="/kraken-review" class="btn btn-primary">Start on Kraken →</a>
+        <a routerLink="/kraken-review" class="cta-secondary">Read Kraken Review</a>
+        <a routerLink="/exchanges" class="cta-alternatives">Prefer to compare? See alternatives</a>
+      </div>
     </div>
 
     <div class="stats">
       <div class="stat-item">
-        <span class="stat-number">5+</span>
-        <span class="stat-label">Exchanges Reviewed</span>
+        <span class="stat-number">#1 Exchange Pick</span>
+        <span class="stat-label">Kraken—tested & explained</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">10+</span>
-        <span class="stat-label">Crypto Guides</span>
+        <span class="stat-number">Step-by-Step Guides</span>
+        <span class="stat-label">From sign-up to first purchase</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">24/7</span>
-        <span class="stat-label">Updated Reviews</span>
+        <span class="stat-number">Coin Reviews & Fundamentals</span>
+        <span class="stat-label">Pros, risks & use cases</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Unbiased Reviews</span>
+        <span class="stat-number">Security & Taxes</span>
+        <span class="stat-label">Evergreen guides to stay safe</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Test Large Article Cards Section -->
+<section class="test-large-cards">
+  <div class="container">
+    <h2 class="section-title">Start Here — Review & First Steps</h2>
+    <div class="test-large-cards-grid">
+      @for (article of testLargeArticles; track article.title) {
+        <app-article-card-large [article]="article"></app-article-card-large>
+      }
+    </div>
+    <div class="affiliate-disclaimer">
+      We may earn a commission from partner links. This doesn't affect our ratings.
+    </div>
+  </div>
+</section>
+
+<!-- Test Article Cards Section -->
+<section class="test-cards">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="test-cards-grid">
+      @for (article of testArticles; track article.title) {
+        <app-article-card [article]="article"></app-article-card>
+      }
     </div>
   </div>
 </section>
@@ -95,6 +126,33 @@
   </div>
 </section>
 
+<!-- Test Large Article Cards Section -->
+<section class="test-large-cards">
+  <div class="container">
+    <h2 class="section-title">Start Here — Review & First Steps</h2>
+    <div class="test-large-cards-grid">
+      @for (article of testLargeArticles; track article.title) {
+        <app-article-card-large [article]="article"></app-article-card-large>
+      }
+    </div>
+    <div class="affiliate-disclaimer">
+      We may earn a commission from partner links. This doesn't affect our ratings.
+    </div>
+  </div>
+</section>
+
+<!-- Test Article Cards Section -->
+<section class="test-cards">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="test-cards-grid">
+      @for (article of testArticles; track article.title) {
+        <app-article-card [article]="article"></app-article-card>
+      }
+    </div>
+  </div>
+</section>
+
 <!-- Exchange Cards -->
 <section class="exchange-cards">
   <div class="container">
@@ -125,6 +183,33 @@
         <div class="card-title">Crypto.com</div>
         <div class="card-rating">Coming Soon</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Test Large Article Cards Section -->
+<section class="test-large-cards">
+  <div class="container">
+    <h2 class="section-title">Start Here — Review & First Steps</h2>
+    <div class="test-large-cards-grid">
+      @for (article of testLargeArticles; track article.title) {
+        <app-article-card-large [article]="article"></app-article-card-large>
+      }
+    </div>
+    <div class="affiliate-disclaimer">
+      We may earn a commission from partner links. This doesn't affect our ratings.
+    </div>
+  </div>
+</section>
+
+<!-- Test Article Cards Section -->
+<section class="test-cards">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="test-cards-grid">
+      @for (article of testArticles; track article.title) {
+        <app-article-card [article]="article"></app-article-card>
+      }
     </div>
   </div>
 </section>
@@ -168,6 +253,33 @@
 
     <div class="section-cta">
       <a href="#" class="btn btn-primary">Show more guides</a>
+    </div>
+  </div>
+</section>
+
+<!-- Test Large Article Cards Section -->
+<section class="test-large-cards">
+  <div class="container">
+    <h2 class="section-title">Start Here — Review & First Steps</h2>
+    <div class="test-large-cards-grid">
+      @for (article of testLargeArticles; track article.title) {
+        <app-article-card-large [article]="article"></app-article-card-large>
+      }
+    </div>
+    <div class="affiliate-disclaimer">
+      We may earn a commission from partner links. This doesn't affect our ratings.
+    </div>
+  </div>
+</section>
+
+<!-- Test Article Cards Section -->
+<section class="test-cards">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="test-cards-grid">
+      @for (article of testArticles; track article.title) {
+        <app-article-card [article]="article"></app-article-card>
+      }
     </div>
   </div>
 </section>

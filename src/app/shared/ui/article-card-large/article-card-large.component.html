@@ -1,0 +1,41 @@
+<div class="article-card-large">
+  <div class="article-card-wrapper" (click)="onCardClick($event)">
+    <!-- Image/Background Section -->
+    <div class="article-image" [style.background]="article.imageUrl ? 'url(' + article.imageUrl + ') center/cover' : (article.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)')">
+      <div class="article-category">{{ article.category }}</div>
+      <div class="article-icon" *ngIf="!article.imageUrl">{{ article.icon || '₿' }}</div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="article-content">
+      <h3 class="article-title">{{ article.title }}</h3>
+      <p class="article-description">{{ article.description }}</p>
+
+      <!-- Metadata -->
+      <div class="article-meta">
+        <span class="article-date">{{ article.date }}</span>
+        <span class="article-separator" *ngIf="article.readTime"> • </span>
+        <span class="article-read-time" *ngIf="article.readTime">{{ article.readTime }}</span>
+      </div>
+
+      <!-- CTA Actions -->
+      <div class="article-actions">
+        <a
+          [href]="article.primaryCtaLink"
+          class="btn btn-primary"
+          (click)="onCtaClick($event, 'primary')"
+          [attr.aria-label]="getAriaLabel('primary')"
+          rel="nofollow sponsored"
+          target="_blank">
+          {{ article.primaryCta }}
+        </a>
+        <a
+          [routerLink]="article.secondaryCtaLink || article.routerLink"
+          class="btn btn-secondary"
+          (click)="onCtaClick($event, 'secondary')">
+          {{ article.secondaryCta }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
