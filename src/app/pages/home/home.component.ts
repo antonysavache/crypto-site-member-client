@@ -2,15 +2,53 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ArticleCardComponent, ArticleCardData } from '../../shared/ui/article-card/article-card.component';
 import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui/article-card-large/article-card-large.component';
+import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent]
+  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent]
 })
 export class HomeComponent {
+  // Тестовые данные для новостной секции
+  newsData: NewsSectionData = {
+    sectionTitle: 'How-to Guides for Beginners',
+    sectionDescription: 'Short, practical steps for your first buy and safe setup.',
+    layout: 'featured-left',
+    featuredItem: {
+      title: 'How to Deposit on Kraken — Step‑by‑Step',
+      description: 'Create account → Verify → Deposit (SEPA/Card) → First buy — safely.',
+      category: 'GUIDE',
+      date: 'Updated Jun 29, 2025',
+      readTime: '5–7 min read',
+      routerLink: '/guides/how-to-deposit-kraken',
+      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      icon: '₿'
+    },
+    regularItems: [
+      {
+        title: 'How to Buy ETH (UK)',
+        category: 'Guide',
+        date: 'Jun 29, 2025',
+        routerLink: '/guides/how-to-buy-eth-uk'
+      },
+      {
+        title: 'How to Buy BTC (UK)',
+        category: 'Guide',
+        date: 'Jun 29, 2025',
+        routerLink: '/guides/how-to-buy-btc-uk'
+      },
+      {
+        title: 'Withdraw to a Hardware Wallet',
+        category: 'Guide',
+        date: 'Jun 29, 2025',
+        routerLink: '/guides/withdraw-hardware-wallet'
+      }
+    ]
+  };
+
   // Тестовые данные для больших карточек статей
   testLargeArticles: ArticleCardLargeData[] = [
     {
@@ -31,7 +69,7 @@ export class HomeComponent {
       icon: '🔐'
     },
     {
-      title: 'How to Deposit on Kraken — Step-by-Step',
+      title: 'How to Deposit on Kraken — Step‑by‑Step',
       description: 'Create account → Verify → Deposit (SEPA/Card) → First buy — safely.',
       category: 'GUIDE',
       date: 'Updated Jun 29, 2025',

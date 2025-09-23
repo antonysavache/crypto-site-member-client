@@ -1,0 +1,79 @@
+<section class="news-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">{{ data.sectionTitle }}</h2>
+      <p class="section-description" *ngIf="data.sectionDescription">{{ data.sectionDescription }}</p>
+    </div>
+
+    <!-- News Grid -->
+    <div class="news-grid" [class.featured-right]="data.layout === 'featured-right'">
+      <!-- Featured Article (Large) -->
+      <div class="featured-article">
+        <a [routerLink]="data.featuredItem.routerLink" class="article-link" aria-label="Kraken deposit guide cover">
+          <div class="article-image" [style.background]="data.featuredItem.imageUrl ? 'url(' + data.featuredItem.imageUrl + ') center/cover' : (data.featuredItem.gradient || 'linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%)')">
+            <!-- Декоративные элементы -->
+            <div class="article-coin-icon">₿</div>
+            <div class="decorative-elements">
+              <div class="crypto-icon crypto-icon-1">⚡</div>
+              <div class="crypto-icon crypto-icon-2">🔒</div>
+              <div class="crypto-icon crypto-icon-3">💰</div>
+              <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+              </div>
+            </div>
+
+            <div class="article-content-overlay">
+              <div class="content-window">
+                <div class="article-category-badge">{{ data.featuredItem.category }}</div>
+                <h3 class="featured-title">{{ data.featuredItem.title }}</h3>
+                <p class="featured-description" *ngIf="data.featuredItem.description">{{ data.featuredItem.description }}</p>
+
+                <div class="article-meta" *ngIf="data.featuredItem.date || data.featuredItem.readTime">
+                  <span class="article-date">{{ data.featuredItem.date }}</span>
+                  <span class="meta-separator" *ngIf="data.featuredItem.readTime"> • </span>
+                  <span class="article-read-time" *ngIf="data.featuredItem.readTime">{{ data.featuredItem.readTime }}</span>
+                </div>
+
+                <a routerLink="/guides" class="see-all-link" (click)="$event.stopPropagation()">See all guides →</a>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Regular Articles (Small) -->
+      <div class="regular-articles">
+        <div class="articles-header">
+          <h3 class="articles-title">Quick start</h3>
+        </div>
+
+        <div class="articles-list">
+          @for (item of data.regularItems; track item.title) {
+            <div class="regular-article">
+              <a [routerLink]="item.routerLink" class="article-link">
+                <div class="article-content">
+                  <h4 class="article-title">{{ item.title }}</h4>
+                  <div class="article-meta">
+                    <span class="article-category-chip">{{ item.category }}</span>
+                    <span class="meta-separator"> • </span>
+                    <span class="article-date">{{ item.date }}</span>
+                  </div>
+                </div>
+                <button class="article-arrow-btn" aria-label="Open guide">
+                  <span class="arrow-icon">→</span>
+                </button>
+              </a>
+            </div>
+          }
+        </div>
+
+        <div class="show-more-section">
+          <a routerLink="/guides" class="show-more-btn">Show more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
