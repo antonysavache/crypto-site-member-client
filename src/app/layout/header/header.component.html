@@ -21,8 +21,11 @@
                 [href]="link.href"
                 class="nav-link"
                 [class.active]="link.active"
+                [class.accent]="link.accent"
                 role="menuitem"
                 [attr.aria-current]="link.active ? 'page' : null"
+                [attr.aria-label]="link.ariaLabel || null"
+                [attr.title]="link.title || null"
                 (click)="onNavLinkClick(link.href); $event.preventDefault()"
               >
                 {{ link.label }}
@@ -86,11 +89,14 @@
                 [href]="link.href"
                 class="mobile-nav-link"
                 [class.active]="link.active"
+                [class.accent]="link.accent"
                 role="menuitem"
                 [attr.aria-current]="link.active ? 'page' : null"
+                [attr.aria-label]="link.ariaLabel || null"
+                [attr.title]="link.title || null"
                 (click)="onNavLinkClick(link.href); $event.preventDefault()"
               >
-                {{ link.label }}
+                {{ link.mobileLabel || link.label }}
               </a>
             </li>
           }

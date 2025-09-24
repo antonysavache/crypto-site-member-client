@@ -10,6 +10,11 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
+  // Best Exchange Page
+  {
+    path: 'best-crypto-exchange-uk',
+    loadComponent: () => import('./pages/best-crypto-exchange-uk/best-crypto-exchange-uk.component').then(m => m.BestCryptoExchangeUkComponent)
+  },
   // Exchanges Category
   {
     path: 'exchanges',

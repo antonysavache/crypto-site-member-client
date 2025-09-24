@@ -9,6 +9,8 @@ export interface ArticleCardData {
   imageUrl?: string;
   routerLink: string;
   gradient?: string;
+  ctaLabel?: string;
+  ctaLink?: string;
 }
 
 @Component({

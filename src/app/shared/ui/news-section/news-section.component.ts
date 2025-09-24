@@ -12,6 +12,7 @@ export interface NewsItem {
   icon?: string;
   readTime?: string;
   description?: string;
+  affiliateLink?: string;
 }
 
 export interface NewsSectionData {

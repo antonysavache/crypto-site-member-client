@@ -24,6 +24,7 @@ export class HomeComponent {
       date: 'Updated Jun 29, 2025',
       readTime: '5–7 min read',
       routerLink: '/guides/how-to-deposit-kraken',
+      affiliateLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_howto&utm_content=deposit_tile_btn',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       icon: '₿'
     },
@@ -69,21 +70,21 @@ export class HomeComponent {
       icon: '🔐'
     },
     {
-      title: 'How to Deposit on Kraken — Step‑by‑Step',
-      description: 'Create account → Verify → Deposit (SEPA/Card) → First buy — safely.',
-      category: 'GUIDE',
+      title: 'Best Exchange for the UK — Our #1 Pick (Kraken)',
+      description: 'Independently tested deposits, fees and safety. See why we recommend Kraken for UK beginners.',
+      category: 'TOP PICK',
       date: 'Updated Jun 29, 2025',
-      readTime: '5–7 min read',
-      routerLink: '/guides/how-to-deposit-kraken',
-      primaryCta: 'Start on Kraken →',
-      primaryCtaLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_block&utm_content=guide_btn',
-      secondaryCta: 'See the steps',
-      secondaryCtaLink: '/guides/how-to-deposit-kraken',
-      utmContent: 'guide_btn',
-      analyticsCard: 'home_feature_guide_card',
-      analyticsCta: 'home_feature_guide_cta',
-      imageUrl: '/images/kraken-guide/kraken-guide-preview-card.png',
-      icon: '🛠️'
+      readTime: '4–6 min read',
+      routerLink: '/best-crypto-exchange-uk',
+      primaryCta: 'See Best Exchange →',
+      primaryCtaLink: '/best-crypto-exchange-uk',
+      secondaryCta: 'Start on Kraken →',
+      secondaryCtaLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_top_pick&utm_content=card_btn',
+      utmContent: 'card_btn',
+      analyticsCard: 'home_feature_top_pick_card',
+      analyticsCta: 'home_feature_top_pick_cta',
+      imageUrl: '/images/best-exchange/best-exchange-card-preview.png',
+      icon: '🏆'
     }
   ];
 
@@ -109,6 +110,31 @@ export class HomeComponent {
       date: 'Jun 25, 2025',
       routerLink: '/uk-crypto-tax',
       gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'
+    }
+  ];
+
+  // Данные для Essential Crypto Knowledge секции
+  cryptoKnowledgeArticles: ArticleCardData[] = [
+    {
+      title: 'What is Bitcoin?',
+      category: 'Fundamentals',
+      date: 'Jun 29, 2025',
+      routerLink: '/coins/bitcoin-review',
+      gradient: 'linear-gradient(135deg, #f7931a 0%, #ff6b35 100%)'
+    },
+    {
+      title: 'What is Ethereum?',
+      category: 'Fundamentals',
+      date: 'Jun 29, 2025',
+      routerLink: '/coins/ethereum-review',
+      imageUrl: '/images/home/ETH-card-article-preview.png'
+    },
+    {
+      title: 'Crypto Security Basics',
+      category: 'Security',
+      date: 'Jun 29, 2025',
+      routerLink: '/security',
+      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
     }
   ];
 

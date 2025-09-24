@@ -37,6 +37,11 @@
                   <span class="article-read-time" *ngIf="data.featuredItem.readTime">{{ data.featuredItem.readTime }}</span>
                 </div>
 
+                <div class="cta-buttons">
+                  <a [routerLink]="data.featuredItem.routerLink" class="btn btn-primary" (click)="$event.stopPropagation()">See the steps</a>
+                  <a [href]="data.featuredItem.affiliateLink" class="btn btn-secondary" rel="nofollow sponsored noopener" target="_blank" aria-label="Start on Kraken (affiliate link)" (click)="$event.stopPropagation()">Start on Kraken →</a>
+                </div>
+
                 <a routerLink="/guides" class="see-all-link" (click)="$event.stopPropagation()">See all guides →</a>
               </div>
             </div>

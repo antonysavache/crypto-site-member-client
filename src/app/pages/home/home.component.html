@@ -2,34 +2,34 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-title">Start Safely with Kraken</h1>
+      <h1 class="hero-title">Tokenoversity — Your Complete Crypto Guide</h1>
       <p class="hero-description">
-        Unbiased review and a step-by-step guide—fees and security explained in plain English.
+        Independent reviews, step-by-step guides, and safety basics. Clear, evergreen, and jargon-free.
       </p>
 
       <div class="hero-cta">
-        <a routerLink="/kraken-review" class="btn btn-primary">Start on Kraken →</a>
-        <a routerLink="/kraken-review" class="cta-secondary">Read Kraken Review</a>
+        <a routerLink="/best-crypto-exchange-uk" class="btn btn-primary">See Best Exchange for the UK →</a>
+        <a routerLink="/guides" class="btn btn-secondary">Explore Guides</a>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat-item">
-        <span class="stat-number">#1 Exchange Pick</span>
-        <span class="stat-label">Kraken—tested & explained</span>
-      </div>
-      <div class="stat-item">
+      <a routerLink="/best-crypto-exchange-uk" class="stat-item">
+        <span class="stat-number">#1 Exchange Pick (UK)</span>
+        <span class="stat-label">Kraken — tested & explained</span>
+      </a>
+      <a routerLink="/guides" class="stat-item">
         <span class="stat-number">Step-by-Step Guides</span>
-        <span class="stat-label">From sign-up to first purchase</span>
-      </div>
-      <div class="stat-item">
+        <span class="stat-label">From sign-up to first buy</span>
+      </a>
+      <a routerLink="/coins" class="stat-item">
         <span class="stat-number">Coin Reviews & Fundamentals</span>
         <span class="stat-label">Pros, risks & use cases</span>
-      </div>
-      <div class="stat-item">
+      </a>
+      <a routerLink="/security" class="stat-item">
         <span class="stat-number">Security & Taxes</span>
         <span class="stat-label">Evergreen guides to stay safe</span>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -37,25 +37,10 @@
 <!-- Test Large Article Cards Section -->
 <section class="test-large-cards">
   <div class="container">
-    <h2 class="section-title">Start Here — Review & First Steps</h2>
+    <h2 class="section-title">Start Here — Review & Top Pick</h2>
     <div class="test-large-cards-grid">
       @for (article of testLargeArticles; track article.title) {
         <app-article-card-large [article]="article"></app-article-card-large>
-      }
-    </div>
-    <div class="affiliate-disclaimer">
-      We may earn a commission from partner links. This doesn't affect our ratings.
-    </div>
-  </div>
-</section>
-
-<!-- Test Article Cards Section -->
-<section class="test-cards">
-  <div class="container">
-    <h2 class="section-title">Latest Articles</h2>
-    <div class="test-cards-grid">
-      @for (article of testArticles; track article.title) {
-        <app-article-card [article]="article"></app-article-card>
       }
     </div>
   </div>
@@ -64,270 +49,20 @@
 <!-- News Section -->
 <app-news-section [data]="newsData"></app-news-section>
 
-<!-- Featured Reviews -->
-<section class="featured-reviews">
-  <div class="container">
-    <h2 class="section-title">Featured Exchange Reviews</h2>
-    <p class="section-subtitle">Compare the top cryptocurrency exchanges with our detailed analysis</p>
-
-    <div class="reviews-table">
-      <div class="review-header">
-        <div>Exchange</div>
-        <div>Rating</div>
-        <div>Highlights</div>
-        <div>Fees</div>
-        <div>Action</div>
-      </div>
-
-      <div class="review-row">
-        <div class="exchange-info">
-          <div class="exchange-logo">CB</div>
-          <div>
-            <div class="exchange-name">Coinbase</div>
-            <div class="exchange-subtitle">Best for beginners</div>
-          </div>
-        </div>
-        <div class="rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-number">9.1</span>
-        </div>
-        <div class="pros-cons">
-          <div class="pro">✓ User-friendly</div>
-          <div class="pro">✓ High security</div>
-          <div class="con">✗ Higher fees</div>
-        </div>
-        <div class="fees">Low fees</div>
-        <div>
-          <a routerLink="/coinbase-review" class="btn btn-small btn-primary">Read Review</a>
-        </div>
-      </div>
-
-      <div class="review-row">
-        <div class="exchange-info">
-          <div class="exchange-logo kraken">KR</div>
-          <div>
-            <div class="exchange-name">Kraken</div>
-            <div class="exchange-subtitle">Best for trading</div>
-          </div>
-        </div>
-        <div class="rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-number">9.6</span>
-        </div>
-        <div class="pros-cons">
-          <div class="pro">✓ Low fees</div>
-          <div class="pro">✓ Advanced features</div>
-          <div class="con">✗ Complex UI</div>
-        </div>
-        <div class="fees">Very low</div>
-        <div>
-          <a routerLink="/kraken-review" class="btn btn-small btn-primary">Read Review</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Test Large Article Cards Section -->
-<section class="test-large-cards">
-  <div class="container">
-    <h2 class="section-title">Start Here — Review & First Steps</h2>
-    <div class="test-large-cards-grid">
-      @for (article of testLargeArticles; track article.title) {
-        <app-article-card-large [article]="article"></app-article-card-large>
-      }
-    </div>
-    <div class="affiliate-disclaimer">
-      We may earn a commission from partner links. This doesn't affect our ratings.
-    </div>
-  </div>
-</section>
-
-<!-- Test Article Cards Section -->
-<section class="test-cards">
-  <div class="container">
-    <h2 class="section-title">Latest Articles</h2>
-    <div class="test-cards-grid">
-      @for (article of testArticles; track article.title) {
-        <app-article-card [article]="article"></app-article-card>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- News Section -->
-<app-news-section [data]="newsData"></app-news-section>
-
-<!-- Exchange Cards -->
-<section class="exchange-cards">
-  <div class="container">
-    <h2 class="section-title">Top Rated Exchanges</h2>
-    <div class="cards-grid">
-      <div class="exchange-card">
-        <div class="card-logo">CB</div>
-        <div class="card-title">Coinbase</div>
-        <div class="card-rating">9.1</div>
-      </div>
-      <div class="exchange-card">
-        <div class="card-logo kraken">KR</div>
-        <div class="card-title">Kraken</div>
-        <div class="card-rating">9.6</div>
-      </div>
-      <div class="exchange-card coming-soon">
-        <div class="card-logo">BN</div>
-        <div class="card-title">Binance</div>
-        <div class="card-rating">Coming Soon</div>
-      </div>
-      <div class="exchange-card coming-soon">
-        <div class="card-logo">BB</div>
-        <div class="card-title">Bybit</div>
-        <div class="card-rating">Coming Soon</div>
-      </div>
-      <div class="exchange-card coming-soon">
-        <div class="card-logo">CC</div>
-        <div class="card-title">Crypto.com</div>
-        <div class="card-rating">Coming Soon</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Test Large Article Cards Section -->
-<section class="test-large-cards">
-  <div class="container">
-    <h2 class="section-title">Start Here — Review & First Steps</h2>
-    <div class="test-large-cards-grid">
-      @for (article of testLargeArticles; track article.title) {
-        <app-article-card-large [article]="article"></app-article-card-large>
-      }
-    </div>
-    <div class="affiliate-disclaimer">
-      We may earn a commission from partner links. This doesn't affect our ratings.
-    </div>
-  </div>
-</section>
-
-<!-- Test Article Cards Section -->
-<section class="test-cards">
-  <div class="container">
-    <h2 class="section-title">Latest Articles</h2>
-    <div class="test-cards-grid">
-      @for (article of testArticles; track article.title) {
-        <app-article-card [article]="article"></app-article-card>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- News Section -->
-<app-news-section [data]="newsData"></app-news-section>
-
-<!-- Crypto Guides -->
-<section class="crypto-guides">
+<!-- Essential Crypto Knowledge -->
+<section class="crypto-knowledge">
   <div class="container">
     <h2 class="section-title">Essential Crypto Knowledge</h2>
     <p class="section-subtitle">Learn about cryptocurrencies with our beginner-friendly guides</p>
 
-    <div class="guides-grid">
-      <div class="guide-card">
-        <h3 class="guide-title">What is Bitcoin?</h3>
-        <p class="guide-description">
-          Understanding the world's first cryptocurrency, how it works,
-          and why it matters for the future of finance.
-        </p>
-        <a routerLink="/bitcoin-origin" class="guide-cta">Learn More →</a>
-      </div>
-
-      <div class="guide-card ethereum">
-        <h3 class="guide-title">What is Ethereum?</h3>
-        <p class="guide-description">
-          Discover the blockchain platform that powers smart contracts
-          and decentralized applications.
-        </p>
-        <a routerLink="/ethereum-review" class="guide-cta">Learn More →</a>
-      </div>
-    </div>
-
-    <div class="guides-grid single" style="margin-top: 30px;">
-      <div class="guide-card buying-guide">
-        <h3 class="guide-title">How to Buy ETH in UK</h3>
-        <p class="guide-description">
-          Step-by-step Kraken walkthrough for purchasing Ethereum safely and legally in the United Kingdom,
-          including best practices and recommended platforms.
-        </p>
-        <a routerLink="/how-to-buy-eth-uk" class="guide-cta">Start Buying →</a>
-      </div>
-    </div>
-
-    <div class="section-cta">
-      <a href="#" class="btn btn-primary">Show more guides</a>
-    </div>
-  </div>
-</section>
-
-<!-- Test Large Article Cards Section -->
-<section class="test-large-cards">
-  <div class="container">
-    <h2 class="section-title">Start Here — Review & First Steps</h2>
-    <div class="test-large-cards-grid">
-      @for (article of testLargeArticles; track article.title) {
-        <app-article-card-large [article]="article"></app-article-card-large>
-      }
-    </div>
-    <div class="affiliate-disclaimer">
-      We may earn a commission from partner links. This doesn't affect our ratings.
-    </div>
-  </div>
-</section>
-
-<!-- Test Article Cards Section -->
-<section class="test-cards">
-  <div class="container">
-    <h2 class="section-title">Latest Articles</h2>
-    <div class="test-cards-grid">
-      @for (article of testArticles; track article.title) {
+    <div class="crypto-knowledge-grid">
+      @for (article of cryptoKnowledgeArticles; track article.title) {
         <app-article-card [article]="article"></app-article-card>
       }
     </div>
+
+    <div class="section-cta">
+      <a routerLink="/coins" class="btn btn-primary">Explore All Coins →</a>
+    </div>
   </div>
 </section>
-
-<!-- News Section -->
-<app-news-section [data]="newsData"></app-news-section>
-
-<!-- Categories Preview -->
-<!--<section class="categories">-->
-<!--  <div class="container">-->
-<!--    <h2 class="section-title">Explore Our Categories</h2>-->
-<!--    <p class="section-subtitle">Find exactly what you're looking for</p>-->
-
-<!--    <div class="categories-grid">-->
-<!--      <div class="category-card">-->
-<!--        <div class="category-icon">⚖️</div>-->
-<!--        <h3 class="category-title">Exchanges</h3>-->
-<!--        <p class="category-description">-->
-<!--          Compare top crypto exchanges with detailed reviews, ratings, and recommendations-->
-<!--        </p>-->
-<!--        <a href="/exchanges" class="btn btn-primary">View Exchanges</a>-->
-<!--      </div>-->
-
-<!--      <div class="category-card">-->
-<!--        <div class="category-icon">💰</div>-->
-<!--        <h3 class="category-title">Coins Review</h3>-->
-<!--        <p class="category-description">-->
-<!--          Learn about different cryptocurrencies, their technology, and use cases-->
-<!--        </p>-->
-<!--        <a href="/coins" class="btn btn-primary">Explore Coins</a>-->
-<!--      </div>-->
-
-<!--      <div class="category-card">-->
-<!--        <div class="category-icon">📚</div>-->
-<!--        <h3 class="category-title">Guides</h3>-->
-<!--        <p class="category-description">-->
-<!--          Step-by-step tutorials on how to buy, trade, and manage cryptocurrencies-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-primary">Read Guides</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->

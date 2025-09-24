@@ -19,10 +19,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Navigation links
   protected readonly navLinks = [
-    { label: 'Home', href: '/home', active: true }, // По умолчанию активна
-    { label: 'Exchanges', href: '/exchanges', active: false },
-    { label: 'Coins Review', href: '/coins', active: false },
+    {
+      label: 'Best for UK 🔥',
+      mobileLabel: 'Best for UK 🔥',
+      href: '/best-crypto-exchange-uk',
+      active: false,
+      ariaLabel: 'Best exchange for the UK (editor\'s pick)',
+      title: 'Best crypto exchange for the UK',
+      accent: true
+    },
     { label: 'Guides', href: '/guides', active: false },
+    { label: 'Coins', href: '/coins', active: false },
     { label: 'Security', href: '/security', active: false }
   ];
 
