@@ -3,13 +3,15 @@ import { RouterLink } from '@angular/router';
 import { ArticleCardComponent, ArticleCardData } from '../../shared/ui/article-card/article-card.component';
 import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui/article-card-large/article-card-large.component';
 import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
+import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card/review-card.component';
+import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent]
+  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent]
 })
 export class HomeComponent {
   // Тестовые данные для новостной секции
@@ -83,7 +85,7 @@ export class HomeComponent {
       utmContent: 'card_btn',
       analyticsCard: 'home_feature_top_pick_card',
       analyticsCta: 'home_feature_top_pick_cta',
-      imageUrl: '/images/best-exchange/best-exchange-card-preview.png',
+      imageUrl: '/images/home/best-exchange-card-preview.png',
       icon: '🏆'
     }
   ];
@@ -113,28 +115,83 @@ export class HomeComponent {
     }
   ];
 
-  // Данные для Essential Crypto Knowledge секции
-  cryptoKnowledgeArticles: ArticleCardData[] = [
+  // Данные для Coin Reviews & Fundamentals секции
+  cryptoKnowledgeReviews: ReviewCardData[] = [
     {
-      title: 'What is Bitcoin?',
-      category: 'Fundamentals',
-      date: 'Jun 29, 2025',
-      routerLink: '/coins/bitcoin-review',
-      gradient: 'linear-gradient(135deg, #f7931a 0%, #ff6b35 100%)'
+      id: 1,
+      title: 'Bitcoin Review: The Original Cryptocurrency',
+      category: 'Cryptocurrency',
+      date: 'Jan 15, 2025',
+      readTime: '6–8 min read',
+      author: 'Crypto Team',
+      icon: '₿',
+      label: 'REVIEW',
+      theme: 'light',
+      link: '/coins/bitcoin-review',
+      buttonText: 'Read Review',
+      imageUrl: '/images/home/BTC-card-article-preview.png'
     },
     {
-      title: 'What is Ethereum?',
-      category: 'Fundamentals',
-      date: 'Jun 29, 2025',
-      routerLink: '/coins/ethereum-review',
+      id: 2,
+      title: 'Ethereum Review: Smart-Contract Platform',
+      category: 'Cryptocurrency',
+      date: 'Jan 10, 2025',
+      readTime: '6–8 min read',
+      author: 'Crypto Team',
+      icon: 'Ξ',
+      label: 'REVIEW',
+      theme: 'dark',
+      link: '/coins/ethereum-review',
+      buttonText: 'Read Review',
       imageUrl: '/images/home/ETH-card-article-preview.png'
     },
     {
-      title: 'Crypto Security Basics',
+      id: 3,
+      title: 'Solana Review: High-Performance Blockchain',
+      category: 'Cryptocurrency',
+      date: 'Jan 5, 2025',
+      readTime: '5–7 min read',
+      author: 'Crypto Team',
+      icon: '◎',
+      label: 'REVIEW',
+      theme: 'light',
+      link: '/coins/solana-review',
+      buttonText: 'Read Review',
+      imageUrl: '/images/home/SOL-card-article-preview.png'
+    }
+  ];
+
+  // Данные для Security & Taxes секции
+  securityTaxesReviews: ReviewCardData[] = [
+    {
+      id: 4,
+      title: 'Avoid Common Crypto Scams (2025)',
       category: 'Security',
-      date: 'Jun 29, 2025',
-      routerLink: '/security',
-      gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+      date: 'Jun 30, 2025',
+      readTime: '6–8 min read',
+      author: 'Crypto Team',
+      icon: '🛡️',
+      label: 'SECURITY',
+      theme: 'light',
+      link: '/security/crypto-scams',
+      buttonText: 'Read Guide',
+      teaser: 'Red flags, fake support, phishing and "too-good-to-be-true" yields — how to verify links, wallets and apps.',
+      imageUrl: '/images/home/security-avoid-scams-article-preview.png'
+    },
+    {
+      id: 5,
+      title: 'UK Crypto Taxes — 2025 Basics',
+      category: 'Taxes',
+      date: 'Jun 30, 2025',
+      readTime: '7–9 min read',
+      author: 'Crypto Team',
+      icon: '💼',
+      label: 'TAXES',
+      theme: 'light',
+      link: '/security/uk-crypto-tax-basics',
+      buttonText: 'Read Guide',
+      teaser: 'Income vs capital gains, HMRC rules, allowances, record-keeping and simple examples for beginners.',
+      imageUrl: '/images/home/security-taxes-explaining-article-preview.png'
     }
   ];
 

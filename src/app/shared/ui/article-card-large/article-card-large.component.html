@@ -1,7 +1,12 @@
 <div class="article-card-large">
   <div class="article-card-wrapper" (click)="onCardClick($event)">
     <!-- Image/Background Section -->
-    <div class="article-image" [style.background]="article.imageUrl ? 'url(' + article.imageUrl + ') center/cover' : (article.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)')">
+    <div class="article-image"
+         [ngStyle]="{
+           'background': article.imageUrl
+             ? 'url(' + article.imageUrl + ') center/cover no-repeat'
+             : (article.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)')
+         }">
       <div class="article-category">{{ article.category }}</div>
       <div class="article-icon" *ngIf="!article.imageUrl">{{ article.icon || '₿' }}</div>
     </div>
