@@ -1,12 +1,5 @@
 @import '../../../styles/variables';
 
-// Container
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 // Buttons
 .btn {
   padding: 12px 24px;
@@ -20,11 +13,11 @@
   font-size: 16px;
 
   &.btn-primary {
-    background: $primary-color;
+    background: $color-primary;
     color: white;
 
     &:hover {
-      background: darken($primary-color, 10%);
+      background: darken($color-primary, 10%);
       transform: translateY(-1px);
     }
   }
@@ -110,7 +103,7 @@
     gap: 16px;
 
     .btn {
-      min-width: 280px;
+      min-width: min(280px, 100%); // Адаптивная минимальная ширина
     }
 
     @media (max-width: 768px) {
@@ -212,11 +205,25 @@
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);
+
+      /* Центрируем третий элемент */
+      > :nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+      }
     }
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
       gap: 20px;
+
+      /* Убираем центрирование на мобильных */
+      > :nth-child(3) {
+        grid-column: auto;
+        max-width: none;
+        margin: 0;
+      }
     }
 
     > * {
@@ -293,7 +300,7 @@
 
   .methodology-content {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr minmax(300px, 400px); // Более гибкая ширина
     gap: 60px;
     align-items: center;
 
@@ -472,12 +479,30 @@
       align-items: center;
       justify-content: center;
       margin-top: auto;
+      overflow: hidden; // Предотвращаем выход контента за границы
 
       img {
         max-width: 100%;
+        max-height: 100%;
         width: auto;
         height: auto;
         object-fit: contain;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .criteria-name {
+        font-size: 18px;
+      }
+
+      .criteria-description {
+        font-size: 13px;
+        min-height: auto;
+      }
+
+      .criteria-tile {
+        aspect-ratio: 3/2;
+        margin-top: 16px;
       }
     }
   }

@@ -28,6 +28,10 @@ $button-bg-disabled: #cecece; // Gray for disabled
     max-width: $container-max-width;
     margin: 0 auto;
     padding: 0 20px;
+
+    @media (max-width: 480px) {
+      padding: 0 16px;
+    }
   }
 }
 
@@ -52,11 +56,13 @@ $button-bg-disabled: #cecece; // Gray for disabled
 
 .news-grid {
   display: grid;
-  grid-template-columns: 58% 42%;
+  grid-template-columns: 1.4fr 1fr;
   gap: $grid-gap;
+  width: 100%;
+  min-width: 0;
 
   &.featured-right {
-    grid-template-columns: 42% 58%;
+    grid-template-columns: 1fr 1.4fr;
 
     .featured-article {
       order: 2;
@@ -65,6 +71,10 @@ $button-bg-disabled: #cecece; // Gray for disabled
     .regular-articles {
       order: 1;
     }
+  }
+
+  @media (max-width: 1024px) {
+    gap: 20px; // Уменьшаем gap на планшетах
   }
 
   @media (max-width: 768px) {
@@ -332,6 +342,13 @@ $button-bg-disabled: #cecece; // Gray for disabled
 // Regular Articles (Right Column)
 .regular-articles {
   margin-top: -40px; // Поднимаем весь блок ещё выше
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; // Позволяет сжиматься
+
+  @media (max-width: 768px) {
+    margin-top: 0; // Убираем отрицательный margin на мобильных
+  }
 
   .articles-header {
     margin-bottom: 20px;
@@ -366,6 +383,8 @@ $button-bg-disabled: #cecece; // Gray for disabled
     color: inherit;
     transition: all 0.2s ease;
     width: 100%;
+    max-width: 100%;
+    min-width: 0; // Позволяет flex-элементам сжиматься
 
     &:hover {
       background: rgba(99, 102, 241, 0.04);
@@ -390,6 +409,7 @@ $button-bg-disabled: #cecece; // Gray for disabled
 
   .article-content {
     flex: 1;
+    min-width: 0; // Позволяет тексту сжиматься и переноситься
 
     .article-title {
       font-size: 17px;
@@ -402,12 +422,14 @@ $button-bg-disabled: #cecece; // Gray for disabled
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      word-wrap: break-word; // Переносим длинные слова
     }
 
     .article-meta {
       display: flex;
       align-items: center;
       font-size: 14px;
+      flex-wrap: wrap; // Позволяем перенос метаданных
 
       .article-category-chip {
         background: #EEF2FF;
@@ -461,6 +483,24 @@ $button-bg-disabled: #cecece; // Gray for disabled
     &:focus-visible {
       outline: 2px solid $color-primary;
       outline-offset: 2px;
+    }
+
+    @media (max-width: 768px) {
+      min-width: 80px;
+      height: 28px;
+      font-size: 12px;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 480px) {
+      min-width: 70px;
+      height: 26px;
+      font-size: 11px;
+      margin-left: 8px;
+
+      .btn-text {
+        white-space: nowrap;
+      }
     }
   }
 }
@@ -533,10 +573,19 @@ $button-bg-disabled: #cecece; // Gray for disabled
 
   .regular-article .article-link {
     padding: 16px 0;
+
+    @media (max-width: 480px) {
+      padding: 12px 0;
+    }
   }
 
   .regular-article .article-content .article-title {
     font-size: 15px;
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+      line-height: 1.2;
+    }
   }
 
   .regular-article .article-arrow-btn {
