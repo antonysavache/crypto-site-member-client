@@ -1,1 +1,23 @@
-<app-category [categoryConfig]="guidesConfig"></app-category>
+<!-- Hero Section -->
+<app-category-hero [data]="heroData"></app-category-hero>
+
+<!-- Content Control Panel -->
+<app-category-controls
+  [config]="controlsConfig"
+  [searchQuery]="searchQuery"
+  [currentFilter]="currentFilter"
+  [currentSort]="currentSort"
+  (filterChange)="onFilterChange($event)"
+  (searchChange)="onSearchChange($event)"
+  (sortChange)="onSortChange($event)"
+  (clearFilters)="onClearFilters()">
+</app-category-controls>
+
+<!-- Guide Cards Grid -->
+<app-category-grid
+  [items]="getFilteredCards()"
+  [showLoadMore]="false"
+  emptyStateTitle="No guides match your filters"
+  emptyStateDescription="Clear filters or try a different search"
+  (clearFilters)="onClearFilters()">
+</app-category-grid>
