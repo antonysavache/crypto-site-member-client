@@ -1,8 +1,8 @@
-<section class="hero">
+<section class="hero" [class.hero-with-text-bg]="hasTextBackground()" [style.background]="getBackgroundStyle()">
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <h1 class="hero-title">{{ getFormattedTitle(data.title) }}</h1>
+        <h1 class="hero-title">{{ data.title }}</h1>
         <p class="hero-subtitle">{{ data.subtitle }}</p>
         <div class="hero-stats">{{ data.stats }}</div>
 

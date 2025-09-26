@@ -15,6 +15,7 @@ export interface CategoryHeroData {
   };
   heroImage?: string;
   backgroundColor?: string;
+  useTextBackground?: boolean; // Флаг для подложки под текст
 }
 
 @Component({
@@ -27,18 +28,16 @@ export interface CategoryHeroData {
 export class CategoryHeroComponent {
   @Input() data!: CategoryHeroData;
 
-  getFormattedTitle(title: string): string {
-    // Принудительный перенос после "—" для Learn страницы
-    if (title.includes('Learn Crypto — Clear,')) {
-      return 'Learn Crypto —\nClear, Evergreen, Trusted';
+  getBackgroundStyle(): string {
+    if (this.data.backgroundColor) {
+      return this.data.backgroundColor;
     }
-    return title;
+
+    // Дефолтный градиент
+    return 'linear-gradient(145deg, #6146FF 0%, #3619DD 52%, #1900A8 100%)';
   }
 
-  getDefaultBackground(): string {
-    return `
-      linear-gradient(145deg, #6146FF 0%, #3619DD 52%, #1900A8 100%),
-      radial-gradient(1200px 600px at 20% 10%, rgba(255,255,255,0.12), transparent 60%)
-    `;
+  hasTextBackground(): boolean {
+    return !!this.data.useTextBackground;
   }
 }

@@ -21,10 +21,9 @@
   color: white;
   position: relative;
   overflow: hidden;
-  background: url('/images/learn/learn-hero.png') center/cover no-repeat;
   min-height: 400px;
 
-  // Тёмная вуаль для читаемости текста поверх изображения
+  // Тёмная вуаль для читаемости текста
   &::before {
     content: '';
     position: absolute;
@@ -32,9 +31,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     pointer-events: none;
     z-index: 1;
+  }
+
+  // Для hero с подложкой под текст делаем вуаль темнее
+  &.hero-with-text-bg::before {
+    background: rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
@@ -72,22 +76,28 @@
   width: 100%;
   max-width: 800px;
 
-  // Полупрозрачная подложка под текст как у кнопок
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 40px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  // Полупрозрачная подложка только когда флаг включен
+  .hero-with-text-bg & {
+    background: rgba(255, 255, 255, 0.12);
+    // backdrop-filter: blur(15px); // Убираем blur для теста
+    border-radius: 20px;
+    padding: 40px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-  @media (max-width: 768px) {
-    padding: 24px 20px;
-    border-radius: 16px;
-    max-width: 100%;
+    @media (max-width: 768px) {
+      padding: 24px 20px;
+      border-radius: 16px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 20px 16px;
+      border-radius: 12px;
+    }
   }
 
-  @media (max-width: 480px) {
-    padding: 20px 16px;
-    border-radius: 12px;
+  // Для обычных hero без подложки
+  .hero:not(.hero-with-text-bg) & {
+    padding: 0;
   }
 
   .hero-title {
@@ -96,9 +106,7 @@
     line-height: 1.05;
     margin-bottom: 20px;
     color: white;
-
-    // Принудительный перенос после "—"
-    white-space: pre-line;
+    white-space: pre-line; // Для поддержки \n переносов
 
     @media (max-width: 768px) {
       font-weight: 700;
@@ -168,10 +176,6 @@
   }
 }
 
-.hero-visual {
-  display: none; // Скрываем, так как используем фоновое изображение
-}
-
 // Buttons
 .btn {
   padding: 14px 20px;
@@ -190,7 +194,6 @@
   z-index: 3;
   white-space: nowrap;
 
-  // Focus ring для доступности
   &:focus-visible {
     outline: 2px solid rgba(255, 255, 255, 0.8);
     outline-offset: 2px;

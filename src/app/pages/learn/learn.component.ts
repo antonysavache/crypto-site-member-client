@@ -21,7 +21,7 @@ export interface TopicTile {
 export class LearnComponent {
   // Hero configuration
   heroData: CategoryHeroData = {
-    title: 'Learn Crypto — Clear, Evergreen, Trusted',
+    title: 'Learn Crypto —\nClear, Evergreen, Trusted',
     subtitle: 'Plain-English explainers and fundamentals for crypto, DeFi, and security — reviewed quarterly.',
     stats: '24 articles • Updated Jun 2025',
     primaryCta: {
@@ -32,7 +32,8 @@ export class LearnComponent {
       text: 'Beginner path →',
       link: '#beginner-cta'
     },
-    heroImage: '/images/learn/learn-hero.png'
+    backgroundColor: "url('/images/learn/learn-hero.png') center/cover no-repeat",
+    useTextBackground: true
   };
 
   // Start Here - Beginner articles

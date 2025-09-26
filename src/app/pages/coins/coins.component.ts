@@ -26,7 +26,8 @@ export class CoinsComponent {
       text: 'Browse all reviews →',
       link: '#feed'
     },
-    heroImage: '/images/coins/coins-hero.png'
+    backgroundColor: "url('/images/categories/coins-reviews/coins-review-hero.png') center/cover no-repeat",
+    useTextBackground: true
   };
 
   // Controls configuration
