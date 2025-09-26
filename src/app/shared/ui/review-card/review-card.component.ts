@@ -17,6 +17,8 @@ export interface ReviewCardData {
   readTime?: string;
   featured?: boolean;
   teaser?: string;
+  coinTag?: string; // Добавляем для фильтрации на странице coins
+  excerpt?: string; // Для совместимости с поиском
 }
 
 @Component({

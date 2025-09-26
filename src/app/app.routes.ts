@@ -63,6 +63,11 @@ export const routes: Routes = [
     path: 'security/uk-crypto-tax',
     loadComponent: () => import('./pages/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
   },
+  // Learn Category
+  {
+    path: 'learn',
+    loadComponent: () => import('./pages/learn/learn.component').then(m => m.LearnComponent)
+  },
   // Legacy redirects
   {
     path: 'coinbase-review',

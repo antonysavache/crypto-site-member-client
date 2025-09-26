@@ -1,0 +1,20 @@
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">{{ getFormattedTitle(data.title) }}</h1>
+        <p class="hero-subtitle">{{ data.subtitle }}</p>
+        <div class="hero-stats">{{ data.stats }}</div>
+
+        <div class="hero-cta">
+          <a [routerLink]="data.primaryCta.link" class="btn btn-primary" [attr.aria-label]="'Navigate to ' + data.primaryCta.text">
+            {{ data.primaryCta.text }}
+          </a>
+          <a [href]="data.secondaryCta.link" class="btn btn-secondary" [attr.aria-label]="'Navigate to ' + data.secondaryCta.text">
+            {{ data.secondaryCta.text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,259 @@
+@import '../../../../styles/variables';
+
+// Container
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 12px;
+  }
+}
+
+// Hero Section
+.hero {
+  padding: 80px 0 96px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background: url('/images/learn/learn-hero.png') center/cover no-repeat;
+  min-height: 400px;
+
+  // Тёмная вуаль для читаемости текста поверх изображения
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0 60px;
+    min-height: 320px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 32px 0 48px;
+    min-height: 280px;
+  }
+}
+
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  min-height: 400px;
+
+  @media (max-width: 768px) {
+    min-height: 320px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 280px;
+  }
+}
+
+.hero-text {
+  z-index: 3;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+
+  // Полупрозрачная подложка под текст как у кнопок
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 768px) {
+    padding: 24px 20px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 7vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    color: white;
+
+    // Принудительный перенос после "—"
+    white-space: pre-line;
+
+    @media (max-width: 768px) {
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 12px;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 4vw, 20px);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 768px) {
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .hero-stats {
+    font-size: clamp(12px, 3vw, 14px);
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 36px;
+    font-weight: 500;
+
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 8px;
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  }
+}
+
+.hero-visual {
+  display: none; // Скрываем, так как используем фоновое изображение
+}
+
+// Buttons
+.btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  min-height: 44px;
+  position: relative;
+  z-index: 3;
+  white-space: nowrap;
+
+  // Focus ring для доступности
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+  }
+
+  &.btn-primary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 12px 18px;
+      min-height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 13px;
+      padding: 10px 16px;
+      min-height: 36px;
+    }
+  }
+
+  &.btn-secondary {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 10px 16px;
+      min-height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 13px;
+      padding: 8px 14px;
+      min-height: 36px;
+    }
+  }
+}
