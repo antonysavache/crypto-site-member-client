@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { ButtonPrimaryComponent } from '../button-primary/button-primary.component';
+import { ButtonSecondaryComponent } from '../button-secondary/button-secondary.component';
 
 export interface ArticleCardLargeData {
   title: string;
@@ -24,7 +26,7 @@ export interface ArticleCardLargeData {
 @Component({
   selector: 'app-article-card-large',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonPrimaryComponent, ButtonSecondaryComponent],
   templateUrl: './article-card-large.component.html',
   styleUrl: './article-card-large.component.scss'
 })

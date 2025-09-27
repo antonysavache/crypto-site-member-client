@@ -117,56 +117,9 @@
     padding-top: 20px;
     border-top: 1px solid #e5e7eb;
 
-    .btn {
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      cursor: pointer;
-
-      &:focus {
-        outline: 2px solid $color-primary;
-        outline-offset: 2px;
-      }
-
-      &.btn-primary {
-        background: $color-primary;
-        color: white;
-        border: none;
-
-        &:hover {
-          background: darken($color-primary, 10%);
-          transform: translateY(-1px);
-        }
-
-        &:active {
-          transform: translateY(0);
-        }
-      }
-
-      &.btn-secondary {
-        background: transparent;
-        color: $color-text-secondary;
-        border: none;
-        text-decoration: underline;
-
-        &:hover {
-          color: $color-primary;
-          text-decoration: none;
-        }
-      }
-    }
-
     @media (max-width: 480px) {
       flex-direction: column;
       gap: 8px;
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
     }
   }
 }

@@ -10,9 +10,12 @@
 
     @if (showLoadMore) {
       <div class="load-more-section">
-        <button class="btn btn-load-more" (click)="onLoadMore()">
+        <app-button-secondary
+          variant="outline"
+          color="primary"
+          (click)="onLoadMore()">
           {{ loadMoreText }}
-        </button>
+        </app-button-secondary>
       </div>
     }
   } @else {
@@ -20,7 +23,9 @@
     <div class="empty-state">
       <h3 class="empty-title">{{ emptyStateTitle }}</h3>
       <p class="empty-description">{{ emptyStateDescription }}</p>
-      <button class="btn btn-primary" (click)="onClearFilters()">Clear filters</button>
+      <app-button-primary (click)="onClearFilters()">
+        Clear filters
+      </app-button-primary>
     </div>
   }
 </section>

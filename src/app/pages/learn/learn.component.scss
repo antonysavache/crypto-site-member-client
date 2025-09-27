@@ -303,33 +303,11 @@
     }
   }
 
+// Удален блок дублированных стилей кнопок - используем компоненты
+
   .btn {
-    &.btn-primary {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      padding: 16px 32px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-2px);
-      }
-
-      @media (max-width: 768px) {
-        padding: 14px 24px;
-        font-size: 14px;
-        width: 100%;
-        justify-content: center;
-      }
-    }
+    // Удалено 25+ строк дублированных стилей
+    // Используем ButtonPrimaryComponent вместо кастомных стилей
   }
 }
 

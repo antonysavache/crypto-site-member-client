@@ -25,21 +25,18 @@
 
       <!-- CTA Actions -->
       <div class="article-actions">
-        <a
-          [href]="article.primaryCtaLink"
-          class="btn btn-primary"
+        <app-button-primary
+          [link]="article.primaryCtaLink"
+          [external]="true"
           (click)="onCtaClick($event, 'primary')"
-          [attr.aria-label]="getAriaLabel('primary')"
-          rel="nofollow sponsored"
-          target="_blank">
+          [attr.aria-label]="getAriaLabel('primary')">
           {{ article.primaryCta }}
-        </a>
-        <a
-          [routerLink]="article.secondaryCtaLink || article.routerLink"
-          class="btn btn-secondary"
+        </app-button-primary>
+        <app-button-secondary
+          [link]="article.secondaryCtaLink || article.routerLink"
           (click)="onCtaClick($event, 'secondary')">
           {{ article.secondaryCta }}
-        </a>
+        </app-button-secondary>
       </div>
     </div>
   </div>

@@ -37,8 +37,18 @@
               </div>
 
               <div class="cta-buttons">
-                <a [routerLink]="data.featuredItem.routerLink" class="btn btn-primary" (click)="$event.stopPropagation()">See the steps</a>
-                <a [href]="data.featuredItem.affiliateLink" class="btn btn-secondary" rel="nofollow sponsored noopener" target="_blank" aria-label="Start on Kraken (affiliate link)" (click)="$event.stopPropagation()">Start on Kraken →</a>
+                <app-button-primary
+                  [link]="data.featuredItem.routerLink"
+                  (click)="$event.stopPropagation()">
+                  See the steps
+                </app-button-primary>
+                <app-button-secondary
+                  color="gray"
+                  [link]="data.featuredItem.affiliateLink || '#'"
+                  [external]="!!data.featuredItem.affiliateLink"
+                  (click)="$event.stopPropagation()">
+                  Start on Kraken →
+                </app-button-secondary>
               </div>
 
               <a routerLink="/guides" class="see-all-link" (click)="$event.stopPropagation()">See all guides →</a>
@@ -66,16 +76,21 @@
                   <span class="article-date">{{ item.date }}</span>
                 </div>
               </div>
-              <button class="article-arrow-btn" aria-label="Read guide">
-                <span class="btn-text">Read Guide</span>
-              </button>
+              <app-button-primary size="small">
+                Read Guide
+              </app-button-primary>
             </a>
           </div>
         }
       </div>
 
       <div class="show-more-section">
-        <a routerLink="/guides" class="show-more-btn">Show more</a>
+        <app-button-secondary
+          variant="ghost"
+          color="primary"
+          link="/guides">
+          Show more
+        </app-button-secondary>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ButtonPrimaryComponent } from '../button-primary/button-primary.component';
+import { ButtonSecondaryComponent } from '../button-secondary/button-secondary.component';
 
 export interface NewsItem {
   title: string;
@@ -26,7 +28,7 @@ export interface NewsSectionData {
 @Component({
   selector: 'app-news-section',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ButtonPrimaryComponent, ButtonSecondaryComponent],
   templateUrl: './news-section.component.html',
   styleUrl: './news-section.component.scss'
 })

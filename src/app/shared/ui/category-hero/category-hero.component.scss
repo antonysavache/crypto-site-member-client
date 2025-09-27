@@ -193,9 +193,11 @@
     @media (max-width: 480px) {
       gap: 8px;
 
-      .btn {
-        width: 100%;
-        max-width: 250px;
+      app-button-primary {
+        a {
+          width: 100%;
+          max-width: 250px;
+        }
       }
     }
   }
@@ -203,85 +205,5 @@
 
 // Buttons
 .btn {
-  padding: 14px 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  font-size: 15px;
-  min-height: 44px;
-  position: relative;
-  z-index: 3;
-  white-space: nowrap;
-
-  &:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.8);
-    outline-offset: 2px;
-  }
-
-  &.btn-primary {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      font-size: 14px;
-      padding: 12px 18px;
-      min-height: 40px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 13px;
-      padding: 10px 16px;
-      min-height: 36px;
-    }
-  }
-
-  &.btn-secondary {
-    background: transparent;
-    color: rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.6);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      font-size: 14px;
-      padding: 10px 16px;
-      min-height: 40px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 13px;
-      padding: 8px 14px;
-      min-height: 36px;
-    }
-  }
+  // Убираем дублированные стили - теперь используем компоненты
 }

@@ -5,13 +5,15 @@ import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui
 import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
 import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card/review-card.component';
 import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
+import { ButtonPrimaryComponent } from '../../shared/ui/button-primary/button-primary.component';
+import { ButtonSecondaryComponent } from '../../shared/ui/button-secondary/button-secondary.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent]
+  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent, ButtonPrimaryComponent, ButtonSecondaryComponent]
 })
 export class HomeComponent {
   // Тестовые данные для новостной секции
@@ -140,7 +142,7 @@ export class HomeComponent {
       author: 'Crypto Team',
       icon: 'Ξ',
       label: 'REVIEW',
-      theme: 'dark',
+      theme: 'light',
       link: '/coins/ethereum-review',
       buttonText: 'Read Review',
       imageUrl: '/images/home/ETH-card-article-preview.png'

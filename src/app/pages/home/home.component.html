@@ -8,8 +8,12 @@
       </p>
 
       <div class="hero-cta">
-        <a routerLink="/best-crypto-exchange-uk" class="btn btn-primary">See Best Exchange for the UK →</a>
-        <a routerLink="/guides" class="btn btn-secondary">Explore Guides</a>
+        <app-button-primary link="/best-crypto-exchange-uk">
+          See Best Exchange for the UK →
+        </app-button-primary>
+        <app-button-secondary color="gray" link="/guides">
+          Explore Guides
+        </app-button-secondary>
       </div>
     </div>
 
@@ -61,7 +65,9 @@
   </div>
 
   <div class="section-cta">
-    <a routerLink="/coins" class="btn btn-primary">Explore All Coin Reviews →</a>
+    <app-button-primary link="/coins">
+      Explore All Coin Reviews →
+    </app-button-primary>
   </div>
 </section>
 
@@ -74,7 +80,12 @@
         <p class="section-subtitle">Evergreen guides to stay safe and compliant.</p>
       </div>
       <div class="header-action">
-        <a routerLink="/security" class="see-all-link">All security & taxes →</a>
+        <app-button-secondary
+          variant="ghost"
+          color="primary"
+          link="/security">
+          All security & taxes →
+        </app-button-secondary>
       </div>
     </div>
 

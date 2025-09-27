@@ -262,65 +262,9 @@ $button-bg-disabled: #cecece; // Gray for disabled
           gap: 12px;
           margin-bottom: 16px;
 
-          .btn {
-            flex: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 44px;
-            padding: 0 16px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
-            cursor: pointer;
-
-            &.btn-primary {
-              background: $color-primary;
-              color: white;
-
-              &:hover {
-                background: #5856eb;
-                transform: translateY(-1px);
-              }
-
-              &:focus-visible {
-                outline: 2px solid $color-primary;
-                outline-offset: 2px;
-              }
-
-              &:active {
-                transform: translateY(0);
-              }
-            }
-
-            &.btn-secondary {
-              background: transparent;
-              color: $color-primary;
-              border-color: rgba(99, 102, 241, 0.2);
-
-              &:hover {
-                background: rgba(99, 102, 241, 0.08);
-                border-color: rgba(99, 102, 241, 0.3);
-              }
-
-              &:focus-visible {
-                outline: 2px solid $color-primary;
-                outline-offset: 2px;
-              }
-            }
-          }
-
           @media (max-width: 768px) {
             flex-direction: column;
             gap: 8px;
-
-            .btn {
-              flex: none;
-              width: 100%;
-            }
           }
         }
 
@@ -451,58 +395,8 @@ $button-bg-disabled: #cecece; // Gray for disabled
     }
   }
 
-  .article-arrow-btn {
-    min-width: 100px;
-    height: 32px;
-    border-radius: 8px;
-    border: none;
-    background: $color-primary;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin-left: 16px;
-    font-size: 14px;
-    font-weight: 500;
-
-    .btn-text {
-      color: white;
-    }
-
-    &:hover {
-      background: lighten($color-primary, 8%) !important;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-primary;
-      outline-offset: 2px;
-    }
-
-    @media (max-width: 768px) {
-      min-width: 80px;
-      height: 28px;
-      font-size: 12px;
-      margin-left: 12px;
-    }
-
-    @media (max-width: 480px) {
-      min-width: 70px;
-      height: 26px;
-      font-size: 11px;
-      margin-left: 8px;
-
-      .btn-text {
-        white-space: nowrap;
-      }
-    }
-  }
+  // Удален блок .article-arrow-btn (50+ строк дублированного CSS)
+  // Заменен на ButtonPrimaryComponent size="small"
 }
 
 .show-more-section {

@@ -7,12 +7,17 @@
         <div class="hero-stats">{{ data.stats }}</div>
 
         <div class="hero-cta">
-          <a [routerLink]="data.primaryCta.link" class="btn btn-primary" [attr.aria-label]="'Navigate to ' + data.primaryCta.text">
+          <app-button-primary
+            [link]="data.primaryCta.link"
+            [attr.aria-label]="'Navigate to ' + data.primaryCta.text">
             {{ data.primaryCta.text }}
-          </a>
-          <a [href]="data.secondaryCta.link" class="btn btn-secondary" [attr.aria-label]="'Navigate to ' + data.secondaryCta.text">
+          </app-button-primary>
+          <app-button-primary
+            [link]="data.secondaryCta.link"
+            [external]="true"
+            [attr.aria-label]="'Navigate to ' + data.secondaryCta.text">
             {{ data.secondaryCta.text }}
-          </a>
+          </app-button-primary>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ButtonPrimaryComponent } from '../button-primary/button-primary.component';
+import { ButtonSecondaryComponent } from '../button-secondary/button-secondary.component';
 
 export interface CategoryHeroData {
   title: string;
@@ -23,7 +25,7 @@ export interface CategoryHeroData {
   templateUrl: './category-hero.component.html',
   styleUrl: './category-hero.component.scss',
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink, ButtonPrimaryComponent, ButtonSecondaryComponent]
 })
 export class CategoryHeroComponent {
   @Input() data!: CategoryHeroData;
