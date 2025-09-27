@@ -40,12 +40,24 @@
   padding: 60px 0 80px;
   display: flex;
   align-items: center;
+  // Hero skeleton выходит из контейнера для full-width
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 
   .hero-content {
     text-align: center;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 24px;
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 12px;
+    }
   }
 
   .hero-title {

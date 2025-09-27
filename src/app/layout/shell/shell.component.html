@@ -9,13 +9,15 @@
   </div>
 
   <main class="app-main">
-    <div class="app-content">
-      <!-- Loading State -->
-      @if (isLoading) {
-        <app-skeleton></app-skeleton>
-      } @else {
-        <router-outlet></router-outlet>
-      }
+    <div class="container">
+      <div class="app-content">
+        <!-- Loading State -->
+        @if (isLoading) {
+          <app-skeleton></app-skeleton>
+        } @else {
+          <router-outlet></router-outlet>
+        }
+      </div>
     </div>
   </main>
 

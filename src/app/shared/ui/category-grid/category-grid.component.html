@@ -1,28 +1,26 @@
 <section class="category-grid">
-  <div class="container">
-    @if (items.length > 0) {
-      <div class="grid">
-        @for (item of items; track item.id) {
-          <article itemscope itemtype="https://schema.org/BlogPosting">
-            <app-review-card [review]="item"></app-review-card>
-          </article>
-        }
-      </div>
-
-      @if (showLoadMore) {
-        <div class="load-more-section">
-          <button class="btn btn-load-more" (click)="onLoadMore()">
-            {{ loadMoreText }}
-          </button>
-        </div>
+  @if (items.length > 0) {
+    <div class="grid">
+      @for (item of items; track item.id) {
+        <article itemscope itemtype="https://schema.org/BlogPosting">
+          <app-review-card [review]="item"></app-review-card>
+        </article>
       }
-    } @else {
-      <!-- Empty State -->
-      <div class="empty-state">
-        <h3 class="empty-title">{{ emptyStateTitle }}</h3>
-        <p class="empty-description">{{ emptyStateDescription }}</p>
-        <button class="btn btn-primary" (click)="onClearFilters()">Clear filters</button>
+    </div>
+
+    @if (showLoadMore) {
+      <div class="load-more-section">
+        <button class="btn btn-load-more" (click)="onLoadMore()">
+          {{ loadMoreText }}
+        </button>
       </div>
     }
-  </div>
+  } @else {
+    <!-- Empty State -->
+    <div class="empty-state">
+      <h3 class="empty-title">{{ emptyStateTitle }}</h3>
+      <p class="empty-description">{{ emptyStateDescription }}</p>
+      <button class="btn btn-primary" (click)="onClearFilters()">Clear filters</button>
+    </div>
+  }
 </section>

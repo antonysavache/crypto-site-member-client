@@ -254,3 +254,37 @@
     .text-#{$breakpoint}-right { text-align: right; }
   }
 }
+
+// Full-width utility - выход из контейнера
+.full-width {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+
+// Альтернативный full-width с внутренним контейнером
+.section-full-width {
+  width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 12px;
+    }
+  }
+}

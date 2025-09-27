@@ -15,23 +15,21 @@
 
 <!-- Main Content with Sidebar -->
 <div class="content-with-sidebar">
-  <div class="container">
-    <div class="content-grid">
-      <!-- Main Content -->
-      <div class="main-content">
-        <app-category-grid
-          [items]="getFilteredCards()"
-          [showLoadMore]="false"
-          emptyStateTitle="No security guides match your filters"
-          emptyStateDescription="Clear filters or try a different search"
-          (clearFilters)="onClearFilters()">
-        </app-category-grid>
-      </div>
+  <div class="content-grid">
+    <!-- Main Content -->
+    <div class="main-content">
+      <app-category-grid
+        [items]="getFilteredCards()"
+        [showLoadMore]="false"
+        emptyStateTitle="No security guides match your filters"
+        emptyStateDescription="Clear filters or try a different search"
+        (clearFilters)="onClearFilters()">
+      </app-category-grid>
+    </div>
 
-      <!-- Sidebar -->
-      <div class="sidebar-content">
-        <app-category-sidebar [data]="sidebarData"></app-category-sidebar>
-      </div>
+    <!-- Sidebar -->
+    <div class="sidebar-content">
+      <app-category-sidebar [data]="sidebarData"></app-category-sidebar>
     </div>
   </div>
 </div>

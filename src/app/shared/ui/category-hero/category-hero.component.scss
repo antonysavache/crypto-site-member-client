@@ -1,27 +1,20 @@
 @import '../../../../styles/variables';
 
-// Container
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-
-  @media (max-width: 768px) {
-    padding: 0 16px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 0 12px;
-  }
-}
-
-// Hero Section - оптимальная высота
+// Hero Section - full width
 .hero {
   padding: 60px 0 80px;
   color: white;
   position: relative;
   overflow: hidden;
   min-height: 350px;
+
+  // Классический full-width hack
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 
   // Тёмная вуаль для читаемости текста
   &::before {
@@ -52,6 +45,21 @@
   }
 }
 
+// Внутренний контейнер для hero контента
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 12px;
+  }
+}
+
 .hero-content {
   display: flex;
   justify-content: center;
@@ -79,7 +87,6 @@
   // Полупрозрачная подложка только когда флаг включен
   .hero-with-text-bg & {
     background: rgba(255, 255, 255, 0.12);
-    // backdrop-filter: blur(15px); // Убираем blur для теста
     border-radius: 20px;
     padding: 40px 32px;
     border: 1px solid rgba(255, 255, 255, 0.2);

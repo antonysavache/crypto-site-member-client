@@ -1,47 +1,12 @@
+// ================================
+// GLOBAL STYLES ENTRY POINT
+// ================================
 
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
+// Angular Material setup (must be first)
 @use '@angular/material' as mat;
+@include mat.core();
 
-// Custom theme setup - simplified
-html {
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}
-
-// Reset Material body styles
-body {
-  color-scheme: light;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-
-// Remove any potential white space
-* {
-  box-sizing: border-box;
-}
-
-// Additional reset for the app root
-app-root {
-  display: block;
-  width: 100%;
-  min-height: 100vh;
-}
-// ================================
-// MAIN STYLES ENTRY POINT
-// ================================
-
-// Import design tokens and base styles in correct order
+// Import design tokens and base styles
 @import 'styles/variables';
 @import 'styles/mixins';
 @import 'styles/reset';
@@ -50,13 +15,8 @@ app-root {
 @import 'styles/layout';
 @import 'styles/utilities';
 
-// ================================
-// GLOBAL STYLES
-// ================================
-
-// Import Gilroy font (you can add this to index.html or use font service)
+// Global fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 // Global body styles
 body {
@@ -65,174 +25,9 @@ body {
   color: $color-text;
   margin: 0;
   padding: 0;
-
-  // CSS переменные для компонентов
-  --color-primary: #{$color-primary};
-  --color-text: #{$color-text};
-  --color-bg: #{$color-bg};
-  --spacing-sm: #{$spacing-sm};
-  --spacing-md: #{$spacing-md};
-  --border-radius: #{$border-radius};
 }
 
-// ДОБАВЛЯЕМ стили для html тоже
-html {
-  margin: 0;
-  padding: 0;
-}
-
-// ПРИНУДИТЕЛЬНО делаем header sticky глобально
-app-header {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
-
-// Global focus styles for better accessibility
+// Global focus styles for accessibility
 *:focus-visible {
   @include focus-ring();
 }
-
-// Prevent body scroll when mobile menu is open
-body.menu-open {
-  overflow: hidden;
-}
-
-// Main application container
-.app-container {
-  min-height: 100vh;
-  padding: $spacing-lg;
-}
-
-// Demo section styles
-.demo-section {
-  @include container();
-
-  // Fix for nested declaration warning - move property above nested rules
-  margin-bottom: $spacing-3xl;
-
-  .section-title {
-    color: $color-primary;
-    border-bottom: 2px solid $color-primary;
-    padding-bottom: $spacing-sm;
-    margin-bottom: $spacing-lg;
-  }
-}
-
-// Color palette demo
-.color-palette {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: $spacing-md;
-  margin-bottom: $spacing-lg;
-
-  .color-item {
-    padding: $spacing-md;
-    border-radius: $border-radius;
-    border: 1px solid #e0e0e0;
-    text-align: center;
-
-    .color-box {
-      width: 100%;
-      height: 60px;
-      border-radius: $border-radius-sm;
-      margin-bottom: $spacing-sm;
-    }
-
-    .color-name {
-      font-weight: $font-weight-medium;
-      margin-bottom: $spacing-xs;
-    }
-
-    .color-value {
-      font-family: monospace;
-      font-size: 14px;
-      color: $color-text-secondary;
-    }
-  }
-}
-
-// Typography showcase
-.typography-showcase {
-  .heading-example {
-    margin-bottom: $spacing-xl;
-    padding: $spacing-md;
-    border-left: 4px solid $color-primary;
-    background-color: $color-bg-muted;
-  }
-}
-
-// Utility showcase
-.utility-showcase {
-  .utility-example {
-    padding: $spacing-md;
-    margin-bottom: $spacing-md;
-    border: 1px solid #e0e0e0;
-    border-radius: $border-radius;
-
-    .example-title {
-      font-size: 14px;
-      font-weight: $font-weight-medium;
-      color: $color-text-secondary;
-      margin-bottom: $spacing-sm;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-  }
-}
-
-// Demo button styles - DEPRECATED, use .btn-* classes instead
-// These styles are kept for backward compatibility only
-.demo-button {
-  @include button-reset();
-  padding: $spacing-sm $spacing-md;
-  background-color: $color-primary;
-  color: $color-text-light;
-  border-radius: $border-radius;
-  font-weight: $font-weight-medium;
-  transition: all 0.2s ease;
-  display: inline-block;
-  text-decoration: none;
-
-  // Hover и Focus одинаковые стили
-  &:hover,
-  &:focus-visible,
-  &:focus {
-    background-color: #5138d4; // Manually darkened $color-primary
-    transform: translateY(-1px);
-    color: $color-text-light;
-    text-decoration: none;
-  }
-
-  // Focus ring только для keyboard navigation
-  &:focus-visible,
-  &:focus {
-    @include focus-ring();
-    outline: none;
-  }
-
-  &.secondary {
-    background-color: transparent;
-    color: $color-primary;
-    border: 2px solid $color-primary;
-
-    // Hover и Focus одинаковые стили для secondary
-    &:hover,
-    &:focus-visible,
-    &:focus {
-      background-color: $color-primary;
-      color: $color-text-light;
-      transform: translateY(-1px);
-    }
-
-    // Focus ring для secondary
-    &:focus-visible,
-    &:focus {
-      @include focus-ring();
-      outline: none;
-    }
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

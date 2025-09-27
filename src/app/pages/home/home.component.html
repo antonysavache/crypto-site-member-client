@@ -1,6 +1,6 @@
 <!-- Hero Section -->
 <section class="hero">
-  <div class="container">
+  <div class="hero-container">
     <div class="hero-content">
       <h1 class="hero-title">Tokenoversity — Your Complete Crypto Guide</h1>
       <p class="hero-description">
@@ -36,13 +36,11 @@
 
 <!-- Test Large Article Cards Section -->
 <section class="test-large-cards">
-  <div class="container">
-    <h2 class="section-title">Start Here — Review & Top Pick</h2>
-    <div class="test-large-cards-grid">
-      @for (article of testLargeArticles; track article.title) {
-        <app-article-card-large [article]="article"></app-article-card-large>
-      }
-    </div>
+  <h2 class="section-title">Start Here — Review & Top Pick</h2>
+  <div class="test-large-cards-grid">
+    @for (article of testLargeArticles; track article.title) {
+      <app-article-card-large [article]="article"></app-article-card-large>
+    }
   </div>
 </section>
 
@@ -51,27 +49,25 @@
 
 <!-- Coin Reviews & Fundamentals -->
 <section class="crypto-knowledge">
-  <div class="container">
-    <h2 class="section-title">Coin Reviews & Fundamentals</h2>
-    <p class="section-subtitle">Plain-English reviews of Bitcoin, Ethereum and Solana — pros, risks, and how to get exposure in the UK.</p>
+  <h2 class="section-title">Coin Reviews & Fundamentals</h2>
+  <p class="section-subtitle">Plain-English reviews of Bitcoin, Ethereum and Solana — pros, risks, and how to get exposure in the UK.</p>
 
-    <div class="crypto-knowledge-grid">
-      @for (review of cryptoKnowledgeReviews; track review.id) {
-        <article itemscope itemtype="https://schema.org/BlogPosting">
-          <app-review-card [review]="review"></app-review-card>
-        </article>
-      }
-    </div>
+  <div class="crypto-knowledge-grid">
+    @for (review of cryptoKnowledgeReviews; track review.id) {
+      <article itemscope itemtype="https://schema.org/BlogPosting">
+        <app-review-card [review]="review"></app-review-card>
+      </article>
+    }
+  </div>
 
-    <div class="section-cta">
-      <a routerLink="/coins" class="btn btn-primary">Explore All Coin Reviews →</a>
-    </div>
+  <div class="section-cta">
+    <a routerLink="/coins" class="btn btn-primary">Explore All Coin Reviews →</a>
   </div>
 </section>
 
 <!-- Security & Taxes -->
-<section class="security-taxes">
-  <div class="container">
+<section class="security-taxes section-full-width">
+  <div class="section-container">
     <div class="section-header">
       <div class="header-content">
         <h2 class="section-title">Security & Taxes</h2>
@@ -99,103 +95,99 @@
 
 <!-- Review Methodology -->
 <section class="review-methodology">
-  <div class="container">
-    <div class="methodology-content">
-      <div class="methodology-text">
-        <h2 class="methodology-title">Our Review Methodology</h2>
-        <p class="methodology-description">
-          We assess cryptocurrency exchanges through hands-on, real-world testing. Each review covers
-          <strong>50+ checks</strong> grouped into <strong>five key pillars</strong> to deliver accurate and impartial
-          <strong>scores</strong>.
-        </p>
+  <div class="methodology-content">
+    <div class="methodology-text">
+      <h2 class="methodology-title">Our Review Methodology</h2>
+      <p class="methodology-description">
+        We assess cryptocurrency exchanges through hands-on, real-world testing. Each review covers
+        <strong>50+ checks</strong> grouped into <strong>five key pillars</strong> to deliver accurate and impartial
+        <strong>scores</strong>.
+      </p>
 
-        <div class="methodology-sections">
-          <div class="methodology-section">
-            <h3 class="section-subtitle-bold">How We Test</h3>
-            <p class="section-text">
-              Each exchange undergoes a <strong>30-day</strong> evaluation in which our experts perform real trades,
-              test funding and withdrawals, contact customer support, review security controls, and assess overall usability.
-              We <strong>refresh reviews quarterly</strong> to reflect product changes and performance.
-            </p>
-          </div>
+      <div class="methodology-sections">
+        <div class="methodology-section">
+          <h3 class="section-subtitle-bold">How We Test</h3>
+          <p class="section-text">
+            Each exchange undergoes a <strong>30-day</strong> evaluation in which our experts perform real trades,
+            test funding and withdrawals, contact customer support, review security controls, and assess overall usability.
+            We <strong>refresh reviews quarterly</strong> to reflect product changes and performance.
+          </p>
+        </div>
 
-          <div class="methodology-section">
-            <app-pro-tip
-              title="Commitment to Transparency"
-              text="All reviews are conducted independently. We may earn a commission when you use some links, but this never influences our ratings or recommendations. Our scoring model is fully automated and reproducible.">
-            </app-pro-tip>
-          </div>
+        <div class="methodology-section">
+          <app-pro-tip
+            title="Commitment to Transparency"
+            text="All reviews are conducted independently. We may earn a commission when you use some links, but this never influences our ratings or recommendations. Our scoring model is fully automated and reproducible.">
+          </app-pro-tip>
         </div>
       </div>
+    </div>
 
-      <div class="methodology-visual">
-        <img
-          src="/images/home/review-methodology.png"
-          alt="Review methodology illustration"
-          class="methodology-image"
-          loading="lazy"
-          decoding="async">
-      </div>
+    <div class="methodology-visual">
+      <img
+        src="/images/home/review-methodology.png"
+        alt="Review methodology illustration"
+        class="methodology-image"
+        loading="lazy"
+        decoding="async">
     </div>
   </div>
 </section>
 
 <!-- Evaluation Criteria -->
 <section class="evaluation-criteria">
-  <div class="container">
-    <h2 class="criteria-title">Evaluation criteria</h2>
+  <h2 class="criteria-title">Evaluation criteria</h2>
 
-    <!-- Step indicators line -->
-    <div class="steps-line">
-      <div class="step-pill">1 step</div>
-      <div class="step-pill">2 step</div>
-      <div class="step-pill">3 step</div>
-      <div class="step-pill">4 step</div>
+  <!-- Step indicators line -->
+  <div class="steps-line">
+    <div class="step-pill">1 step</div>
+    <div class="step-pill">2 step</div>
+    <div class="step-pill">3 step</div>
+    <div class="step-pill">4 step</div>
+  </div>
+
+  <div class="criteria-grid">
+    <div class="criteria-column">
+      <h3 class="criteria-name">Security</h3>
+      <div class="criteria-description">
+        <p>Cold storage, proof-of-reserves, 2FA and withdrawal allow-list.</p>
+        <p>Bug-bounty, incident history and compliance checks.</p>
+      </div>
+      <div class="criteria-tile">
+        <img src="/images/home/evaluation-criteria-1.png" alt="" aria-hidden="true" loading="lazy">
+      </div>
     </div>
 
-    <div class="criteria-grid">
-      <div class="criteria-column">
-        <h3 class="criteria-name">Security</h3>
-        <div class="criteria-description">
-          <p>Cold storage, proof-of-reserves, 2FA and withdrawal allow-list.</p>
-          <p>Bug-bounty, incident history and compliance checks.</p>
-        </div>
-        <div class="criteria-tile">
-          <img src="/images/home/evaluation-criteria-1.png" alt="" aria-hidden="true" loading="lazy">
-        </div>
+    <div class="criteria-column">
+      <h3 class="criteria-name">Liquidity</h3>
+      <div class="criteria-description">
+        <p>Order-book depth, volume and spreads across major pairs.</p>
+        <p>Slippage tests at fixed sizes and uptime during volatility.</p>
       </div>
-
-      <div class="criteria-column">
-        <h3 class="criteria-name">Liquidity</h3>
-        <div class="criteria-description">
-          <p>Order-book depth, volume and spreads across major pairs.</p>
-          <p>Slippage tests at fixed sizes and uptime during volatility.</p>
-        </div>
-        <div class="criteria-tile">
-          <img src="/images/home/evaluation-criteria-2.png" alt="" aria-hidden="true" loading="lazy">
-        </div>
+      <div class="criteria-tile">
+        <img src="/images/home/evaluation-criteria-2.png" alt="" aria-hidden="true" loading="lazy">
       </div>
+    </div>
 
-      <div class="criteria-column">
-        <h3 class="criteria-name">Regulation</h3>
-        <div class="criteria-description">
-          <p>Licensing, KYC/AML, jurisdiction risk and consumer protection.</p>
-          <p>We review terms, audits and enforcement records.</p>
-        </div>
-        <div class="criteria-tile">
-          <img src="/images/home/evaluation-criteria-3.png" alt="" aria-hidden="true" loading="lazy">
-        </div>
+    <div class="criteria-column">
+      <h3 class="criteria-name">Regulation</h3>
+      <div class="criteria-description">
+        <p>Licensing, KYC/AML, jurisdiction risk and consumer protection.</p>
+        <p>We review terms, audits and enforcement records.</p>
       </div>
+      <div class="criteria-tile">
+        <img src="/images/home/evaluation-criteria-3.png" alt="" aria-hidden="true" loading="lazy">
+      </div>
+    </div>
 
-      <div class="criteria-column">
-        <h3 class="criteria-name">User experience</h3>
-        <div class="criteria-description">
-          <p>Onboarding speed, funding & withdrawals, mobile/web UX.</p>
-          <p>Support response time and resolution quality.</p>
-        </div>
-        <div class="criteria-tile">
-          <img src="/images/home/evaluation-criteria-4.png" alt="" aria-hidden="true" loading="lazy">
-        </div>
+    <div class="criteria-column">
+      <h3 class="criteria-name">User experience</h3>
+      <div class="criteria-description">
+        <p>Onboarding speed, funding & withdrawals, mobile/web UX.</p>
+        <p>Support response time and resolution quality.</p>
+      </div>
+      <div class="criteria-tile">
+        <img src="/images/home/evaluation-criteria-4.png" alt="" aria-hidden="true" loading="lazy">
       </div>
     </div>
   </div>

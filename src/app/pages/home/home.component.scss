@@ -61,7 +61,7 @@
   margin-top: 40px;
 }
 
-// Hero Section
+// Hero Section - full width
 .hero {
   background-image: url('/images/home/hero.png');
   background-size: cover;
@@ -71,6 +71,29 @@
   color: #333333;
   position: relative;
   overflow: hidden;
+
+  // Простой и надежный full-width
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  // Внутренний контейнер для hero контента
+  .hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 12px;
+    }
+  }
 
   .hero-content {
     z-index: 2;
