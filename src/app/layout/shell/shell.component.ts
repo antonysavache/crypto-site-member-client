@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { SkeletonComponent } from '../../shared/ui/skeleton/skeleton.component';
@@ -13,9 +13,9 @@ import { filter } from 'rxjs/operators';
   imports: [RouterOutlet, HeaderComponent, FooterComponent, SkeletonComponent]
 })
 export class ShellComponent implements OnInit {
-  isLoading = true;
-  private loadingTimer: any;
+  isLoading = false;
   private visitedRoutes = new Set<string>();
+  private loadingTimeout: any;
 
   constructor(private router: Router) {
     // Восстанавливаем посещенные роуты из sessionStorage
@@ -30,46 +30,75 @@ export class ShellComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Слушаем события роутинга
+    // Слушаем начало навигации
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationStart))
+      .subscribe((event: NavigationStart) => {
+        const targetRoute = event.url;
+
+        console.log('NavigationStart:', targetRoute);
+        console.log('Посещенные роуты:', Array.from(this.visitedRoutes));
+
+        // ВСЕГДА показываем skeleton при начале навигации
+        this.isLoading = true;
+
+        // Для кешированных страниц делаем минимальную задержку
+        if (this.visitedRoutes.has(targetRoute)) {
+          console.log('Кешированная страница - короткий skeleton');
+          this.loadingTimeout = setTimeout(() => {
+            this.isLoading = false;
+          }, 150); // Короткая задержка для кешированных
+        } else {
+          console.log('Новая страница - skeleton до загрузки');
+          // Для новых страниц skeleton убирается только в NavigationEnd
+        }
+      });
+
+    // Слушаем завершение навигации
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         const currentRoute = event.urlAfterRedirects;
 
-        // Логирование для отладки
-        console.log('Переход на:', currentRoute);
-        console.log('Посещенные роуты:', Array.from(this.visitedRoutes));
+        console.log('NavigationEnd:', currentRoute);
 
-        // Проверяем, была ли страница уже посещена
-        if (this.visitedRoutes.has(currentRoute)) {
-          console.log('Страница в кеше - показываем сразу');
-          this.isLoading = false;
-        } else {
-          console.log('Новая страница - показываем skeleton');
-          this.isLoading = true;
-          this.visitedRoutes.add(currentRoute);
-          this.saveVisitedRoutes(); // Сохраняем в sessionStorage
-
-          // Убираем skeleton через короткое время
-          this.loadingTimer = setTimeout(() => {
-            this.isLoading = false;
-          }, 300);
+        // Очищаем таймаут если он был
+        if (this.loadingTimeout) {
+          clearTimeout(this.loadingTimeout);
+          this.loadingTimeout = null;
         }
+
+        // Добавляем роут в кеш
+        this.visitedRoutes.add(currentRoute);
+        this.saveVisitedRoutes();
+
+        // Скрываем skeleton после завершения навигации
+        this.isLoading = false;
+        console.log('Skeleton скрыт после NavigationEnd');
       });
 
     // Первоначальная загрузка
     const initialRoute = this.router.url;
-    console.log('Начальный роут:', initialRoute);
-    this.visitedRoutes.add(initialRoute);
-    this.saveVisitedRoutes(); // Сохраняем начальный роут
-    setTimeout(() => {
+    console.log('Первоначальная загрузка:', initialRoute);
+
+    // Проверяем есть ли уже в кеше
+    if (this.visitedRoutes.has(initialRoute)) {
+      console.log('Начальная страница уже в кеше');
       this.isLoading = false;
-    }, 500);
+    } else {
+      console.log('Первый заход - показываем skeleton');
+      this.isLoading = true;
+      // Skeleton убирается автоматически при первом NavigationEnd
+    }
+
+    // Добавляем в кеш
+    this.visitedRoutes.add(initialRoute);
+    this.saveVisitedRoutes();
   }
 
   ngOnDestroy() {
-    if (this.loadingTimer) {
-      clearTimeout(this.loadingTimer);
+    if (this.loadingTimeout) {
+      clearTimeout(this.loadingTimeout);
     }
   }
 }
