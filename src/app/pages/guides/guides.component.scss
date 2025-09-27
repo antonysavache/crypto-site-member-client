@@ -1,4 +1,43 @@
 @import '../../../styles/variables';
 
-// Specific styles for guides page only
-// Most styles now moved to shared components
+// Content with sidebar layout
+.content-with-sidebar {
+  background: #f8fafc;
+  min-height: 60vh;
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+
+    @media (max-width: 768px) {
+      padding: 32px 16px 60px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 24px 12px 50px;
+    }
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    align-items: start;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  .main-content {
+    min-width: 0; // Prevent grid overflow
+  }
+
+  .sidebar-content {
+    @media (max-width: 1024px) {
+      order: -1; // Show sidebar above content on mobile
+    }
+  }
+}

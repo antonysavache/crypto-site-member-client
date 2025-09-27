@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CategoryHeroComponent, CategoryHeroData } from '../../shared/ui/category-hero/category-hero.component';
 import { CategoryControlsComponent, CategoryControlsConfig } from '../../shared/ui/category-controls/category-controls.component';
 import { CategoryGridComponent } from '../../shared/ui/category-grid/category-grid.component';
+import { CategorySidebarComponent, SidebarData } from '../../shared/ui/category-sidebar/category-sidebar.component';
 import { ReviewCardData } from '../../shared/ui/review-card/review-card.component';
 
 @Component({
@@ -10,7 +11,7 @@ import { ReviewCardData } from '../../shared/ui/review-card/review-card.componen
   templateUrl: './coins.component.html',
   styleUrl: './coins.component.scss',
   standalone: true,
-  imports: [RouterLink, CategoryHeroComponent, CategoryControlsComponent, CategoryGridComponent]
+  imports: [RouterLink, CategoryHeroComponent, CategoryControlsComponent, CategoryGridComponent, CategorySidebarComponent]
 })
 export class CoinsComponent {
   // Hero configuration
@@ -101,6 +102,49 @@ export class CoinsComponent {
       coinTag: 'solana'
     }
   ];
+
+  // Sidebar configuration
+  sidebarData: SidebarData = {
+    popularArticles: [
+      {
+        title: 'How to Buy Bitcoin in the UK',
+        category: 'Guide',
+        date: 'Jan 20, 2025',
+        link: '/guides/how-to-buy-bitcoin-uk'
+      },
+      {
+        title: 'Ethereum vs Bitcoin Comparison',
+        category: 'Analysis',
+        date: 'Jan 18, 2025',
+        link: '/learn/ethereum-vs-bitcoin'
+      },
+      {
+        title: 'Solana DeFi Ecosystem',
+        category: 'Learn',
+        date: 'Jan 15, 2025',
+        link: '/learn/solana-defi'
+      }
+    ],
+    relatedCategories: [
+      {
+        name: 'Learn Crypto',
+        description: 'Fundamentals and explainers',
+        link: '/learn'
+      },
+      {
+        name: 'How-to Guides',
+        description: 'Step-by-step tutorials',
+        link: '/guides'
+      },
+      {
+        name: 'Security & Taxes',
+        description: 'Stay safe and compliant',
+        link: '/security'
+      }
+    ],
+    showBestForUK: true,
+    showNewsletter: false
+  };
 
   searchQuery = '';
   currentFilter = 'all';

@@ -1,16 +1,21 @@
 <div class="app-shell">
-  <!-- Sticky Header Container - содержит header и мобильную TOC -->
+  <!-- Sticky Header Container -->
   <div class="header-container">
     <!-- Header Component -->
     <app-header></app-header>
 
-    <!-- Mobile TOC Slot - будет заполняться из страниц -->
+    <!-- Mobile TOC Slot -->
     <div id="mobile-toc-slot"></div>
   </div>
 
   <main class="app-main">
     <div class="app-content">
-      <router-outlet></router-outlet>
+      <!-- Loading State -->
+      @if (isLoading) {
+        <app-skeleton></app-skeleton>
+      } @else {
+        <router-outlet></router-outlet>
+      }
     </div>
   </main>
 

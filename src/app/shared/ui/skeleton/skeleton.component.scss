@@ -1,0 +1,275 @@
+@import '../../../../styles/variables';
+
+// Container
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 12px;
+  }
+}
+
+// Базовая анимация shimmer
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+// Базовый skeleton элемент
+.skeleton-base {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+// Hero Skeleton
+.skeleton-hero {
+  min-height: 350px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 60px 0 80px;
+  display: flex;
+  align-items: center;
+
+  .hero-content {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    height: 56px;
+    width: 60%;
+    margin: 0 auto 20px;
+  }
+
+  .hero-subtitle {
+    height: 20px;
+    width: 80%;
+    margin: 0 auto 16px;
+  }
+
+  .hero-stats {
+    height: 14px;
+    width: 40%;
+    margin: 0 auto 36px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0 50px;
+    min-height: 280px;
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+// Skeleton Text
+.skeleton-text {
+  @extend .skeleton-base;
+  border-radius: 8px;
+}
+
+// Skeleton Buttons
+.skeleton-button {
+  @extend .skeleton-base;
+  height: 44px;
+  border-radius: 12px;
+
+  &.primary {
+    width: 160px;
+  }
+
+  &.secondary {
+    width: 140px;
+  }
+
+  &.card-button {
+    width: 120px;
+    height: 36px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 768px) {
+    &.primary, &.secondary {
+      width: 200px;
+      height: 40px;
+    }
+  }
+}
+
+// Controls Skeleton
+.skeleton-controls {
+  padding: 32px 0;
+  background: white;
+  border-bottom: 1px solid #f1f5f9;
+
+  .controls-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+  }
+
+  .filter-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .search-sort {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      justify-content: space-between;
+    }
+  }
+}
+
+// Skeleton Chips
+.skeleton-chip {
+  @extend .skeleton-base;
+  height: 32px;
+  width: 78px;
+  border-radius: 16px;
+}
+
+// Skeleton Search & Sort
+.skeleton-search {
+  @extend .skeleton-base;
+  height: 40px;
+  width: 240px;
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    width: 180px;
+  }
+}
+
+.skeleton-sort {
+  @extend .skeleton-base;
+  height: 40px;
+  width: 120px;
+  border-radius: 8px;
+}
+
+// Grid Skeleton
+.skeleton-grid {
+  padding: 40px 0 80px;
+  background: white;
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+// Skeleton Card
+.skeleton-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+
+  .skeleton-image {
+    @extend .skeleton-base;
+    height: 200px;
+    border-radius: 0;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .skeleton-badge {
+    @extend .skeleton-base;
+    height: 20px;
+    width: 60px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    height: 24px;
+    width: 90%;
+    margin-bottom: 8px;
+  }
+
+  .card-subtitle {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+  .card-meta {
+    height: 14px;
+    width: 70%;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .card-content {
+      padding: 16px;
+    }
+
+    .skeleton-image {
+      height: 160px;
+    }
+  }
+}
+
+// Дополнительные варианты ширины для реалистичности
+.skeleton-text:nth-child(even) {
+  width: 85%;
+}
+
+.skeleton-text:nth-child(3n) {
+  width: 75%;
+}
+
+.skeleton-card:nth-child(2n) .card-title {
+  width: 80%;
+}
+
+.skeleton-card:nth-child(3n) .card-title {
+  width: 95%;
+}
+
+.skeleton-card:nth-child(2n) .card-meta {
+  width: 60%;
+}

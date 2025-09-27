@@ -52,7 +52,7 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 3rem;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
@@ -210,7 +210,7 @@
 
   // Когда hero используется как отдельная секция (не в layout-sidebar)
   &.hero-standalone {
-    max-width: 1280px;
+    max-width: 1440px;
     margin: 0 auto 60px auto;
     padding: 2.5rem 15px;
 

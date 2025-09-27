@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CategoryHeroComponent, CategoryHeroData } from '../../shared/ui/category-hero/category-hero.component';
 import { CategoryControlsComponent, CategoryControlsConfig } from '../../shared/ui/category-controls/category-controls.component';
 import { CategoryGridComponent } from '../../shared/ui/category-grid/category-grid.component';
+import { CategorySidebarComponent, SidebarData } from '../../shared/ui/category-sidebar/category-sidebar.component';
 import { ReviewCardData } from '../../shared/ui/review-card/review-card.component';
 
 @Component({
@@ -10,7 +11,7 @@ import { ReviewCardData } from '../../shared/ui/review-card/review-card.componen
   templateUrl: './guides.component.html',
   styleUrl: './guides.component.scss',
   standalone: true,
-  imports: [RouterLink, CategoryHeroComponent, CategoryControlsComponent, CategoryGridComponent]
+  imports: [RouterLink, CategoryHeroComponent, CategoryControlsComponent, CategoryGridComponent, CategorySidebarComponent]
 })
 export class GuidesComponent {
   // Hero configuration
@@ -144,6 +145,49 @@ export class GuidesComponent {
       coinTag: 'beginner'
     }
   ];
+
+  // Sidebar configuration
+  sidebarData: SidebarData = {
+    popularArticles: [
+      {
+        title: 'How to Buy ETH in the UK',
+        category: 'Guide',
+        date: 'Jan 15, 2025',
+        link: '/guides/how-to-buy-eth-uk'
+      },
+      {
+        title: 'Setting Up Hardware Wallets',
+        category: 'Security',
+        date: 'Jan 12, 2025',
+        link: '/security/hardware-wallets'
+      },
+      {
+        title: 'Understanding Crypto Wallets',
+        category: 'Guide',
+        date: 'Jan 8, 2025',
+        link: '/guides/crypto-wallets'
+      }
+    ],
+    relatedCategories: [
+      {
+        name: 'Learn Crypto',
+        description: 'Crypto fundamentals',
+        link: '/learn'
+      },
+      {
+        name: 'Security & Taxes',
+        description: 'Stay safe and compliant',
+        link: '/security'
+      },
+      {
+        name: 'Coin Reviews',
+        description: 'Independent crypto reviews',
+        link: '/coins'
+      }
+    ],
+    showBestForUK: false,
+    showNewsletter: true
+  };
 
   searchQuery = '';
   currentFilter = 'all';

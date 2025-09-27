@@ -106,8 +106,13 @@
     line-height: 1.05;
     margin-bottom: 20px;
     color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     white-space: pre-line;
+
+    // Размытие только под буквами
+    text-shadow:
+      0 0 10px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(0, 0, 0, 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.9);
 
     @media (max-width: 768px) {
       font-weight: 700;
@@ -124,11 +129,16 @@
     font-size: clamp(16px, 4vw, 20px);
     line-height: 1.5;
     color: #ffffff;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
     margin-bottom: 16px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+
+    // Размытие только под буквами
+    text-shadow:
+      0 0 8px rgba(0, 0, 0, 0.7),
+      0 0 15px rgba(0, 0, 0, 0.5),
+      0 1px 6px rgba(0, 0, 0, 0.8);
 
     @media (max-width: 768px) {
       margin-bottom: 12px;
@@ -142,9 +152,14 @@
   .hero-stats {
     font-size: clamp(12px, 3vw, 14px);
     color: #ffffff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 36px;
     font-weight: 500;
+
+    // Размытие только под буквами
+    text-shadow:
+      0 0 6px rgba(0, 0, 0, 0.6),
+      0 0 12px rgba(0, 0, 0, 0.4),
+      0 1px 4px rgba(0, 0, 0, 0.7);
 
     @media (max-width: 768px) {
       margin-bottom: 24px;
