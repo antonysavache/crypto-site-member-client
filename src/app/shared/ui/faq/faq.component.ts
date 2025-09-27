@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 export interface FaqItem {
   question: string;
@@ -12,7 +12,7 @@ export interface FaqItem {
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
   standalone: true,
-  imports: [NgFor, NgClass]
+  imports: [NgClass]
 })
 export class FaqComponent {
   @Input() title: string = 'Frequently Asked Questions';

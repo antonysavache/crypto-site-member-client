@@ -10,7 +10,6 @@ export interface ProsConsItem {
   templateUrl: './pros-cons-table.component.html',
   styleUrl: './pros-cons-table.component.scss',
   standalone: true,
-  imports: [NgFor]
 })
 export class ProsConsTableComponent {
   @Input() title: string = 'Commissions and licenses';

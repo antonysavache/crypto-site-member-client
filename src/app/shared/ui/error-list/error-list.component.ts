@@ -6,7 +6,6 @@ import { NgFor } from '@angular/common';
   templateUrl: './error-list.component.html',
   styleUrl: './error-list.component.scss',
   standalone: true,
-  imports: [NgFor]
 })
 export class ErrorListComponent {
   @Input() items: string[] = [];

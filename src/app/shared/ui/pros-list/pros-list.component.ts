@@ -11,7 +11,6 @@ export interface ProsItem {
   templateUrl: './pros-list.component.html',
   styleUrl: './pros-list.component.scss',
   standalone: true,
-  imports: [NgFor]
 })
 export class ProsListComponent {
   @Input() items: ProsItem[] = [];

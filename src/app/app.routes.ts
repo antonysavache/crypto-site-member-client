@@ -10,65 +10,54 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
-  // Best Exchange Page
   {
     path: 'best-crypto-exchange-uk',
-    loadComponent: () => import('./pages/best-crypto-exchange-uk/best-crypto-exchange-uk.component').then(m => m.BestCryptoExchangeUkComponent)
-  },
-  // Exchanges Category
-  {
-    path: 'exchanges',
-    loadComponent: () => import('./pages/exchanges/exchanges.component').then(m => m.ExchangesComponent)
+    loadComponent: () => import('./pages/categories/exchanges/best-crypto-exchange-uk/best-crypto-exchange-uk.component').then(m => m.BestCryptoExchangeUkComponent)
   },
   {
     path: 'exchanges/coinbase-review',
-    loadComponent: () => import('./pages/coinbase-review/coinbase-review.component').then(m => m.CoinbaseReviewComponent)
+    loadComponent: () => import('./pages/categories/exchanges/coinbase-review/coinbase-review.component').then(m => m.CoinbaseReviewComponent)
   },
   {
     path: 'exchanges/kraken-review',
-    loadComponent: () => import('./pages/kraken-review/kraken-review.component').then(m => m.KrakenReviewComponent)
+    loadComponent: () => import('./pages/categories/exchanges/kraken-review/kraken-review.component').then(m => m.KrakenReviewComponent)
   },
-  // Coins Review Category
   {
     path: 'coins',
-    loadComponent: () => import('./pages/coins/coins.component').then(m => m.CoinsComponent)
+    loadComponent: () => import('./pages/categories/coins/coins.component').then(m => m.CoinsComponent)
   },
   {
     path: 'coins/bitcoin-review',
-    loadComponent: () => import('./pages/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
+    loadComponent: () => import('./pages/categories/coins/articles/bitcoin-origin-new/bitcoin-origin-new.component').then(m => m.BitcoinOriginNewComponent)
   },
   {
     path: 'coins/ethereum-review',
-    loadComponent: () => import('./pages/ethereum-review/ethereum-review.component').then(m => m.EthereumReviewComponent)
+    loadComponent: () => import('./pages/categories/coins/articles/ethereum-review/ethereum-review.component').then(m => m.EthereumReviewComponent)
   },
-  // Guides Category
   {
     path: 'guides',
-    loadComponent: () => import('./pages/guides/guides.component').then(m => m.GuidesComponent)
+    loadComponent: () => import('./pages/categories/guides/guides.component').then(m => m.GuidesComponent)
   },
   {
     path: 'guides/how-to-buy-eth-uk',
-    loadComponent: () => import('./pages/how-to-buy-eth-uk/how-to-buy-eth-uk.component').then(m => m.HowToBuyEthUkComponent)
+    loadComponent: () => import('./pages/categories/guides/articles/how-to-buy-eth-uk/how-to-buy-eth-uk.component').then(m => m.HowToBuyEthUkComponent)
   },
-  // Security Category
   {
     path: 'security',
-    loadComponent: () => import('./pages/security/security.component').then(m => m.SecurityComponent)
+    loadComponent: () => import('./pages/categories/security/security.component').then(m => m.SecurityComponent)
   },
   {
     path: 'security/crypto-risks',
-    loadComponent: () => import('./pages/crypto-risks-security/crypto-risks-security.component').then(m => m.CryptoRisksSecurityComponent)
+    loadComponent: () => import('./pages/categories/security/articles/crypto-risks-security/crypto-risks-security.component').then(m => m.CryptoRisksSecurityComponent)
   },
   {
     path: 'security/uk-crypto-tax',
-    loadComponent: () => import('./pages/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
+    loadComponent: () => import('./pages/categories/security/articles/uk-crypto-tax/uk-crypto-tax.component').then(m => m.UkCryptoTaxComponent)
   },
-  // Learn Category
   {
     path: 'learn',
     loadComponent: () => import('./pages/learn/learn.component').then(m => m.LearnComponent)
   },
-  // Legacy redirects
   {
     path: 'coinbase-review',
     redirectTo: '/exchanges/coinbase-review'
@@ -101,12 +90,4 @@ export const routes: Routes = [
     path: 'storybook',
     loadComponent: () => import('./pages/storybook/storybook.component').then(m => m.StorybookComponent)
   },
-  {
-    path: 'members',
-    redirectTo: '/exchanges/coinbase-review'
-  },
-  {
-    path: 'settings',
-    redirectTo: '/exchanges/coinbase-review'
-  }
 ];
