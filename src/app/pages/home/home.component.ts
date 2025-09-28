@@ -70,7 +70,7 @@ export class HomeComponent {
       utmContent: 'review_btn',
       analyticsCard: 'home_feature_review_card',
       analyticsCta: 'home_feature_review_cta',
-      imageUrl: '/images/kraken/kraken-preview-card.png',
+      imageUrl: '/images/kraken/kraken-preview-card.webp',
       icon: '🔐'
     },
     {
@@ -87,7 +87,7 @@ export class HomeComponent {
       utmContent: 'card_btn',
       analyticsCard: 'home_feature_top_pick_card',
       analyticsCta: 'home_feature_top_pick_cta',
-      imageUrl: '/images/home/best-exchange-card-preview.png',
+      imageUrl: '/images/home/best-exchange-card-preview.webp',
       icon: '🏆'
     }
   ];
@@ -131,7 +131,7 @@ export class HomeComponent {
       theme: 'light',
       link: '/coins/bitcoin-review',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/BTC-card-article-preview.png'
+      imageUrl: '/images/home/BTC-card-article-preview.webp'
     },
     {
       id: 2,
@@ -145,7 +145,7 @@ export class HomeComponent {
       theme: 'light',
       link: '/coins/ethereum-review',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/ETH-card-article-preview.png'
+      imageUrl: '/images/home/ETH-card-article-preview.webp'
     },
     {
       id: 3,
@@ -159,7 +159,7 @@ export class HomeComponent {
       theme: 'light',
       link: '/coins/solana-review',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/SOL-card-article-preview.png'
+      imageUrl: '/images/home/SOL-card-article-preview.webp'
     }
   ];
 
@@ -178,7 +178,7 @@ export class HomeComponent {
       link: '/security/crypto-scams',
       buttonText: 'Read Guide',
       teaser: 'Red flags, fake support, phishing and "too-good-to-be-true" yields — how to verify links, wallets and apps.',
-      imageUrl: '/images/home/security-avoid-scams-article-preview.png'
+      imageUrl: '/images/home/security-avoid-scams-article-preview.webp'
     },
     {
       id: 5,
@@ -193,7 +193,7 @@ export class HomeComponent {
       link: '/security/uk-crypto-tax-basics',
       buttonText: 'Read Guide',
       teaser: 'Income vs capital gains, HMRC rules, allowances, record-keeping and simple examples for beginners.',
-      imageUrl: '/images/home/security-taxes-explaining-article-preview.png'
+      imageUrl: '/images/home/security-taxes-explaining-article-preview.webp'
     }
   ];
 

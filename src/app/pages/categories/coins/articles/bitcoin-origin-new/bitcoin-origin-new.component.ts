@@ -49,7 +49,7 @@ export class BitcoinOriginNewComponent implements OnInit {
     date: 'January 2025',
     category: 'Cryptocurrency Review',
     heroImage: {
-      src: '/images/bitcoin-review/btc-review-hero.png',
+      src: '/images/bitcoin-review/btc-review-hero.webp',
       alt: 'Bitcoin Review 2025'
     }
   };

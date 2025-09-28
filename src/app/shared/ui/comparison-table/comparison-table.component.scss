@@ -3,6 +3,7 @@
 // ================================
 
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .comparison-table {
   margin: 3rem 0;
@@ -26,15 +27,11 @@
   // Умные ограничения ширины на основе брейкпоинтов
   max-width: calc(100vw - 320px); // Desktop: полная ширина минус сайдбар и отступы
 
-  @media (max-width: 1440px) {
-    max-width: calc(100vw - 280px); // Меньший сайдбар на средних экранах
-  }
-
-  @media (max-width: 1024px) {
+  @include tablet {
     max-width: calc(100vw - 60px); // Tablet: без сайдбара, только отступы
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     max-width: calc(100vw - 40px); // Mobile: минимальные отступы
   }
 }

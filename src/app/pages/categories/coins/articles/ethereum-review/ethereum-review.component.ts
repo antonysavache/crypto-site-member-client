@@ -50,7 +50,7 @@ export class EthereumReviewComponent implements OnInit {
     date: 'January 2025',
     category: 'Cryptocurrency Review',
     heroImage: {
-      src: '/images/bitcoin-review/btc-review-hero.png', // временно используем bitcoin изображение
+      src: '/images/bitcoin-review/btc-review-hero.webp', // временно используем bitcoin изображение
       alt: 'Ethereum Review 2025'
     }
   };

@@ -2,6 +2,8 @@
 // HEADER COMPONENT STYLES - FIXED MOBILE MENU
 // ================================
 
+@import '../../../styles/mixins';
+
 .app-header {
   position: static;
   background: #ffffff;
@@ -55,7 +57,10 @@
 
 // Desktop Navigation
 .nav-desktop {
-  @media (max-width: 768px) {
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
     display: none;
   }
 }
@@ -134,7 +139,13 @@
     background-color: rgba(0, 0, 0, 0.05);
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include tablet {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,7 +194,7 @@
   display: flex;
   overflow: hidden; // Блокируем скролл внутри overlay
 
-  @media (min-width: 769px) {
+  @include desktop {
     display: none;
   }
 }

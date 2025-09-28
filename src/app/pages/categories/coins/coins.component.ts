@@ -30,7 +30,7 @@ export class CoinsComponent {
       text: 'Browse all reviews →',
       link: '#feed'
     },
-    backgroundColor: "url('/images/categories/coins-reviews/coins-review-hero.png') center/cover no-repeat",
+    backgroundColor: "url('/images/categories/coins-reviews/coins-review-hero.webp') center/cover no-repeat",
     useTextBackground: true
   };
 
@@ -68,7 +68,7 @@ export class CoinsComponent {
       theme: 'light',
       link: '/coin/bitcoin',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/BTC-card-article-preview.png',
+      imageUrl: '/images/home/BTC-card-article-preview.webp',
       teaser: 'Fundamentals, risks, and real-world use cases — written for UK investors.',
       coinTag: 'bitcoin'
     },
@@ -84,7 +84,7 @@ export class CoinsComponent {
       theme: 'light',
       link: '/coin/ethereum',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/ETH-card-article-preview.png',
+      imageUrl: '/images/home/ETH-card-article-preview.webp',
       teaser: 'Fundamentals, risks, and real-world use cases — written for UK investors.',
       coinTag: 'ethereum'
     },
@@ -100,7 +100,7 @@ export class CoinsComponent {
       theme: 'light',
       link: '/coin/solana',
       buttonText: 'Read Review',
-      imageUrl: '/images/home/SOL-card-article-preview.png',
+      imageUrl: '/images/home/SOL-card-article-preview.webp',
       teaser: 'Fundamentals, risks, and real-world use cases — written for UK investors.',
       coinTag: 'solana'
     }

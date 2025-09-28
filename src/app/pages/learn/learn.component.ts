@@ -34,7 +34,7 @@ export class LearnComponent {
       text: 'Beginner path →',
       link: '#beginner-cta'
     },
-    backgroundColor: "url('/images/learn/learn-hero.png') center/cover no-repeat",
+    backgroundColor: "url('/images/learn/learn-hero.webp') center/cover no-repeat",
     useTextBackground: true
   };
 
@@ -53,7 +53,7 @@ export class LearnComponent {
       link: '/coins/bitcoin-review',
       buttonText: 'Read explainer',
       teaser: 'The original cryptocurrency explained — how it works, why it matters, and what makes it unique.',
-      imageUrl: '/images/home/BTC-card-article-preview.png'
+      imageUrl: '/images/home/BTC-card-article-preview.webp'
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ export class LearnComponent {
       link: '/coins/ethereum-review',
       buttonText: 'Read explainer',
       teaser: 'Smart-contract platform explained — apps, DeFi, and programmable money.',
-      imageUrl: '/images/home/ETH-card-article-preview.png'
+      imageUrl: '/images/home/ETH-card-article-preview.webp'
     },
     {
       id: 3,
@@ -83,7 +83,7 @@ export class LearnComponent {
       link: '/coins/solana-review',
       buttonText: 'Read explainer',
       teaser: 'High-performance blockchain — fast transactions and low fees explained.',
-      imageUrl: '/images/home/SOL-card-article-preview.png'
+      imageUrl: '/images/home/SOL-card-article-preview.webp'
     }
   ];
 
@@ -148,7 +148,7 @@ export class LearnComponent {
       link: '/security/crypto-scams',
       buttonText: 'Read guide',
       teaser: 'Red flags, fake support, phishing and "too-good-to-be-true" yields — how to verify links, wallets and apps.',
-      imageUrl: '/images/home/security-avoid-scams-article-preview.png'
+      imageUrl: '/images/home/security-avoid-scams-article-preview.webp'
     },
     {
       id: 5,
@@ -163,7 +163,7 @@ export class LearnComponent {
       link: '/security/uk-crypto-tax-basics',
       buttonText: 'Read explainer',
       teaser: 'Income vs capital gains, HMRC rules, allowances, record-keeping and simple examples for beginners.',
-      imageUrl: '/images/home/security-taxes-explaining-article-preview.png'
+      imageUrl: '/images/home/security-taxes-explaining-article-preview.webp'
     },
     {
       id: 6,
@@ -238,7 +238,7 @@ export class LearnComponent {
       link: '/exchanges/kraken-review',
       buttonText: 'Read review',
       teaser: 'Security, fees and deposits explained. Clear pros & cons for beginners.',
-      imageUrl: '/images/kraken/kraken-preview-card.png'
+      imageUrl: '/images/kraken/kraken-preview-card.webp'
     }
   ];
 

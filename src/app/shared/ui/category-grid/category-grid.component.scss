@@ -14,7 +14,6 @@
 // Category Grid
 .category-grid {
   padding: 60px 0;
-  background: #f9fafb;
 
   @media (max-width: 768px) {
     padding: 40px 0;
@@ -29,7 +28,7 @@
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
-    
+
     /* Центрируем третий элемент если есть */
     > :nth-child(3n) {
       grid-column: 1 / -1;
@@ -41,7 +40,7 @@
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 20px;
-    
+
     /* Убираем центрирование на мобильных */
     > :nth-child(3n) {
       grid-column: auto;

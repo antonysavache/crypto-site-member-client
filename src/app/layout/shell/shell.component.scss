@@ -2,6 +2,8 @@
 // SHELL COMPONENT STYLES - WITH STICKY HEADER CONTAINER
 // ================================
 
+@import '../../../styles/mixins';
+
 .app-shell {
   display: flex;
   flex-direction: column;
@@ -28,11 +30,11 @@
     margin: 0 auto;
     padding: 0 24px;
 
-    @media (max-width: 768px) {
+    @include mobile-tablet {
       padding: 0 16px;
     }
 
-    @media (max-width: 480px) {
+    @include mobile {
       padding: 0 12px;
     }
   }

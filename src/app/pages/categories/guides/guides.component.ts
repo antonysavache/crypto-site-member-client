@@ -30,7 +30,7 @@ export class GuidesComponent {
       text: 'Browse all guides →',
       link: '#feed'
     },
-    backgroundColor: "url('/images/categories/guides/guides-hero.png') center/cover no-repeat",
+    backgroundColor: "url('/images/categories/guides/guides-hero.webp') center/cover no-repeat",
     useTextBackground: true
   };
 

@@ -50,7 +50,7 @@ export class CoinbaseReviewComponent implements OnInit {
     date: 'January 2025',
     category: 'Exchange Review',
     heroImage: {
-      src: '/images/coinbase-review-hero.png',
+      src: '/images/coinbase-review-hero.webp',
       alt: 'Coinbase UK Review 2025'
     }
   };

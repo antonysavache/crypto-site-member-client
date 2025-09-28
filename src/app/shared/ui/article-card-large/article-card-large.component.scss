@@ -1,4 +1,5 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .article-card-large {
   border-radius: 16px;
@@ -117,7 +118,7 @@
     padding-top: 20px;
     border-top: 1px solid #e5e7eb;
 
-    @media (max-width: 480px) {
+    @include mobile {
       flex-direction: column;
       gap: 8px;
     }
@@ -125,7 +126,7 @@
 }
 
 // Адаптивность
-@media (max-width: 768px) {
+@include mobile-tablet {
   .article-image {
     height: 200px;
 
@@ -147,7 +148,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@include mobile {
   .article-image {
     height: 180px;
 

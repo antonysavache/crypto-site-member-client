@@ -1,8 +1,8 @@
 // ================================
-// LAYOUT SYSTEM - ГЛОБАЛЬНАЯ СИСТЕМА
+// GLOBAL LAYOUT SYSTEM
 // ================================
 
-// App Shell
+// App Shell - основная структура приложения
 .app-shell {
   display: flex;
   flex-direction: column;
@@ -12,42 +12,61 @@
 .app-main {
   flex: 1;
 }
+
 // ================================
-// LAYOUT UTILITIES - ГЛОБАЛЬНЫЕ КЛАССЫ
+// CONTAINER SYSTEM
 // ================================
 
-// Container system
+// Основной контейнер
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
+  max-width: $container-desktop;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
 
-  @media (min-width: 768px) {
-    padding: 0 2rem;
+  @include mobile {
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
   }
 }
 
+// Узкий контейнер для текстового контента
 .container-narrow {
+  width: 100%;
   max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
 
-  @media (min-width: 768px) {
-    padding: 0 2rem;
+  @include mobile {
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
   }
 }
 
+// Широкий контейнер
 .container-wide {
+  width: 100%;
   max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
 
-  @media (min-width: 768px) {
-    padding: 0 2rem;
+  @include mobile {
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
   }
 }
 
-// Grid layouts
+// ================================
+// GRID LAYOUTS
+// ================================
+
+// Layout с сайдбаром
 .layout-sidebar {
   display: grid;
   grid-template-columns: 1fr 280px;
@@ -57,70 +76,88 @@
   padding: 0 15px;
   box-sizing: border-box;
 
-  @media (max-width: 1024px) {
+  @include mobile-tablet {
     grid-template-columns: 1fr;
     max-width: 800px;
   }
 
-  // Главная колонка с контентом должна быть ограничена
+  // Главная колонка должна уметь сжиматься
   > *:first-child {
-    min-width: 0; // Позволяет grid item сжиматься
+    min-width: 0;
   }
 }
 
+// Две колонки
 .layout-two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
-  @media (max-width: 768px) {
+  @include mobile {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 }
 
+// Три колонки
 .layout-three-column {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 
-  @media (max-width: 1024px) {
+  @include mobile-tablet {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 }
 
-// Sidebar component
-.sidebar {
-  position: sticky;
-  top: 100px; // Отступ от header
-  height: fit-content;
+// ================================
+// SPACING UTILITIES
+// ================================
 
-  @media (max-width: 1024px) {
-    position: static;
-    top: auto;
-    height: auto;
-  }
-}
-
-.sidebar-hidden-mobile {
-  @media (max-width: 1024px) {
-    display: none;
-  }
-}
-
-// Content spacing
+// Вертикальные отступы между элементами
 .content-spacing {
   > * + * {
     margin-top: 1.5rem;
   }
 }
 
-// Дополнительные отступы для заголовков в article-content
+.content-spacing-large {
+  > * + * {
+    margin-top: 3rem;
+  }
+}
+
+// ================================
+// PAGE LAYOUTS
+// ================================
+
+// Базовый layout страницы
+.page-layout {
+  padding: 2rem 0;
+
+  @include mobile {
+    padding: 1rem 0;
+  }
+}
+
+.page-header {
+  margin-bottom: 3rem;
+
+  @include mobile {
+    margin-bottom: 2rem;
+  }
+}
+
+// ================================
+// ARTICLE CONTENT
+// ================================
+
+// Стили для контента статей (параграфы, заголовки, списки)
 .article-content {
   // Параграфы
   p {
@@ -128,12 +165,10 @@
     margin-bottom: 1.25rem;
     line-height: 1.6;
 
-    // Первый параграф в секции не должен иметь верхний отступ
     &:first-child {
       margin-top: 0;
     }
 
-    // Последний параграф в секции не должен иметь нижний отступ
     &:last-child {
       margin-bottom: 0;
     }
@@ -173,227 +208,5 @@
     margin-bottom: 1.5rem;
     max-width: 100%;
     height: auto;
-  }
-}
-
-.content-spacing-large {
-  > * + * {
-    margin-top: 3rem;
-  }
-}
-
-// Page layouts
-.page-layout {
-  padding: 2rem 0;
-
-  @media (max-width: 768px) {
-    padding: 1rem 0;
-  }
-}
-
-// Hero section container - глобальный стиль
-.hero-section {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-  margin-bottom: 60px;
-
-  @media (max-width: 1024px) {
-    margin-bottom: 32px;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.875rem;
-  }
-
-  // Когда hero используется как отдельная секция (не в layout-sidebar)
-  &.hero-standalone {
-    max-width: 1440px;
-    margin: 0 auto 60px auto;
-    padding: 2.5rem 15px;
-
-    @media (min-width: 768px) {
-      padding: 2.5rem 2rem;
-    }
-
-    @media (max-width: 1024px) {
-      margin-bottom: 32px;
-    }
-
-    @media (max-width: 768px) {
-      padding: 1.25rem 15px;
-    }
-  }
-
-  // Hero banner с background image
-  &.hero-banner {
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    padding: 2.5rem;
-
-    @media (max-width: 768px) {
-      padding: 1.25rem;
-    }
-
-    // Темная overlay для читаемости текста
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      color: white;
-      max-width: 600px;
-      flex: none;
-
-      .page-title {
-        color: white !important;
-      }
-
-      .author,
-      .date {
-        color: rgba(255, 255, 255, 0.9) !important;
-      }
-
-      .category {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        color: white !important;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-    }
-
-    @media (max-width: 768px) {
-      background-position: center bottom;
-      min-height: 300px;
-      text-align: left;
-
-      &::before {
-        background: rgba(0, 0, 0, 0.6);
-      }
-
-      .hero-content {
-        max-width: 100%;
-      }
-    }
-  }
-}
-
-.hero-content {
-  flex: 1;
-}
-
-.article-meta {
-  display: flex;
-  gap: 0.9375rem;
-  margin-bottom: 0.9375rem;
-
-  .category {
-    background: #6146FF;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  .date {
-    color: #666;
-    font-size: 0.875rem;
-  }
-}
-
-.author-info .author {
-  color: #666;
-  font-size: 1rem;
-}
-
-.page-header {
-  margin-bottom: 3rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 2rem;
-  }
-}
-
-.page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #383545;
-  margin: 0 0 1rem 0;
-
-  @media (max-width: 767px) {
-    font-size: 1.75rem;
-    line-height: 1.3;
-  }
-}
-
-.page-description {
-  color: #64748b;
-  font-size: 18px;
-  margin-bottom: 0;
-}
-
-// Footer
-.app-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #e0e0e0;
-  padding: 2rem 0;
-  margin-top: auto;
-
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    padding: 0 2rem;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-    }
-  }
-
-  .footer-info {
-    flex: 1;
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    @media (max-width: 768px) {
-      gap: 1rem;
-    }
-  }
-
-  .footer-link {
-    color: #6c757d;
-    text-decoration: none;
-    font-size: 14px;
-
-    &:hover {
-      color: #6146FF;
-    }
   }
 }

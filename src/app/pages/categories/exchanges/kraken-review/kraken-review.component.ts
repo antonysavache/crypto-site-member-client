@@ -53,7 +53,7 @@ export class KrakenReviewComponent implements OnInit {
     date: 'January 2025',
     category: 'Exchange Review',
     heroImage: {
-      src: '/images/kraken/kraken-review-hero.jpg',
+      src: '/images/kraken/kraken-review-hero.webp',
       alt: 'Kraken UK Review 2025'
     }
   };

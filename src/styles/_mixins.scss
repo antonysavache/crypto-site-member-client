@@ -1,32 +1,64 @@
 // ================================
-// MIXINS
+// RESPONSIVE BREAKPOINT MIXINS
 // ================================
 
-// Focus ring mixin
+// Используйте эти миксины вместо прямых @media запросов
+// Mobile: до 767px (телефоны)
+// Tablet: 768px - 1024px (планшеты)
+// Desktop: от 1025px (десктопы)
+
+// Mobile only
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+// Tablet only
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Desktop only
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+// ================================
+// КОМБИНИРОВАННЫЕ МИКСИНЫ
+// ================================
+
+// Mobile + Tablet (не десктоп)
+@mixin mobile-tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Tablet + Desktop (не мобилка)
+@mixin tablet-desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// ================================
+// UTILITY MIXINS
+// ================================
+
+// Focus ring для accessibility
 @mixin focus-ring($color: $focus-ring-color, $width: $focus-ring-width, $offset: $focus-ring-offset) {
   outline: $width solid $color;
   outline-offset: $offset;
   box-shadow: 0 0 0 1px rgba($color, 0.3);
 }
 
-// Focus visible state
-@mixin focus-visible($color: $focus-ring-color, $width: $focus-ring-width, $offset: $focus-ring-offset) {
-  &:focus-visible {
-    @include focus-ring($color, $width, $offset);
-  }
-}
-
-// Clearfix mixin
-@mixin clearfix() {
-  &::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-// Screen reader only content (but keep it in DOM for accessibility)
-@mixin sr-only() {
+// Screen reader only content
+@mixin sr-only {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -38,70 +70,9 @@
   border: 0 !important;
 }
 
-// Visually hidden but still accessible to screen readers
-@mixin visually-hidden() {
-  @include sr-only();
-}
-
-// Container mixin
-@mixin container($max-width: $container-desktop) {
-  width: 100%;
-  max-width: $max-width;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: $spacing-md;
-  padding-right: $spacing-md;
-
-  @media (max-width: $breakpoint-mobile) {
-    padding-left: $spacing-sm;
-    padding-right: $spacing-sm;
-  }
-}
-
-// Button reset mixin
-@mixin button-reset() {
-  appearance: none;
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-}
-
-// Truncate text
-@mixin text-truncate() {
+// Text truncate с многоточием
+@mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-// Responsive breakpoint mixin
-@mixin breakpoint($size) {
-  @if $size == mobile {
-    @media (max-width: #{$breakpoint-mobile - 1px}) { @content; }
-  } @else if $size == tablet {
-    @media (min-width: $breakpoint-mobile) and (max-width: #{$breakpoint-tablet - 1px}) { @content; }
-  } @else if $size == desktop {
-    @media (min-width: $breakpoint-desktop) { @content; }
-  }
-}
-
-// Mobile first breakpoint (max-width)
-@mixin breakpoint-down($size) {
-  @if $size == tablet {
-    @media (max-width: #{$breakpoint-mobile - 1px}) { @content; }
-  } @else if $size == desktop {
-    @media (max-width: #{$breakpoint-tablet - 1px}) { @content; }
-  }
-}
-
-// Desktop first breakpoint (min-width) - alias for breakpoint
-@mixin breakpoint-up($size) {
-  @if $size == tablet {
-    @media (min-width: $breakpoint-mobile) { @content; }
-  } @else if $size == desktop {
-    @media (min-width: $breakpoint-desktop) { @content; }
-  }
 }
