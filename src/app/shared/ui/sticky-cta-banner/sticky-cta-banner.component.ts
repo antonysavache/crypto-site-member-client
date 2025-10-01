@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-sticky-cta-banner',
+  standalone: true,
+  imports: [],
   templateUrl: './sticky-cta-banner.component.html',
-  styleUrl: './sticky-cta-banner.component.scss',
-  standalone: true
+  styleUrl: './sticky-cta-banner.component.scss'
 })
 export class StickyCTABannerComponent {
-  @Input() title: string = 'Ready to Start?';
-  @Input() description: string = 'Join thousands of users and get started today';
-  @Input() ctaText: string = 'Get Started';
-  @Input() ctaLink: string = '#';
+  title = input<string>('Ready to Start?');
+  description = input<string>('Join thousands of users and get started today');
+  ctaText = input<string>('Get Started');
+  ctaLink = input<string>('#');
 }

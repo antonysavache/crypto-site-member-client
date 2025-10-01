@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, input, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 export interface ReviewCardData {
@@ -17,24 +16,25 @@ export interface ReviewCardData {
   readTime?: string;
   featured?: boolean;
   teaser?: string;
-  coinTag?: string; // Добавляем для фильтрации на странице coins
-  excerpt?: string; // Для совместимости с поиском
+  coinTag?: string;
+  excerpt?: string;
 }
 
 @Component({
   selector: 'app-review-card',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './review-card.component.html',
   styleUrl: './review-card.component.scss'
 })
 export class ReviewCardComponent {
-  @Input({ required: true }) review!: ReviewCardData;
+  review = input.required<ReviewCardData>();
 
-  getCoinName(title: string): string {
+  coinName = computed(() => {
+    const title = this.review().title;
     if (title.includes('Bitcoin')) return 'Bitcoin (BTC)';
     if (title.includes('Ethereum')) return 'Ethereum (ETH)';
     if (title.includes('Solana')) return 'Solana (SOL)';
     return title;
-  }
+  });
 }

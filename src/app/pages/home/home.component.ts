@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ArticleCardComponent, ArticleCardData } from '../../shared/ui/article-card/article-card.component';
 import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui/article-card-large/article-card-large.component';
 import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
 import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card/review-card.component';
@@ -13,7 +12,7 @@ import { ButtonSecondaryComponent } from '../../shared/ui/button-secondary/butto
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [RouterLink, ArticleCardComponent, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent, ButtonPrimaryComponent, ButtonSecondaryComponent]
+  imports: [RouterLink, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent, ButtonPrimaryComponent, ButtonSecondaryComponent]
 })
 export class HomeComponent {
   // Тестовые данные для новостной секции
@@ -67,9 +66,6 @@ export class HomeComponent {
       primaryCtaLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_block&utm_content=review_btn',
       secondaryCta: 'Read full review',
       secondaryCtaLink: '/kraken-review',
-      utmContent: 'review_btn',
-      analyticsCard: 'home_feature_review_card',
-      analyticsCta: 'home_feature_review_cta',
       imageUrl: '/images/kraken/kraken-preview-card.webp',
       icon: '🔐'
     },
@@ -84,36 +80,8 @@ export class HomeComponent {
       primaryCtaLink: '/best-crypto-exchange-uk',
       secondaryCta: 'Start on Kraken →',
       secondaryCtaLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_top_pick&utm_content=card_btn',
-      utmContent: 'card_btn',
-      analyticsCard: 'home_feature_top_pick_card',
-      analyticsCta: 'home_feature_top_pick_cta',
       imageUrl: '/images/home/best-exchange-card-preview.webp',
       icon: '🏆'
-    }
-  ];
-
-  // Тестовые данные для карточек статей
-  testArticles: ArticleCardData[] = [
-    {
-      title: 'How to Buy Bitcoin Safely',
-      category: 'Articles',
-      date: 'Jun 30, 2025',
-      routerLink: '/bitcoin-origin',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-    },
-    {
-      title: 'Kraken vs Coinbase: Complete Comparison',
-      category: 'Reviews',
-      date: 'Jun 28, 2025',
-      routerLink: '/kraken-review',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-    },
-    {
-      title: 'Understanding Crypto Tax in UK',
-      category: 'Guides',
-      date: 'Jun 25, 2025',
-      routerLink: '/uk-crypto-tax',
-      gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'
     }
   ];
 

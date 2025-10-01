@@ -1,4 +1,3 @@
-<!-- Hero Section -->
 <section class="hero">
   <div class="hero-container">
     <div class="hero-content">
@@ -8,12 +7,8 @@
       </p>
 
       <div class="hero-cta">
-        <app-button-primary link="/best-crypto-exchange-uk">
-          See Best Exchange for the UK →
-        </app-button-primary>
-        <app-button-secondary color="gray" link="/guides">
-          Explore Guides
-        </app-button-secondary>
+        <app-button-primary text="See Best Exchange for the UK →" link="/best-crypto-exchange-uk"/>
+        <app-button-secondary text="Explore Guides" color="gray" link="/guides" />
       </div>
     </div>
 
@@ -38,20 +33,17 @@
   </div>
 </section>
 
-<!-- Test Large Article Cards Section -->
 <section class="test-large-cards">
   <h2 class="section-title">Start Here — Review & Top Pick</h2>
   <div class="test-large-cards-grid">
     @for (article of testLargeArticles; track article.title) {
-      <app-article-card-large [article]="article"></app-article-card-large>
+      <app-article-card-large [article]="article" />
     }
   </div>
 </section>
 
-<!-- News Section -->
-<app-news-section [data]="newsData"></app-news-section>
+<app-news-section [data]="newsData" />
 
-<!-- Coin Reviews & Fundamentals -->
 <section class="crypto-knowledge">
   <h2 class="section-title">Coin Reviews & Fundamentals</h2>
   <p class="section-subtitle">Plain-English reviews of Bitcoin, Ethereum and Solana — pros, risks, and how to get exposure in the UK.</p>
@@ -59,15 +51,13 @@
   <div class="crypto-knowledge-grid">
     @for (review of cryptoKnowledgeReviews; track review.id) {
       <article itemscope itemtype="https://schema.org/BlogPosting">
-        <app-review-card [review]="review"></app-review-card>
+        <app-review-card [review]="review" />
       </article>
     }
   </div>
 
   <div class="section-cta">
-    <app-button-primary link="/coins">
-      Explore All Coin Reviews →
-    </app-button-primary>
+    <app-button-primary text="Explore All Coin Reviews →" link="/coins" />
   </div>
 </section>
 
@@ -81,10 +71,10 @@
       </div>
       <div class="header-action">
         <app-button-secondary
+          text="All security & taxes →"
           variant="ghost"
           color="primary"
           link="/security">
-          All security & taxes →
         </app-button-secondary>
       </div>
     </div>
@@ -128,8 +118,7 @@
         <div class="methodology-section">
           <app-pro-tip
             title="Commitment to Transparency"
-            text="All reviews are conducted independently. We may earn a commission when you use some links, but this never influences our ratings or recommendations. Our scoring model is fully automated and reproducible.">
-          </app-pro-tip>
+            text="All reviews are conducted independently. We may earn a commission when you use some links, but this never influences our ratings or recommendations. Our scoring model is fully automated and reproducible." />
         </div>
       </div>
     </div>

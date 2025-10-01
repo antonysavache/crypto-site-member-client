@@ -1,21 +1,7 @@
-@import '../../../../styles/variables';
+@import 'variables';
+@import 'mixins';
 
-// Container
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-
-  @media (max-width: 768px) {
-    padding: 0 16px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 0 12px;
-  }
-}
-
-// Базовая анимация shimmer
+// Shimmer animation
 @keyframes shimmer {
   0% {
     background-position: -200px 0;
@@ -25,71 +11,69 @@
   }
 }
 
-// Базовый skeleton элемент
+// Base skeleton element
 .skeleton-base {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, $color-bg-light 25%, $color-bg-muted 50%, $color-bg-light 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
-  border-radius: 4px;
+  border-radius: $border-radius-sm;
 }
 
 // Hero Skeleton
 .skeleton-hero {
   min-height: 350px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 60px 0 80px;
+  background: linear-gradient(135deg, $color-bg-light 0%, $color-bg-muted 100%);
+  padding: $spacing-3xl 0;
   display: flex;
   align-items: center;
-  // Hero skeleton выходит из контейнера для full-width
   width: 100vw;
   margin-left: calc(-50vw + 50%);
+
+  @include mobile {
+    padding: $spacing-2xl 0;
+    min-height: 280px;
+  }
 
   .hero-content {
     text-align: center;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 $spacing-lg;
 
-    @media (max-width: 768px) {
-      padding: 0 16px;
-    }
-
-    @media (max-width: 480px) {
-      padding: 0 12px;
+    @include mobile {
+      padding: 0 $spacing-md;
     }
   }
 
   .hero-title {
+    @extend .skeleton-base;
     height: 56px;
     width: 60%;
-    margin: 0 auto 20px;
+    margin: 0 auto $spacing-md;
   }
 
   .hero-subtitle {
+    @extend .skeleton-base;
     height: 20px;
     width: 80%;
-    margin: 0 auto 16px;
+    margin: 0 auto $spacing-md;
   }
 
   .hero-stats {
+    @extend .skeleton-base;
     height: 14px;
     width: 40%;
-    margin: 0 auto 36px;
+    margin: 0 auto $spacing-xl;
   }
 
   .hero-buttons {
     display: flex;
-    gap: 12px;
+    gap: $spacing-sm;
     justify-content: center;
     flex-wrap: wrap;
-  }
 
-  @media (max-width: 768px) {
-    padding: 40px 0 50px;
-    min-height: 280px;
-
-    .hero-buttons {
+    @include mobile {
       flex-direction: column;
       align-items: center;
     }
@@ -99,14 +83,14 @@
 // Skeleton Text
 .skeleton-text {
   @extend .skeleton-base;
-  border-radius: 8px;
+  border-radius: $border-radius;
 }
 
 // Skeleton Buttons
 .skeleton-button {
   @extend .skeleton-base;
   height: 44px;
-  border-radius: 12px;
+  border-radius: $border-radius-lg;
 
   &.primary {
     width: 160px;
@@ -119,10 +103,10 @@
   &.card-button {
     width: 120px;
     height: 36px;
-    margin-top: 12px;
+    margin-top: $spacing-sm;
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     &.primary, &.secondary {
       width: 200px;
       height: 40px;
@@ -132,35 +116,35 @@
 
 // Controls Skeleton
 .skeleton-controls {
-  padding: 32px 0;
-  background: white;
-  border-bottom: 1px solid #f1f5f9;
+  padding: $spacing-xl 0;
+  background: $color-bg;
+  border-bottom: 1px solid $color-border;
 
   .controls-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: $spacing-lg;
 
-    @media (max-width: 768px) {
+    @include mobile {
       flex-direction: column;
       align-items: stretch;
-      gap: 16px;
+      gap: $spacing-md;
     }
   }
 
   .filter-chips {
     display: flex;
-    gap: 8px;
+    gap: $spacing-xs;
     flex-wrap: wrap;
   }
 
   .search-sort {
     display: flex;
-    gap: 16px;
+    gap: $spacing-md;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @include mobile {
       justify-content: space-between;
     }
   }
@@ -171,7 +155,7 @@
   @extend .skeleton-base;
   height: 32px;
   width: 78px;
-  border-radius: 16px;
+  border-radius: $border-radius-xl;
 }
 
 // Skeleton Search & Sort
@@ -179,9 +163,9 @@
   @extend .skeleton-base;
   height: 40px;
   width: 240px;
-  border-radius: 8px;
+  border-radius: $border-radius;
 
-  @media (max-width: 768px) {
+  @include mobile {
     width: 180px;
   }
 }
@@ -190,31 +174,31 @@
   @extend .skeleton-base;
   height: 40px;
   width: 120px;
-  border-radius: 8px;
+  border-radius: $border-radius;
 }
 
 // Grid Skeleton
 .skeleton-grid {
-  padding: 40px 0 80px;
-  background: white;
+  padding: $spacing-2xl 0;
+  background: $color-bg;
 
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 24px;
+    gap: $spacing-lg;
 
-    @media (max-width: 768px) {
+    @include mobile {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: $spacing-md;
     }
   }
 }
 
 // Skeleton Card
 .skeleton-card {
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #f1f5f9;
+  background: $color-bg;
+  border-radius: $border-radius-xl;
+  border: 1px solid $color-border;
   overflow: hidden;
   transition: transform 0.2s ease;
 
@@ -222,50 +206,51 @@
     @extend .skeleton-base;
     height: 200px;
     border-radius: 0;
+
+    @include mobile {
+      height: 160px;
+    }
   }
 
   .card-content {
-    padding: 20px;
+    padding: $spacing-md;
+
+    @include mobile {
+      padding: $spacing-md;
+    }
   }
 
   .skeleton-badge {
     @extend .skeleton-base;
     height: 20px;
     width: 60px;
-    margin-bottom: 12px;
-    border-radius: 10px;
+    margin-bottom: $spacing-sm;
+    border-radius: $border-radius-lg;
   }
 
   .card-title {
+    @extend .skeleton-base;
     height: 24px;
     width: 90%;
-    margin-bottom: 8px;
+    margin-bottom: $spacing-xs;
   }
 
   .card-subtitle {
+    @extend .skeleton-base;
     height: 16px;
     width: 100%;
-    margin-bottom: 6px;
+    margin-bottom: $spacing-xs;
   }
 
   .card-meta {
+    @extend .skeleton-base;
     height: 14px;
     width: 70%;
-    margin-bottom: 16px;
-  }
-
-  @media (max-width: 768px) {
-    .card-content {
-      padding: 16px;
-    }
-
-    .skeleton-image {
-      height: 160px;
-    }
+    margin-bottom: $spacing-md;
   }
 }
 
-// Дополнительные варианты ширины для реалистичности
+// Width variations for realism
 .skeleton-text:nth-child(even) {
   width: 85%;
 }

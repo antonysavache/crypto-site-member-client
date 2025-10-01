@@ -1,10 +1,10 @@
 <aside class="category-sidebar">
   <!-- Popular Articles Block -->
-  @if (data.popularArticles && data.popularArticles.length > 0) {
+  @if (data().popularArticles?.length) {
     <div class="sidebar-block">
       <h3 class="sidebar-title">Popular in this Category</h3>
       <div class="popular-articles">
-        @for (article of data.popularArticles; track article.link) {
+        @for (article of data().popularArticles; track article.link) {
           <a [routerLink]="article.link" class="popular-article">
             <div class="article-category">{{ article.category }}</div>
             <div class="article-title">{{ article.title }}</div>
@@ -16,11 +16,11 @@
   }
 
   <!-- Related Categories Block -->
-  @if (data.relatedCategories && data.relatedCategories.length > 0) {
+  @if (data().relatedCategories?.length) {
     <div class="sidebar-block">
       <h3 class="sidebar-title">Related Categories</h3>
       <div class="related-categories">
-        @for (category of data.relatedCategories; track category.link) {
+        @for (category of data().relatedCategories; track category.link) {
           <a [routerLink]="category.link" class="related-category">
             <div class="category-name">{{ category.name }}</div>
             @if (category.description) {
@@ -33,7 +33,7 @@
   }
 
   <!-- Best for UK Banner -->
-  @if (data.showBestForUK) {
+  @if (data().showBestForUK) {
     <div class="sidebar-block cta-block">
       <div class="cta-content">
         <div class="cta-badge">Best for UK</div>
@@ -45,7 +45,7 @@
   }
 
   <!-- Newsletter Block -->
-  @if (data.showNewsletter) {
+  @if (data().showNewsletter) {
     <div class="sidebar-block newsletter-block">
       <div class="newsletter-content">
         <h4 class="newsletter-title">Weekly Crypto Insights</h4>
@@ -57,18 +57,5 @@
         <div class="newsletter-disclaimer">Unsubscribe anytime. No spam.</div>
       </div>
     </div>
-  }
-
-  <!-- Custom Blocks -->
-  @if (data.customBlocks && data.customBlocks.length > 0) {
-    @for (block of data.customBlocks; track $index) {
-      <div class="sidebar-block custom-block" [class]="'custom-block--' + block.type">
-        <h4 class="custom-block-title">{{ block.title }}</h4>
-        <div class="custom-block-content" [innerHTML]="block.content"></div>
-        @if (block.link && block.buttonText) {
-          <a [href]="block.link" class="custom-block-button">{{ block.buttonText }}</a>
-        }
-      </div>
-    }
   }
 </aside>

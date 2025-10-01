@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {CategoryHeroComponent, CategoryHeroData} from '../../../shared/ui/category-hero/category-hero.component';
+import {CategoryHeroComponent, CategoryHeroData} from '../components/category-hero/category-hero.component';
 import {
   CategoryControlsComponent,
   CategoryControlsConfig
-} from '../../../shared/ui/category-controls/category-controls.component';
-import {CategoryGridComponent} from '../../../shared/ui/category-grid/category-grid.component';
-import {CategorySidebarComponent, SidebarData} from '../../../shared/ui/category-sidebar/category-sidebar.component';
-import {ReviewCardData} from '../../../shared/ui/review-card/review-card.component';
+} from '../components/category-controls/category-controls.component';
+import {CategoryGridComponent} from '../components/category-grid/category-grid.component';
+import {CategorySidebarComponent, SidebarData} from '../components/category-sidebar/category-sidebar.component';
+import {ReviewCardData} from '@shared/ui/review-card/review-card.component';
 
 @Component({
   selector: 'app-coins',

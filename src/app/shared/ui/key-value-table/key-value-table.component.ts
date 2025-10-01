@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 export interface KeyValueTableItem {
   key: string;
@@ -7,11 +7,12 @@ export interface KeyValueTableItem {
 
 @Component({
   selector: 'app-key-value-table',
+  standalone: true,
+  imports: [],
   templateUrl: './key-value-table.component.html',
-  styleUrl: './key-value-table.component.scss',
-  standalone: true
+  styleUrl: './key-value-table.component.scss'
 })
 export class KeyValueTableComponent {
-  @Input() title: string = 'Key facts';
-  @Input() items: KeyValueTableItem[] = [];
+  title = input<string>('Key facts');
+  items = input.required<KeyValueTableItem[]>();
 }

@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, input, signal } from '@angular/core';
 
 export interface FaqItem {
   question: string;
@@ -9,17 +8,29 @@ export interface FaqItem {
 
 @Component({
   selector: 'app-faq',
+  standalone: true,
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
-  standalone: true,
-  imports: [NgClass]
+  imports: []
 })
 export class FaqComponent {
-  @Input() title: string = 'Frequently Asked Questions';
-  @Input() description: string = 'Get answers to the most common questions about crypto exchanges';
-  @Input() items: FaqItem[] = [];
+  title = input<string>('Frequently Asked Questions');
+  description = input<string>('Get answers to the most common questions about crypto exchanges');
+  items = input<FaqItem[]>([]);
+
+  openItems = signal<Set<number>>(new Set());
 
   toggleItem(index: number): void {
-    this.items[index].isOpen = !this.items[index].isOpen;
+    const current = this.openItems();
+    if (current.has(index)) {
+      current.delete(index);
+    } else {
+      current.add(index);
+    }
+    this.openItems.set(new Set(current));
+  }
+
+  isOpen(index: number): boolean {
+    return this.openItems().has(index);
   }
 }

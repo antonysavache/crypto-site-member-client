@@ -1,12 +1,15 @@
-@import '../../../../styles/variables';
+@import 'variables';
+@import 'mixins';
 
 .btn-secondary {
   // Base styles
-  display: inline-block;
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-lg;
   text-align: center;
-  border-radius: 8px;
+  border-radius: $border-radius-lg;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   text-decoration: none;
   transition: all 0.3s ease;
   background: transparent;
@@ -14,20 +17,20 @@
 
   // Sizes
   &--small {
-    padding: 8px 16px;
+    padding: $spacing-xs $spacing-md;
     font-size: 14px;
-    border-radius: 6px;
+    border-radius: $border-radius-sm;
   }
 
   &--medium {
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-base;
   }
 
   &--large {
-    padding: 16px 32px;
+    padding: $spacing-md $spacing-xl;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: $border-radius-xl;
   }
 
   // Colors
@@ -42,22 +45,12 @@
   }
 
   &--gray {
-    color: #333333;
-    border-color: rgba(51, 51, 51, 0.3);
+    color: $color-text;
+    border-color: $color-border-dark;
 
     &:hover {
-      background: rgba(51, 51, 51, 0.1);
-      border-color: rgba(51, 51, 51, 0.5);
-      transform: translateY(-1px);
-    }
-  }
-
-  &--blue {
-    color: #3b82f6;
-    border-color: #3b82f6;
-
-    &:hover {
-      background: rgba(59, 130, 246, 0.1);
+      background: $color-bg-light;
+      border-color: $color-gray-400;
       transform: translateY(-1px);
     }
   }
@@ -74,17 +67,17 @@
   &--outline {
     &:hover {
       background: currentColor;
-      color: white;
+      color: $color-text-light;
       transform: translateY(-1px);
     }
   }
 
-  // Focus and disabled
+  // Focus
   &:focus-visible {
-    outline: 2px solid rgba($color-primary, 0.5);
-    outline-offset: 2px;
+    @include focus-ring();
   }
 
+  // Disabled
   &--disabled {
     opacity: 0.6;
     cursor: not-allowed;

@@ -1,23 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-button-secondary',
-  templateUrl: './button-secondary.component.html',
-  styleUrl: './button-secondary.component.scss',
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink],
+  templateUrl: './button-secondary.component.html',
+  styleUrl: './button-secondary.component.scss'
 })
 export class ButtonSecondaryComponent {
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() variant: 'default' | 'ghost' | 'outline' = 'default';
-  @Input() color: 'primary' | 'gray' | 'blue' = 'primary';
-  @Input() disabled = false;
-  @Input() fullWidth = false;
-  @Input() link: string = '#';
-  @Input() external = false;
+  text = input<string>(''); // Текст кнопки
+  size = input<'small' | 'medium' | 'large'>('medium');
+  variant = input<'default' | 'ghost' | 'outline'>('default');
+  color = input<'primary' | 'gray'>('primary');
+  link = input<string>('#');
+  external = input<boolean>(false);
 
-  get buttonClass(): string {
-    return `btn-secondary btn-secondary--${this.size} btn-secondary--${this.variant} btn-secondary--${this.color}`;
-  }
+  buttonClass = computed(() =>
+    `btn-secondary btn-secondary--${this.size()} btn-secondary--${this.variant()} btn-secondary--${this.color()}`
+  );
 }

@@ -2,9 +2,9 @@
   <h2 class="table-title">{{ title }}</h2>
 
   <div class="table-container">
-    <mat-table [dataSource]="rows" class="comparison-table">
+    <mat-table [dataSource]="rows()" class="comparison-table">
 
-      @for (column of columns; track column.key) {
+      @for (column of columns(); track column.key) {
         <ng-container [matColumnDef]="column.key">
 
           <!-- Header -->
@@ -16,7 +16,6 @@
           <mat-cell *matCellDef="let row; let i = index"
                     class="data-cell"
                     [ngClass]="{
-
                       'percentage-cell': getColumnType(column.key) === 'percentage',
                       'highlighted-row': highlightRowIndex === i
                     }">
@@ -26,8 +25,8 @@
         </ng-container>
       }
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+      <mat-header-row *matHeaderRowDef="displayedColumns()"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns(); let i = index"
                [ngClass]="{ 'highlighted-row': highlightRowIndex === i }">
       </mat-row>
 

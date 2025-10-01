@@ -1,65 +1,44 @@
-@import '../../../../styles/variables';
-
-// Design tokens
-$container-max-width: 1140px;
-$grid-gap: 32px;
-$border-radius-lg: 24px;
-$border-radius-pill: 999px;
-
-// Colors using our design system
-$text-primary: $color-text;
-$text-muted: $color-text-secondary;
-$chip-bg: #f0f2ff; // Slightly lighter than our primary for chips
-$chip-text: $color-primary;
-$hairline: $color-border-light;
-$hover-bg: rgba(99, 102, 241, 0.04);
-
-// Button states colors
-$button-bg-default: #f0f2ff; // Light version of primary
-$button-bg-hover: #e0e7ff;   // Darker on hover
-$button-bg-active: #c7d2fe;  // Even darker for active
-$button-bg-focus: #f0f2ff;   // Same as default with focus ring
-$button-bg-disabled: #cecece; // Gray for disabled
+@import 'variables';
+@import 'mixins';
 
 .news-section {
-  padding: 60px 0;
+  padding: $spacing-3xl 0;
 
-  .container {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    padding: 0 20px;
-
-    @media (max-width: 480px) {
-      padding: 0 16px;
-    }
+  @include mobile {
+    padding: $spacing-2xl 0;
   }
 }
 
 .section-header {
-  margin-bottom: 40px;
+  margin-bottom: $spacing-2xl;
 
-  .section-title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: $text-primary;
-    margin-bottom: 8px;
+  @include mobile {
+    margin-bottom: $spacing-xl;
   }
+}
 
-  .section-description {
-    font-size: 15px;
-    line-height: 1.5;
-    color: $text-muted;
-    margin: 0;
-  }
+.section-title {
+  font-size: 32px;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  color: $color-text;
+  margin-bottom: $spacing-xs;
+}
+
+.section-description {
+  font-size: 15px;
+  line-height: 1.5;
+  color: $color-text-secondary;
+  margin: 0;
 }
 
 .news-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: $grid-gap;
+  gap: $spacing-xl;
   width: 100%;
   min-width: 0;
+  align-items: start;
 
   &.featured-right {
     grid-template-columns: 1fr 1.4fr;
@@ -73,36 +52,32 @@ $button-bg-disabled: #cecece; // Gray for disabled
     }
   }
 
-  @media (max-width: 1024px) {
-    gap: 20px; // Уменьшаем gap на планшетах
+  @include tablet {
+    gap: $spacing-md;
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: $spacing-lg;
 
     &.featured-right {
-      .featured-article {
-        order: 1;
-      }
-
+      .featured-article,
       .regular-articles {
-        order: 2;
+        order: initial;
       }
     }
   }
 }
 
-// Featured Article (Large)
+// Featured Article
 .featured-article {
   .article-link {
     display: block;
     text-decoration: none;
     color: inherit;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
+    border-radius: $border-radius-xl;
     transition: transform 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: $shadow-lg;
 
     &:hover {
       transform: translateY(-4px);
@@ -117,424 +92,292 @@ $button-bg-disabled: #cecece; // Gray for disabled
     background-repeat: no-repeat;
     display: flex;
     align-items: flex-end;
-    padding: 60px 28px 28px 28px;
+    padding: $spacing-lg;
+    border-radius: $border-radius-xl;
+    overflow: hidden;
 
-    .article-coin-icon {
+    @include mobile {
+      height: 320px;
+      padding: $spacing-md;
+    }
+  }
+
+  .article-coin-icon {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 120px;
+    color: rgba(255, 255, 255, 0.15);
+    z-index: 1;
+    transform: rotate(-15deg);
+  }
+
+  .decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+
+    .crypto-icon {
       position: absolute;
-      top: -30px;
-      left: -20px;
-      font-size: 120px;
-      color: rgba(255, 255, 255, 0.15);
-      z-index: 1;
-      transform: rotate(-15deg);
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.2);
+      animation: float 6s ease-in-out infinite;
+
+      &.crypto-icon-1 {
+        top: 20%;
+        right: 15%;
+        animation-delay: 0s;
+      }
+
+      &.crypto-icon-2 {
+        top: 60%;
+        right: 25%;
+        animation-delay: 2s;
+      }
+
+      &.crypto-icon-3 {
+        bottom: 30%;
+        left: 20%;
+        animation-delay: 4s;
+      }
     }
 
-    .decorative-elements {
+    .shape {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
 
-      .crypto-icon {
-        position: absolute;
-        font-size: 24px;
-        color: rgba(255, 255, 255, 0.2);
-        animation: float 6s ease-in-out infinite;
-
-        &.crypto-icon-1 {
-          top: 20%;
-          right: 15%;
-          animation-delay: 0s;
-        }
-
-        &.crypto-icon-2 {
-          top: 60%;
-          right: 25%;
-          animation-delay: 2s;
-        }
-
-        &.crypto-icon-3 {
-          bottom: 30%;
-          left: 20%;
-          animation-delay: 4s;
-        }
+      &.shape-1 {
+        width: 40px;
+        height: 40px;
+        top: 25%;
+        left: 15%;
+        animation-delay: 1s;
       }
 
-      .floating-shapes {
-        .shape {
-          position: absolute;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          animation: float 8s ease-in-out infinite;
+      &.shape-2 {
+        width: 20px;
+        height: 20px;
+        top: 15%;
+        right: 30%;
+        animation-delay: 3s;
+      }
 
-          &.shape-1 {
-            width: 40px;
-            height: 40px;
-            top: 25%;
-            left: 15%;
-            animation-delay: 1s;
-          }
-
-          &.shape-2 {
-            width: 20px;
-            height: 20px;
-            top: 15%;
-            right: 30%;
-            animation-delay: 3s;
-          }
-
-          &.shape-3 {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            right: 10%;
-            animation-delay: 5s;
-          }
-        }
+      &.shape-3 {
+        width: 60px;
+        height: 60px;
+        bottom: 20%;
+        right: 10%;
+        animation-delay: 5s;
       }
     }
+  }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(5deg);
-      }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
     }
-
-    .article-content-overlay {
-      width: 100%;
-      z-index: 2;
-
-      .content-window {
-        background: white;
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-
-        .article-category-badge {
-          display: inline-block;
-          background: #EEF2FF;
-          color: #4F46E5;
-          padding: 4px 12px;
-          border-radius: $border-radius-pill;
-          font-size: 12px;
-          font-weight: 600;
-          margin-bottom: 12px;
-        }
-
-        .featured-title {
-          font-size: 18px;
-          font-weight: 600;
-          line-height: 1.3;
-          color: $text-primary;
-          margin-bottom: 8px;
-
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .featured-description {
-          font-size: 14px;
-          line-height: 1.4;
-          color: $text-muted;
-          margin-bottom: 12px;
-        }
-
-        .article-meta {
-          font-size: 14px;
-          color: $text-muted;
-          margin-bottom: 16px;
-
-          .meta-separator {
-            margin: 0 4px;
-          }
-        }
-
-        .cta-buttons {
-          display: flex;
-          gap: 12px;
-          margin-bottom: 16px;
-
-          @media (max-width: 768px) {
-            flex-direction: column;
-            gap: 8px;
-          }
-        }
-
-        .see-all-link {
-          font-size: 14px;
-          color: $color-primary;
-          text-decoration: none;
-          font-weight: 500;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
+    50% {
+      transform: translateY(-10px) rotate(5deg);
     }
   }
 }
 
-// Regular Articles (Right Column)
+.article-content-overlay {
+  width: 100%;
+  z-index: 2;
+}
+
+.content-window {
+  background: $color-bg;
+  border-radius: $border-radius-xl;
+  padding: $spacing-lg;
+  box-shadow: $shadow-lg;
+
+  @include mobile {
+    padding: $spacing-md;
+  }
+}
+
+.article-category-badge {
+  display: inline-block;
+  background: $color-bg-purple;
+  color: $color-primary;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: $font-weight-semi-bold;
+  margin-bottom: $spacing-sm;
+}
+
+.featured-title {
+  font-size: 18px;
+  font-weight: $font-weight-semi-bold;
+  line-height: 1.3;
+  color: $color-text;
+  margin-bottom: $spacing-xs;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.featured-description {
+  font-size: 14px;
+  line-height: 1.4;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+
+  @include mobile {
+    font-size: 13px;
+  }
+}
+
+.article-meta {
+  font-size: 14px;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-md;
+
+  @include mobile {
+    font-size: 13px;
+  }
+
+  .meta-separator {
+    margin: 0 $spacing-xs;
+  }
+}
+
+.cta-buttons {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+}
+
+.see-all-link {
+  font-size: 14px;
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Regular Articles
 .regular-articles {
-  margin-top: -40px; // Поднимаем весь блок ещё выше
   width: 100%;
   max-width: 100%;
-  min-width: 0; // Позволяет сжиматься
+  min-width: 0;
+  overflow: visible;
+}
 
-  @media (max-width: 768px) {
-    margin-top: 0; // Убираем отрицательный margin на мобильных
-  }
+.articles-header {
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $color-border-light;
+}
 
-  .articles-header {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid $hairline;
-
-    .articles-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: $text-primary;
-      margin: 0;
-      line-height: 1.2;
-    }
-  }
+.articles-title {
+  font-size: 20px;
+  font-weight: $font-weight-bold;
+  color: $color-text;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .articles-list {
-  margin-bottom: 24px;
+  margin-bottom: $spacing-lg;
 }
 
 .regular-article {
   &:not(:last-child) {
-    border-bottom: 1px solid $hairline;
+    border-bottom: 1px solid $color-border-light;
   }
 
   .article-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: $spacing-md 0;
     text-decoration: none;
     color: inherit;
     transition: all 0.2s ease;
     width: 100%;
-    max-width: 100%;
-    min-width: 0; // Позволяет flex-элементам сжиматься
+    min-width: 0;
 
     &:hover {
-      background: rgba(99, 102, 241, 0.04);
-      padding-left: 12px;
-      padding-right: 12px;
-      border-radius: 8px;
-      margin: 0 -12px;
+      background: rgba($color-primary, 0.04);
+      padding-left: $spacing-sm;
+      padding-right: $spacing-sm;
+      border-radius: $border-radius;
+    }
 
-      .article-arrow-btn {
-        background: lighten($color-primary, 8%) !important;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    @include mobile {
+      &:hover {
+        padding-left: 0;
+        padding-right: 0;
+        background: none;
       }
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary;
-      outline-offset: 2px;
-      border-radius: 8px;
+      @include focus-ring();
+      border-radius: $border-radius;
     }
   }
+}
 
-  .article-content {
-    flex: 1;
-    min-width: 0; // Позволяет тексту сжиматься и переноситься
+.article-content {
+  flex: 1;
+  min-width: 0;
+}
 
-    .article-title {
-      font-size: 17px;
-      font-weight: 500;
-      line-height: 1.3;
-      color: $text-primary;
-      margin-bottom: 8px;
+.article-title {
+  font-size: 17px;
+  font-weight: $font-weight-medium;
+  line-height: 1.3;
+  color: $color-text;
+  margin-bottom: $spacing-xs;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
 
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      word-wrap: break-word; // Переносим длинные слова
-    }
-
-    .article-meta {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      flex-wrap: wrap; // Позволяем перенос метаданных
-
-      .article-category-chip {
-        background: #EEF2FF;
-        color: #4F46E5;
-        padding: 2px 8px;
-        border-radius: $border-radius-pill;
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .meta-separator {
-        margin: 0 6px;
-        color: $text-muted;
-      }
-
-      .article-date {
-        color: $text-muted;
-      }
-    }
+  @include mobile {
+    font-size: 15px;
   }
+}
 
-  // Удален блок .article-arrow-btn (50+ строк дублированного CSS)
-  // Заменен на ButtonPrimaryComponent size="small"
+.article-category-chip {
+  background: $color-bg-purple;
+  color: $color-primary;
+  padding: 2px $spacing-xs;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: $font-weight-medium;
+}
+
+.article-date {
+  color: $color-text-secondary;
 }
 
 .show-more-section {
-  padding-top: 20px;
-  border-top: 1px solid $hairline;
-
-  .show-more-btn {
-    color: $color-primary;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.affiliate-disclaimer {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid $hairline;
-  font-size: 13px;
-  color: $text-muted;
-  text-align: center;
-}
-
-// Mobile responsive
-@media (max-width: 768px) {
-  .featured-article .article-image {
-    height: 320px;
-    padding: 24px 16px 16px 16px; // Увеличиваем верхний отступ и на мобиле
-
-    .article-content-overlay {
-      .content-window {
-        padding: 20px;
-
-        .featured-title {
-          font-size: 16px;
-          margin-bottom: 6px;
-        }
-
-        .featured-description {
-          font-size: 13px;
-          margin-bottom: 10px;
-        }
-
-        .article-meta {
-          margin-bottom: 12px;
-          font-size: 13px;
-        }
-
-        .cta-buttons {
-          margin-bottom: 12px;
-
-          .btn {
-            height: 40px;
-            font-size: 13px;
-          }
-        }
-
-        .see-all-link {
-          font-size: 13px;
-        }
-      }
-    }
-  }
-
-  .regular-article .article-link {
-    padding: 16px 0;
-
-    @media (max-width: 480px) {
-      padding: 12px 0;
-    }
-  }
-
-  .regular-article .article-content .article-title {
-    font-size: 15px;
-
-    @media (max-width: 480px) {
-      font-size: 14px;
-      line-height: 1.2;
-    }
-  }
-
-  .regular-article .article-arrow-btn {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .news-section {
-    padding: 40px 0;
-
-    .container {
-      padding: 0 16px;
-    }
-  }
-
-  .section-header {
-    margin-bottom: 32px;
-
-    .section-title {
-      font-size: 24px;
-    }
-
-    .section-description {
-      font-size: 15px;
-    }
-  }
-
-  .featured-article .article-image {
-    height: 300px;
-    padding: 20px 12px 12px 12px; // Добавляем больше отступа сверху и на маленьких экранах
-
-    .article-content-overlay {
-      .content-window {
-        padding: 16px;
-
-        .featured-title {
-          font-size: 15px;
-          line-height: 1.2;
-        }
-
-        .featured-description {
-          font-size: 12px;
-          line-height: 1.3;
-        }
-
-        .cta-buttons {
-          .btn {
-            height: 38px;
-            font-size: 12px;
-            padding: 0 12px;
-          }
-        }
-      }
-    }
-  }
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-border-light;
 }

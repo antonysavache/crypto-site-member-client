@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, signal, HostListener } from '@angular/core';
+import { Component, input, OnInit, OnDestroy, signal, HostListener } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 export interface TocItem {
@@ -13,12 +13,12 @@ export interface TocItem {
   templateUrl: './table-of-contents.component.html',
   styleUrl: './table-of-contents.component.scss',
   standalone: true,
-  imports: [NgClass]
+  imports: []
 })
 export class TableOfContentsComponent implements OnInit, OnDestroy {
-  @Input() title: string = 'Best Stock Trading Apps of 2025';
-  @Input() contentSelector: string = '.article-content'; // CSS selector для поиска заголовков
-  @Input() showMobile: boolean = false; // Показывать ли мобильную версию
+  title = input<string>('Best Stock Trading Apps of 2025');
+  contentSelector = input<string>('.article-content');
+  showMobile = input<boolean>(false);
 
   protected readonly tocItems = signal<TocItem[]>([]);
   protected readonly activeItemId = signal<string>('');
@@ -101,7 +101,7 @@ export class TableOfContentsComponent implements OnInit, OnDestroy {
 
   // Генерируем элементы TOC из заголовков в статье
   private generateTocItems(): void {
-    const contentElement = document.querySelector(this.contentSelector);
+    const contentElement = document.querySelector(this.contentSelector());
     if (!contentElement) return;
 
     // Ищем все заголовки h2, h3, h4

@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 export interface ProsItem {
   title: string;
@@ -8,11 +7,12 @@ export interface ProsItem {
 
 @Component({
   selector: 'app-pros-list',
+  standalone: true,
   templateUrl: './pros-list.component.html',
   styleUrl: './pros-list.component.scss',
-  standalone: true,
+  imports: []
 })
 export class ProsListComponent {
-  @Input() items: ProsItem[] = [];
-  @Input() title?: string; // Опциональный заголовок для всего списка
+  items = input<ProsItem[]>([]);
+  title = input<string>();
 }

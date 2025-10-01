@@ -1,10 +1,10 @@
 <div class="tldr-container">
   <div class="tldr-header">
-    <h3 class="tldr-title">{{ title }}</h3>
+    <h3 class="tldr-title">{{ title() }}</h3>
   </div>
 
   <ul class="tldr-list">
-    @for (item of items; track $index) {
+    @for (item of items(); track $index) {
       <li class="tldr-item">{{ item }}</li>
     }
   </ul>

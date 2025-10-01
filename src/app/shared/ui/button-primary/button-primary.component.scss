@@ -1,68 +1,55 @@
-@import '../../../../styles/variables';
+@import 'variables';
+@import 'mixins';
 
 .btn-primary {
   // Base styles
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid transparent; // Добавляем невидимый border для одинаковой высоты
-  border-radius: 8px;
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-lg;
+  border: 2px solid transparent;
+  border-radius: $border-radius;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
-  white-space: nowrap;
 
   // Primary colors
   background: $color-primary;
-  color: white;
+  color: $color-text-light;
 
   // Hover effects
-  &:hover:not(.btn-primary--disabled) {
-    background: darken($color-primary, 10%);
+  &:hover {
+    background: $color-primary-hover;
     transform: translateY(-1px);
   }
 
   // Focus styles
   &:focus-visible {
-    outline: 2px solid rgba($color-primary, 0.5);
-    outline-offset: 2px;
+    @include focus-ring();
   }
 
   // Active state
-  &:active:not(.btn-primary--disabled) {
+  &:active {
     transform: translateY(0);
-    background: darken($color-primary, 15%);
+    background: $color-primary-active;
   }
 
   // Sizes
   &--small {
-    padding: 8px 16px;
+    padding: $spacing-xs $spacing-md;
     font-size: 14px;
-    border-radius: 6px;
+    border-radius: $border-radius-sm;
   }
 
   &--medium {
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-base;
   }
 
   &--large {
-    padding: 16px 32px;
+    padding: $spacing-md $spacing-xl;
     font-size: 18px;
-    border-radius: 10px;
-  }
-
-  // Full width
-  &--full-width {
-    width: 100%;
-  }
-
-  // Disabled state
-  &--disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
+    border-radius: $border-radius-lg;
   }
 }

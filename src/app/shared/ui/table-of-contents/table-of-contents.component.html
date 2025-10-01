@@ -2,7 +2,7 @@
 @if (!isMobileDevice()) {
   <div class="toc-container desktop-toc">
     <div class="toc-header">
-      <h4 class="toc-title">{{ title }}</h4>
+      <h4 class="toc-title">{{ title() }}</h4>
     </div>
 
     <nav class="toc-nav" role="navigation" aria-label="Table of contents">
@@ -12,7 +12,7 @@
             <button
               type="button"
               class="toc-link"
-              [ngClass]="{ 'active': activeItemId() === item.id }"
+              [class.active]="activeItemId() === item.id"
               [attr.data-id]="item.id"
               (click)="scrollToHeading(item)"
               [attr.aria-current]="activeItemId() === item.id ? 'true' : null"
@@ -27,8 +27,8 @@
 }
 
 <!-- Mobile Version (Sticky under header) -->
-@if (showMobile && isMobileDevice()) {
-  <div class="mobile-toc" [ngClass]="{ 'is-open': isMobileOpen() }">
+@if (showMobile() && isMobileDevice()) {
+  <div class="mobile-toc" [class.is-open]="isMobileOpen()">
     <!-- Mobile TOC Trigger Button -->
     <button
       type="button"
@@ -40,7 +40,7 @@
       <span class="current-heading">{{ currentActiveTitle() }}</span>
       <svg
         class="chevron-icon"
-        [ngClass]="{ 'rotated': isMobileOpen() }"
+        [class.rotated]="isMobileOpen()"
         width="16"
         height="16"
         viewBox="0 0 24 24"
@@ -63,7 +63,7 @@
               <button
                 type="button"
                 class="mobile-toc-link"
-                [ngClass]="{ 'active': activeItemId() === item.id }"
+                [class.active]="activeItemId() === item.id"
                 [attr.data-id]="item.id"
                 (click)="scrollToHeading(item)"
               >

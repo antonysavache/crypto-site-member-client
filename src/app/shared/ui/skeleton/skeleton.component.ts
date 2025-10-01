@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-skeleton',
-  templateUrl: './skeleton.component.html',
-  styleUrl: './skeleton.component.scss',
   standalone: true,
-  imports: [CommonModule]
+  imports: [],
+  templateUrl: './skeleton.component.html',
+  styleUrl: './skeleton.component.scss'
 })
-export class SkeletonComponent {
-}
+export class SkeletonComponent {}

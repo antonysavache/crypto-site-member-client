@@ -1,13 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-bullet-list',
-  templateUrl: './bullet-list.component.html',
-  styleUrl: './bullet-list.component.scss',
   standalone: true,
-  imports: [NgFor]
+  imports: [],
+  templateUrl: './bullet-list.component.html',
+  styleUrl: './bullet-list.component.scss'
 })
 export class BulletListComponent {
-  @Input() items: string[] = [];
+  items = input.required<string[]>();
 }

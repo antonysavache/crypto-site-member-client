@@ -16,6 +16,13 @@
 // Global fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+// CSS Custom Properties for use in HTML
+:root {
+  --gradient-primary: #{$primary-gradient};
+  --gradient-ethereum: #{$ethereum-gradient};
+  --gradient-buying: #{$buying-gradient};
+}
+
 // Global body styles
 body {
   font-family: $font-family-primary;

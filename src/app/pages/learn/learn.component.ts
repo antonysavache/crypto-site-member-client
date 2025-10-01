@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CategoryHeroComponent, CategoryHeroData } from '../../shared/ui/category-hero/category-hero.component';
 import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card/review-card.component';
 import { ButtonPrimaryComponent } from '../../shared/ui/button-primary/button-primary.component';
 import {ButtonSecondaryComponent} from '../../shared/ui/button-secondary/button-secondary.component';
+import {CategoryHeroComponent, CategoryHeroData} from '../categories/components/category-hero/category-hero.component';
 
 export interface TopicTile {
   title: string;

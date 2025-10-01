@@ -4,13 +4,15 @@
     <!-- Pros Column -->
     <div class="pros-column">
       <div class="column-header">
-        <h3 class="column-title">{{ prosTitle }}</h3>
+        <h3 class="column-title">{{ prosTitle() }}</h3>
       </div>
       <div class="column-content">
-        @for (item of pros; track item.text) {
+        @for (item of pros(); track item.text) {
           <div class="pros-item">
             <div class="check-icon-wrapper">
-              <img src="/icons/check.svg" alt="Check" class="check-icon" />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.6667 5L7.5 14.1667L3.33333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
             <span class="item-text">{{ item.text }}</span>
           </div>
@@ -21,19 +23,20 @@
     <!-- Cons Column -->
     <div class="cons-column">
       <div class="column-header">
-        <h3 class="column-title">{{ consTitle }}</h3>
+        <h3 class="column-title">{{ consTitle() }}</h3>
       </div>
       <div class="column-content">
-        @for (item of cons; track item.text) {
+        @for (item of cons(); track item.text) {
           <div class="cons-item">
             <div class="cross-icon-wrapper">
-              <img src="/icons/cross.svg" alt="Cross" class="cross-icon" />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
             <span class="item-text">{{ item.text }}</span>
           </div>
         }
       </div>
     </div>
-
   </div>
 </div>

@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { NgFor, NgClass } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 export interface ComparisonColumn {
   key: string;
   title: string;
-  type?: 'text' | 'percentage' | 'highlight'; // Тип для стилизации
+  type?: 'text' | 'percentage' | 'highlight';
 }
 
 export interface ComparisonRow {
@@ -13,14 +12,14 @@ export interface ComparisonRow {
 
 @Component({
   selector: 'app-comparison-table',
+  standalone: true,
   templateUrl: './comparison-table.component.html',
   styleUrl: './comparison-table.component.scss',
-  standalone: true,
-  imports: [NgFor, NgClass]
+  imports: []
 })
 export class ComparisonTableComponent {
-  @Input() title: string = 'Comparison with competitors';
-  @Input() columns: ComparisonColumn[] = [];
-  @Input() rows: ComparisonRow[] = [];
-  @Input() highlightRowIndex?: number;
+  title = input<string>('Comparison with competitors');
+  columns = input<ComparisonColumn[]>([]);
+  rows = input<ComparisonRow[]>([]);
+  highlightRowIndex = input<number>();
 }

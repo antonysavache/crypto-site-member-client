@@ -1,6 +1,13 @@
-<a [routerLink]="external ? null : link"
-   [href]="external ? link : null"
-   [class]="buttonClass"
-   style="width: 100%; display: inline-block;">
-  <ng-content></ng-content>
-</a>
+@if (external()) {
+  <a [href]="link()"
+     [class]="buttonClass()"
+     target="_blank"
+     rel="noopener noreferrer">
+    {{ text() }}
+  </a>
+} @else {
+  <a [routerLink]="link()"
+     [class]="buttonClass()">
+    {{ text() }}
+  </a>
+}

@@ -2,7 +2,7 @@
   <div class="control-row">
     <!-- Filter Chips -->
     <div class="filter-chips">
-      @for (chip of config.filterChips; track chip.value) {
+      @for (chip of config().filterChips; track chip.value) {
         <button
           class="filter-chip"
           [class.active]="chip.active"
@@ -15,24 +15,24 @@
 
     <!-- Search & Sort -->
     <div class="search-sort">
-      @if (config.showSearch !== false) {
+      @if (config().showSearch !== false) {
         <div class="search-box">
           <input
             type="text"
-            [placeholder]="config.searchPlaceholder"
+            [placeholder]="config().searchPlaceholder"
             class="search-input"
-            [value]="searchQuery"
+            [value]="searchQuery()"
             (input)="onSearchInput($event)">
         </div>
       }
 
-      @if (config.showSort !== false) {
+      @if (config().showSort !== false) {
         <div class="sort-dropdown">
           <select
             class="sort-select"
-            [value]="currentSort"
+            [value]="currentSort()"
             (change)="onSortChange($event)">
-            @for (option of config.sortOptions; track option.value) {
+            @for (option of config().sortOptions; track option.value) {
               <option [value]="option.value">{{ option.name }}</option>
             }
           </select>
@@ -42,14 +42,14 @@
   </div>
 
   <!-- Filter Status -->
-  @if (hasActiveFilters) {
+  @if (hasActiveFilters()) {
     <div class="filter-status">
       <span class="filter-info">
-        @if (currentFilter !== 'all') {
-          <span>Showing: {{ currentFilter | titlecase }}</span>
+        @if (currentFilter() !== 'all') {
+          <span>Showing: {{ currentFilter() | titlecase }}</span>
         }
-        @if (currentSort !== 'newest') {
-          <span> • Sorted by {{ currentSort | titlecase }}</span>
+        @if (currentSort() !== 'newest') {
+          <span> • Sorted by {{ currentSort() | titlecase }}</span>
         }
       </span>
       <button class="clear-filters" (click)="onClearFilters()">Clear filters</button>

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TitleCasePipe } from '@angular/common';
 
@@ -24,21 +24,25 @@ export interface CategoryControlsConfig {
 
 @Component({
   selector: 'app-category-controls',
+  standalone: true,
   templateUrl: './category-controls.component.html',
   styleUrl: './category-controls.component.scss',
-  standalone: true,
   imports: [FormsModule, TitleCasePipe]
 })
 export class CategoryControlsComponent {
-  @Input() config!: CategoryControlsConfig;
-  @Input() searchQuery = '';
-  @Input() currentFilter = 'all';
-  @Input() currentSort = 'newest';
+  config = input.required<CategoryControlsConfig>();
+  searchQuery = input<string>('');
+  currentFilter = input<string>('all');
+  currentSort = input<string>('newest');
 
-  @Output() filterChange = new EventEmitter<string>();
-  @Output() searchChange = new EventEmitter<string>();
-  @Output() sortChange = new EventEmitter<string>();
-  @Output() clearFilters = new EventEmitter<void>();
+  filterChange = output<string>();
+  searchChange = output<string>();
+  sortChange = output<string>();
+  clearFilters = output<void>();
+
+  hasActiveFilters = computed(() =>
+    this.currentFilter() !== 'all' || this.searchQuery().length > 0
+  );
 
   onFilterChange(filter: string) {
     this.filterChange.emit(filter);
@@ -56,9 +60,5 @@ export class CategoryControlsComponent {
 
   onClearFilters() {
     this.clearFilters.emit();
-  }
-
-  get hasActiveFilters(): boolean {
-    return this.currentFilter !== 'all' || this.searchQuery.length > 0;
   }
 }

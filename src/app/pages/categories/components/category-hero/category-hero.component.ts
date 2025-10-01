@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ButtonPrimaryComponent } from '../button-primary/button-primary.component';
-import { ButtonSecondaryComponent } from '../button-secondary/button-secondary.component';
+import {ButtonPrimaryComponent} from '@shared/ui/button-primary/button-primary.component';
+import {ButtonSecondaryComponent} from '@shared/ui/button-secondary/button-secondary.component';
 
 export interface CategoryHeroData {
   title: string;
@@ -28,18 +28,15 @@ export interface CategoryHeroData {
   imports: [RouterLink, ButtonPrimaryComponent, ButtonSecondaryComponent]
 })
 export class CategoryHeroComponent {
-  @Input() data!: CategoryHeroData;
+  data = input.required<CategoryHeroData>();
 
-  getBackgroundStyle(): string {
-    if (this.data.backgroundColor) {
-      return this.data.backgroundColor;
+  backgroundStyle = computed(() => {
+    if (this.data().backgroundColor) {
+      return this.data().backgroundColor;
     }
+    // Дефолтный градиент - используем CSS переменную
+    return 'var(--gradient-primary)';
+  });
 
-    // Дефолтный градиент
-    return 'linear-gradient(145deg, #6146FF 0%, #3619DD 52%, #1900A8 100%)';
-  }
-
-  hasTextBackground(): boolean {
-    return !!this.data.useTextBackground;
-  }
+  hasTextBackground = computed(() => !!this.data().useTextBackground);
 }

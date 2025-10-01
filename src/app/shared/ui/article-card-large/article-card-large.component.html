@@ -2,40 +2,41 @@
   <div class="article-card-wrapper" (click)="onCardClick($event)">
     <!-- Image/Background Section -->
     <div class="article-image"
-         [ngStyle]="{
-           'background': article.imageUrl
-             ? 'url(' + article.imageUrl + ') center/cover no-repeat'
-             : (article.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)')
-         }">
-      <div class="article-category">{{ article.category }}</div>
-      <div class="article-icon" *ngIf="!article.imageUrl">{{ article.icon || '₿' }}</div>
+         [style.background]="article().imageUrl
+           ? 'url(' + article().imageUrl + ') center/cover no-repeat'
+           : (article().gradient || 'var(--gradient-primary)')">
+      <div class="article-category">{{ article().category }}</div>
+      @if (!article().imageUrl) {
+        <div class="article-icon">{{ article().icon || '₿' }}</div>
+      }
     </div>
 
     <!-- Content Section -->
     <div class="article-content">
-      <h3 class="article-title">{{ article.title }}</h3>
-      <p class="article-description">{{ article.description }}</p>
+      <h3 class="article-title">{{ article().title }}</h3>
+      <p class="article-description">{{ article().description }}</p>
 
       <!-- Metadata -->
       <div class="article-meta">
-        <span class="article-date">{{ article.date }}</span>
-        <span class="article-separator" *ngIf="article.readTime"> • </span>
-        <span class="article-read-time" *ngIf="article.readTime">{{ article.readTime }}</span>
+        <span class="article-date">{{ article().date }}</span>
+        @if (article().readTime) {
+          <span class="article-separator"> • </span>
+          <span class="article-read-time">{{ article().readTime }}</span>
+        }
       </div>
 
       <!-- CTA Actions -->
       <div class="article-actions">
         <app-button-primary
-          [link]="article.primaryCtaLink"
+          [text]="article().primaryCta"
+          [link]="article().primaryCtaLink"
           [external]="true"
-          (click)="onCtaClick($event, 'primary')"
           [attr.aria-label]="getAriaLabel('primary')">
-          {{ article.primaryCta }}
         </app-button-primary>
+
         <app-button-secondary
-          [link]="article.secondaryCtaLink || article.routerLink"
-          (click)="onCtaClick($event, 'secondary')">
-          {{ article.secondaryCta }}
+          [text]="article().secondaryCta"
+          [link]="article().secondaryCtaLink || article().routerLink">
         </app-button-secondary>
       </div>
     </div>

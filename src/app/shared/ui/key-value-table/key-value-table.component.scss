@@ -1,28 +1,25 @@
-// ================================
-// KEY-VALUE TABLE COMPONENT
-// ================================
-
-@import '../../../../styles/variables';
+@import 'variables';
+@import 'mixins';
 
 .key-value-table {
-  background: white;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
+  background: $color-bg;
+  border: 1px solid $color-border-light;
+  border-radius: $border-radius;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow;
 }
 
 .table-header {
-  background-color: #F8F9FA;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid #E5E7EB;
+  background-color: $color-bg-light;
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid $color-border-light;
 }
 
 .table-title {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1F2937;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semi-bold;
+  color: $color-text;
   line-height: 1.5;
 }
 
@@ -34,8 +31,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.875rem 1.25rem;
-  border-bottom: 1px solid #F3F4F6;
+  padding: 14px $spacing-lg;
+  border-bottom: 1px solid $color-border;
   transition: background-color 0.2s ease;
 
   &:last-child {
@@ -43,69 +40,61 @@
   }
 
   &:hover {
-    background-color: #F9FAFB;
+    background-color: $color-bg-light;
   }
 }
 
 .table-key {
   flex: 1;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #6B7280;
+  font-size: 14px;
+  font-weight: $font-weight-regular;
+  color: $color-text-secondary;
   line-height: 1.5;
 }
 
 .table-value {
   flex: 0 0 auto;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #1F2937;
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  color: $color-text;
   line-height: 1.5;
   text-align: right;
-  margin-left: 1rem;
+  margin-left: $spacing-md;
 
   a {
-    color: #f7931a;
+    color: $color-warning;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
-      color: #e8820e;
     }
   }
 }
 
-// Responsive design
-@media (max-width: 640px) {
+// Responsive
+@include mobile {
   .table-header {
-    padding: 0.875rem 1rem;
+    padding: 14px $spacing-md;
   }
 
   .table-title {
-    font-size: 0.9375rem;
+    font-size: 15px;
   }
 
   .table-row {
-    padding: 0.75rem 1rem;
+    padding: $spacing-sm $spacing-md;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: $spacing-xs;
   }
 
-  .table-key {
-    font-size: 0.8125rem;
+  .table-key,
+  .table-value {
+    font-size: 13px;
   }
 
   .table-value {
-    font-size: 0.8125rem;
     text-align: left;
     margin-left: 0;
-  }
-}
-
-// Accessibility
-@media (prefers-reduced-motion: reduce) {
-  .table-row {
-    transition: none;
   }
 }

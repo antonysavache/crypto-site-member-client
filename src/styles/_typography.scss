@@ -118,7 +118,7 @@ a {
 
   &:hover,
   &:focus-visible {
-    color: darken($color-primary, 10%);
+    color: #5138d4; // Darker shade of primary
     text-decoration: underline;
   }
 

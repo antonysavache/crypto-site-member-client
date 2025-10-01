@@ -1,12 +1,21 @@
+@import 'variables';
+@import 'mixins';
+
 .pro-tip {
-  background: #f0f9ff;
-  border: 1px solid #0ea5e9;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
+  background: rgba($color-primary, 0.05);
+  border: 1px solid rgba($color-primary, 0.2);
+  border-radius: $border-radius;
+  padding: $spacing-md;
+  margin: $spacing-md 0;
 
   p {
     margin: 0;
-    color: #0369a1;
+    color: $color-text;
+    line-height: 1.6;
+  }
+
+  strong {
+    color: $color-primary;
+    font-weight: $font-weight-semi-bold;
   }
 }

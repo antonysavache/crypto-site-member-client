@@ -27,8 +27,8 @@
   padding-right: $spacing-md;
 
   @include mobile {
-    padding-left: $spacing-sm;
-    padding-right: $spacing-sm;
+    padding-left: $spacing-md;
+    padding-right: $spacing-md;
   }
 }
 

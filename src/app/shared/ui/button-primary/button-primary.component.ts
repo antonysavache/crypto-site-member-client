@@ -1,21 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-button-primary',
-  templateUrl: './button-primary.component.html',
-  styleUrl: './button-primary.component.scss',
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink],
+  templateUrl: './button-primary.component.html',
+  styleUrl: './button-primary.component.scss'
 })
 export class ButtonPrimaryComponent {
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() disabled = false;
-  @Input() fullWidth = false;
-  @Input() link: string = '#'; // Всегда ссылка, по дефолту #
-  @Input() external = false; // true = href, false = routerLink
+  text = input<string>(''); // Текст кнопки
+  size = input<'small' | 'medium' | 'large'>('medium');
+  link = input<string>('#');
+  external = input<boolean>(false);
+  target = input<'_blank' | '_self'>('_blank');
+  rel = input<string>('noopener noreferrer');
 
-  get buttonClass(): string {
-    return `btn-primary btn-primary--${this.size}`;
-  }
+  buttonClass = computed(() => `btn-primary btn-primary--${this.size()}`);
 }

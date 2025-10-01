@@ -13,7 +13,7 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit, OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
-  private scrollPosition = 0; // Сохраняем позицию скролла
+  private scrollPosition = 0;
 
   constructor(private router: Router) {}
 
@@ -58,22 +58,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isMenuOpen.update(current => !current);
 
     if (this.isMenuOpen()) {
-      // Сохраняем текущую позицию скролла
       this.scrollPosition = window.scrollY;
-
-      // Блокируем скролл с фиксацией позиции
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${this.scrollPosition}px`;
       document.body.style.width = '100%';
     } else {
-      // Восстанавливаем скролл и позицию
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-
-      // Возвращаемся к сохраненной позиции
       window.scrollTo(0, this.scrollPosition);
     }
   }
@@ -81,14 +75,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // Close menu
   protected closeMenu(): void {
     this.isMenuOpen.set(false);
-
-    // Восстанавливаем скролл и позицию
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-
-    // Возвращаемся к сохраненной позиции
     window.scrollTo(0, this.scrollPosition);
   }
 
@@ -102,14 +92,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Handle nav link click
   protected onNavLinkClick(href: string): void {
-    // Close mobile menu when navigating
     this.closeMenu();
-
-    // Navigate using Angular Router
-    this.router.navigate([href]).then(() => {
-      // Прокрутка в начало после навигации
-      window.scrollTo(0, 0);
-    });
+    this.router.navigate([href]);
   }
 
   // Cleanup on destroy

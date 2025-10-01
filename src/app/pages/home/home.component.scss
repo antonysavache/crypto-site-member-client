@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import 'variables';
+@import 'mixins';
 
 // Section titles
 .section-title {
@@ -100,6 +100,7 @@
 
       a {
         width: 100%;
+        display: block;
         text-align: center;
       }
     }

@@ -1,11 +1,17 @@
 <div class="checklist">
-  <h3 class="checklist-title" *ngIf="title">{{ title }}</h3>
+  @if (title()) {
+    <h3 class="checklist-title">{{ title() }}</h3>
+  }
   <ul class="checklist-items">
-    <li class="checklist-item" *ngFor="let item of items">
-      <div class="checklist-icon">
-        <img src="/icons/check.svg" alt="Check" />
-      </div>
-      <div class="checklist-content" [innerHTML]="item"></div>
-    </li>
+    @for (item of items(); track $index) {
+      <li class="checklist-item">
+        <div class="checklist-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.6667 5L7.5 14.1667L3.33333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="checklist-content">{{ item }}</div>
+      </li>
+    }
   </ul>
 </div>
