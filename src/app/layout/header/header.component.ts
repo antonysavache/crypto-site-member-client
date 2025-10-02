@@ -2,6 +2,7 @@ import { Component, signal, HostListener, OnDestroy, OnInit } from '@angular/cor
 import { NgClass } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ScrollLockService } from '../../shared/services/scroll-lock.service';
 
 @Component({
   selector: 'app-header',
@@ -13,9 +14,11 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit, OnDestroy {
   // Mobile menu state
   protected readonly isMenuOpen = signal(false);
-  private scrollPosition = 0;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private scrollLock: ScrollLockService
+  ) {}
 
   // Navigation links
   protected readonly navLinks = [
@@ -58,28 +61,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isMenuOpen.update(current => !current);
 
     if (this.isMenuOpen()) {
-      this.scrollPosition = window.scrollY;
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${this.scrollPosition}px`;
-      document.body.style.width = '100%';
+      this.scrollLock.lock();
     } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, this.scrollPosition);
+      this.scrollLock.unlock();
     }
   }
 
   // Close menu
   protected closeMenu(): void {
     this.isMenuOpen.set(false);
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    window.scrollTo(0, this.scrollPosition);
+    this.scrollLock.unlock();
   }
 
   // Close menu on escape key
@@ -98,9 +89,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // Cleanup on destroy
   ngOnDestroy(): void {
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
+    this.scrollLock.unlock();
   }
 }

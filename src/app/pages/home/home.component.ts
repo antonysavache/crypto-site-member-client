@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui/article-card-large/article-card-large.component';
 import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
@@ -6,6 +6,7 @@ import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card
 import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
 import { ButtonPrimaryComponent } from '../../shared/ui/button-primary/button-primary.component';
 import { ButtonSecondaryComponent } from '../../shared/ui/button-secondary/button-secondary.component';
+import { SeoService } from '../../shared/services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { ButtonSecondaryComponent } from '../../shared/ui/button-secondary/butto
   standalone: true,
   imports: [RouterLink, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent, ButtonPrimaryComponent, ButtonSecondaryComponent]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   // Тестовые данные для новостной секции
   newsData: NewsSectionData = {
     sectionTitle: 'How-to Guides for Beginners',
@@ -165,5 +166,36 @@ export class HomeComponent {
     }
   ];
 
-  constructor() {}
+  constructor(private seo: SeoService) {}
+
+  ngOnInit(): void {
+    // Устанавливаем SEO-теги для главной страницы
+    this.seo.setPageSeo({
+      title: 'Tokenoversity — Your Complete Crypto Guide for the UK',
+      description: 'Independent crypto exchange reviews, step-by-step guides, and security basics. Clear, evergreen, and jargon-free resources for UK beginners.',
+      keywords: 'crypto guide, cryptocurrency exchange, UK crypto, bitcoin guide, ethereum guide, crypto security, crypto taxes UK',
+      image: '/images/og-home.webp',
+      url: 'https://tokenoversity.com/',
+      type: 'website'
+    });
+
+    // Добавляем JSON-LD схемы
+    const schemas = [
+      this.seo.createWebSiteSchema(),
+      this.seo.createOrganizationSchema(),
+      // ItemList для обзоров криптовалют
+      this.seo.createItemListSchema([
+        { name: 'Bitcoin Review', url: '/coins/bitcoin-review', image: '/images/home/BTC-card-article-preview.webp' },
+        { name: 'Ethereum Review', url: '/coins/ethereum-review', image: '/images/home/ETH-card-article-preview.webp' },
+        { name: 'Solana Review', url: '/coins/solana-review', image: '/images/home/SOL-card-article-preview.webp' }
+      ])
+    ];
+
+    this.seo.addJsonLd(schemas);
+  }
+
+  ngOnDestroy(): void {
+    // Очищаем JSON-LD при уходе со страницы
+    this.seo.removeJsonLd();
+  }
 }

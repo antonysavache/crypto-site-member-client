@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { SkeletonComponent } from '@shared/ui/skeleton/skeleton.component';
+import { SkeletonComponent } from  '@shared/ui/skeleton/skeleton.component';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
