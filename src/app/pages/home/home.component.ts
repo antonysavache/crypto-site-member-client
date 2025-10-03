@@ -3,9 +3,10 @@ import { RouterLink } from '@angular/router';
 import { ArticleCardLargeComponent, ArticleCardLargeData } from '../../shared/ui/article-card-large/article-card-large.component';
 import { NewsSectionComponent, NewsSectionData } from '../../shared/ui/news-section/news-section.component';
 import { ReviewCardComponent, ReviewCardData } from '../../shared/ui/review-card/review-card.component';
-import { ProTipComponent } from '../../shared/ui/pro-tip/pro-tip.component';
 import { ButtonPrimaryComponent } from '../../shared/ui/button-primary/button-primary.component';
 import { ButtonSecondaryComponent } from '../../shared/ui/button-secondary/button-secondary.component';
+import { ReviewMethodologyComponent } from './components/review-methodology/review-methodology.component';
+import { EvaluationCriteriaComponent } from './components/evaluation-criteria/evaluation-criteria.component';
 import { SeoService } from '../../shared/services/seo.service';
 
 @Component({
@@ -13,7 +14,16 @@ import { SeoService } from '../../shared/services/seo.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   standalone: true,
-  imports: [RouterLink, ArticleCardLargeComponent, NewsSectionComponent, ReviewCardComponent, ProTipComponent, ButtonPrimaryComponent, ButtonSecondaryComponent]
+  imports: [
+    RouterLink,
+    ArticleCardLargeComponent,
+    NewsSectionComponent,
+    ReviewCardComponent,
+    ButtonPrimaryComponent,
+    ButtonSecondaryComponent,
+    ReviewMethodologyComponent,
+    EvaluationCriteriaComponent
+  ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   // Тестовые данные для новостной секции
@@ -62,11 +72,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       category: 'REVIEW',
       date: 'Updated Jun 29, 2025',
       readTime: '6–8 min read',
-      routerLink: '/kraken-review',
+      routerLink: '/exchanges/kraken-review',
       primaryCta: 'Open Kraken Account →',
       primaryCtaLink: 'https://r.kraken.com/signup?utm_source=tokenoversity&utm_medium=affiliate&utm_campaign=home_block&utm_content=review_btn',
       secondaryCta: 'Read full review',
-      secondaryCtaLink: '/kraken-review',
+      secondaryCtaLink: '/exchanges/kraken-review',
       imageUrl: '/images/kraken/kraken-preview-card.webp',
       icon: '🔐'
     },

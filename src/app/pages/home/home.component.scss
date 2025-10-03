@@ -7,12 +7,12 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: $text-color;
+  color: $color-text;
 }
 
 .section-subtitle {
   text-align: center;
-  color: $light-gray;
+  color: $color-text-secondary;
   margin-bottom: 50px;
   font-size: 16px;
 }
@@ -35,7 +35,7 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 80px 0;
-  color: #333333;
+  color: $color-text;
   position: relative;
   overflow: hidden;
 
@@ -127,16 +127,18 @@
   }
 
   .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    @include grid-layout($cols: 4, $gap: 30px, $cols-tablet: 2, $cols-mobile: 2);
     margin-top: 50px;
     z-index: 2;
     position: relative;
-    background: white;
+    background: $color-bg;
     padding: 30px;
-    border-radius: 12px;
+    border-radius: $border-radius-xl;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    @include mobile-tablet {
+      padding: 20px;
+    }
 
     .stat-item {
       text-align: center;
@@ -144,7 +146,7 @@
       color: inherit;
       transition: all 0.2s ease;
       padding: 12px;
-      border-radius: 8px;
+      border-radius: $border-radius-lg;
 
       &:hover {
         transform: translateY(-2px);
@@ -156,20 +158,14 @@
         font-weight: bold;
         display: block;
         margin-bottom: 8px;
-        color: #333333;
+        color: $color-text;
       }
 
       .stat-label {
         font-size: 14px;
-        color: #666666;
+        color: $color-text-secondary;
         line-height: 1.4;
       }
-    }
-
-    @include mobile-tablet {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 20px;
     }
   }
 }
@@ -177,37 +173,26 @@
 // Test Large Article Cards Section
 .test-large-cards {
   padding: 60px 0;
-  background: white;
+  background: $color-bg;
 
   .test-large-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    @include grid-layout($cols: 2, $gap: 32px, $cols-tablet: 1, $cols-mobile: 1);
     margin-top: 40px;
-
-    @include mobile-tablet {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
   }
 }
 
 // Essential Crypto Knowledge
 .crypto-knowledge {
   padding: 80px 0;
-  background: white;
+  background: $color-bg;
 
   .crypto-knowledge-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    @include grid-layout($cols: 3, $gap: 24px, $cols-tablet: 2, $cols-mobile: 1);
     margin-top: 40px;
     width: 100%;
     overflow: hidden;
 
     @include mobile-tablet {
-      grid-template-columns: repeat(2, 1fr);
-
       /* Центрируем третий элемент */
       > :nth-child(3) {
         grid-column: 1 / -1;
@@ -217,9 +202,6 @@
     }
 
     @include mobile {
-      grid-template-columns: 1fr;
-      gap: 20px;
-
       /* Убираем центрирование на мобильных */
       > :nth-child(3) {
         grid-column: auto;
@@ -227,17 +209,13 @@
         margin: 0;
       }
     }
-
-    > * {
-      min-width: 0;
-    }
   }
 }
 
 // Security & Taxes
 .security-taxes {
   padding: 64px 0 48px;
-  background: #f8fafc;
+  background: $color-gray-50;
 
   .section-header {
     display: flex;
@@ -265,14 +243,14 @@
 
     .header-action {
       .see-all-link {
-        color: #6366f1;
+        color: $color-primary;
         text-decoration: none;
         font-weight: 500;
         font-size: 16px;
         transition: color 0.2s ease;
 
         &:hover {
-          color: #4f46e5;
+          color: $color-primary-dark;
           text-decoration: underline;
         }
       }
@@ -280,233 +258,7 @@
   }
 
   .security-taxes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-
-    @include mobile-tablet {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    > * {
-      min-width: 0;
-    }
-  }
-}
-
-// Review Methodology
-.review-methodology {
-  padding: 80px 0;
-  background: white;
-
-  .methodology-content {
-    display: grid;
-    grid-template-columns: 1fr minmax(300px, 400px); // Более гибкая ширина
-    gap: 60px;
-    align-items: center;
-
-    @include mobile-tablet {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      text-align: center;
-    }
-  }
-
-  .methodology-text {
-    .methodology-title {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #1f2937;
-    }
-
-    .methodology-description {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #4b5563;
-      margin-bottom: 40px;
-
-      strong {
-        color: #1f2937;
-        font-weight: 600;
-      }
-    }
-
-    .methodology-sections {
-      .methodology-section {
-        margin-bottom: 32px;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        .section-subtitle-bold {
-          font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 12px;
-          color: #1f2937;
-        }
-
-        .section-text {
-          font-size: 16px;
-          line-height: 1.6;
-          color: #4b5563;
-
-          strong {
-            color: #1f2937;
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-
-  .methodology-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .methodology-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.12);
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.02);
-      }
-    }
-  }
-}
-
-// Evaluation Criteria
-.evaluation-criteria {
-  padding: 80px 0;
-  background: white;
-
-  .criteria-title {
-    font-size: 34px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 48px;
-    color: #1f2937;
-  }
-
-  .steps-line {
-    position: relative;
-    margin-bottom: 48px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: #EEF0F6;
-      z-index: 1;
-    }
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .step-pill {
-      background: #F3F4FE;
-      color: #6C6FF5;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 500;
-      z-index: 2;
-      position: relative;
-    }
-
-    @include mobile-tablet {
-      display: none;
-    }
-  }
-
-  .criteria-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    align-items: start;
-
-    @include mobile-tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .criteria-column {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    .criteria-name {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1f2937;
-      margin-bottom: 8px;
-    }
-
-    .criteria-description {
-      font-size: 14px;
-      color: #60657A;
-      line-height: 1.5;
-      margin-bottom: 24px;
-      min-height: 48px;
-
-      p {
-        margin-bottom: 4px;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    .criteria-tile {
-      position: relative;
-      background: #F6F8FF;
-      border-radius: 20px;
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: auto;
-      overflow: hidden; // Предотвращаем выход контента за границы
-
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-      }
-    }
-
-    @include mobile-tablet {
-      .criteria-name {
-        font-size: 18px;
-      }
-
-      .criteria-description {
-        font-size: 13px;
-        min-height: auto;
-      }
-
-      .criteria-tile {
-        aspect-ratio: 3/2;
-        margin-top: 16px;
-      }
-    }
+    @include grid-layout($cols: 2, $gap: 24px, $cols-tablet: 1, $cols-mobile: 1);
   }
 }
 
@@ -526,27 +278,6 @@
     .hero-description {
       max-width: 500px;
       margin: 0 auto 30px auto;
-    }
-
-    .stats {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  }
-
-  .review-methodology {
-    .methodology-text {
-      .methodology-title {
-        font-size: 28px;
-      }
-
-      .methodology-description {
-        font-size: 16px;
-      }
-    }
-
-    .methodology-visual .methodology-image {
-      max-width: 100%;
     }
   }
 }

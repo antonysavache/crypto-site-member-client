@@ -76,3 +76,33 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+// ================================
+// GRID LAYOUT MIXIN
+// ================================
+
+// Универсальная grid-сетка с автоматическим responsive поведением
+// $cols - количество колонок на desktop (по умолчанию 3)
+// $gap - расстояние между элементами (по умолчанию 24px)
+// $cols-tablet - количество колонок на tablet (по умолчанию 2)
+// $cols-mobile - количество колонок на mobile (по умолчанию 1)
+@mixin grid-layout($cols: 3, $gap: 24px, $cols-tablet: 2, $cols-mobile: 1) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+
+  @include mobile-tablet {
+    grid-template-columns: repeat($cols-tablet, 1fr);
+    gap: calc($gap * 0.8);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat($cols-mobile, 1fr);
+    gap: calc($gap * 0.6);
+  }
+
+  // Предотвращаем overflow дочерних элементов
+  > * {
+    min-width: 0;
+  }
+}

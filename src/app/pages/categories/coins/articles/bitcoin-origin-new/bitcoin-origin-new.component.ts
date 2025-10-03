@@ -190,22 +190,22 @@ export class BitcoinOriginNewComponent implements OnInit {
     }
   ];
 
-  // Key milestones данные
+  // Key milestones данные - БЕЗ <strong> тегов!
   protected readonly keyMilestones: string[] = [
-    '<strong>2009:</strong> First Bitcoin transaction',
-    '<strong>2010:</strong> First real-world purchase (10,000 BTC for two pizzas)',
-    '<strong>2017:</strong> Mainstream attention as Bitcoin price reached nearly $20,000',
-    '<strong>2021:</strong> Corporate adoption by companies like Tesla and MicroStrategy',
-    '<strong>2024-2025:</strong> Bitcoin ETF approvals and increasing institutional integration'
+    '2009: First Bitcoin transaction',
+    '2010: First real-world purchase (10,000 BTC for two pizzas)',
+    '2017: Mainstream attention as Bitcoin price reached nearly $20,000',
+    '2021: Corporate adoption by companies like Tesla and MicroStrategy',
+    '2024-2025: Bitcoin ETF approvals and increasing institutional integration'
   ];
 
   // Key Features & Benefits данные
   protected readonly keyBenefits: string[] = [
-    '<strong>Decentralisation:</strong> No single point of failure or control',
-    '<strong>Transparency:</strong> All transactions are publicly viewable on the blockchain',
-    '<strong>Immutability:</strong> Once confirmed, transactions cannot be reversed',
-    '<strong>Global accessibility:</strong> 24/7 operation without geographical restrictions',
-    '<strong>Programmable scarcity:</strong> Fixed supply creates digital scarcity'
+    'Decentralisation: No single point of failure or control',
+    'Transparency: All transactions are publicly viewable on the blockchain',
+    'Immutability: Once confirmed, transactions cannot be reversed',
+    'Global accessibility: 24/7 operation without geographical restrictions',
+    'Programmable scarcity: Fixed supply creates digital scarcity'
   ];
 
   // Primary Risks данные
@@ -228,12 +228,12 @@ export class BitcoinOriginNewComponent implements OnInit {
     }
   ];
 
-  // Security & Custody Options данные
+  // Security & Custody Options данные - БЕЗ <strong> тегов!
   protected readonly custodyOptions: string[] = [
-    '<strong>Hardware wallets</strong> (Ledger, Trezor): Best for long-term storage',
-    '<strong>Software wallets:</strong> Convenient for regular transactions',
-    '<strong>Exchange custody:</strong> Easiest but carries counterparty risk',
-    '<strong>Institutional custody:</strong> Growing options for larger holdings'
+    'Hardware wallets (Ledger, Trezor): Best for long-term storage',
+    'Software wallets: Convenient for regular transactions',
+    'Exchange custody: Easiest but carries counterparty risk',
+    'Institutional custody: Growing options for larger holdings'
   ];
 
   // Bitcoin suitability данные
